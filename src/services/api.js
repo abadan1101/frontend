@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://abadankarsitad.shop'
+  baseURL: 'https://abadankaristad.shop'
 
 });
 
