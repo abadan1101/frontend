@@ -1,0 +1,44 @@
+/*--componentes externos--*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    background: #E4E7EF;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, button, textarea {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+
+:root {
+	--grey: #F1F0F6;
+	--dark-gray: #8D8D8D;
+	--dark-gray2:#575555;
+	--light: #fff;
+	--dark: #000;
+	--green: #81D43A;
+	--light-green: #E3FFCB;
+	--blue: #1775F1;
+	--light-blue: #D0E4FF;
+	--dark-blue: #0C5FCD;
+	--red: #FC3B56;
+}

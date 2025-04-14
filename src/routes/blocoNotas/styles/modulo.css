@@ -1,0 +1,25 @@
+#ModuloBlocoNotas {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+@media (max-width: 1000px) {
+    #ModuloBlocoNotas {
+        flex-direction: column;
+        align-items: unset;
+    }
+
+    #ModuloBlocoNotas main {
+        margin-left: 0;
+        margin-top: 30PX;
+    }
+
+    #ModuloBlocoNotas aside {
+        width: 100%;
+    }
+}
+
