@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/bloconotas/static/css/main.93de970e.css",
+    "main.js": "/bloconotas/static/js/main.ef075d56.js",
+    "static/media/logo1.png": "/bloconotas/static/media/logo1.fb04fa9e8db1f4f38573.png",
+    "index.html": "/bloconotas/index.html",
+    "main.93de970e.css.map": "/bloconotas/static/css/main.93de970e.css.map",
+    "main.ef075d56.js.map": "/bloconotas/static/js/main.ef075d56.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93de970e.css",
+    "static/js/main.ef075d56.js"
+  ]
+}
