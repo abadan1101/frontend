@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import {  createBrowserRouter,  RouterProvider } from 'react-router-dom'
+import {  createBrowserRouter,  RouterProvider, HashRouter } from 'react-router-dom'
 
 import Home from './routes/home';
 import Trabalho from './routes/Trabalho';
 import BlocoNotas from './routes/blocoNotas/index';
 import ErrorPage from './routes/ErrorPage';
 
-const router = createBrowserRouter([
+const router = HashRouter([
   {
     path: "/",
     element: <App />,
