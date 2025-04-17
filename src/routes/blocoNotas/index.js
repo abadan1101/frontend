@@ -60,7 +60,7 @@ const BlocoNotas = () => {
       const txa = document.getElementById('txarea');
       const locCursor = txa.selectionStart;
       var val = txa.value;
-      txa.value = val.slice(0, locCursor) + "▪️ " + val.slice(locCursor);
+      txa.value = val.slice(0, locCursor) + "○ " + val.slice(locCursor);
       txa.selectionEnd = locCursor + 3;
     }
   
@@ -70,7 +70,7 @@ const BlocoNotas = () => {
     setTimeout(()=>{
       e.preventDefault();
       if(document.getElementById('txarea').value === ''){
-        document.getElementById('txarea').value ='▪️ ';
+        document.getElementById('txarea').value ='○ ';
       }
     }, 200);
   }
