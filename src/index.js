@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import {  createBrowserRouter,  RouterProvider } from 'react-router-dom'
+import {  createBrowserRouter,  RouterProvider, createHashRouter } from 'react-router-dom'
 
 import Home from './routes/home';
 import Trabalho from './routes/Trabalho';
 import BlocoNotas from './routes/blocoNotas/index';
 import ErrorPage from './routes/ErrorPage';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -34,6 +34,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
