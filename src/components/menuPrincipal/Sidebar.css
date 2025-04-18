@@ -91,7 +91,7 @@
 .sidebar .side-menu i{
   font-size: 20px;
 }
-.sidebar .side-menu > li > p:hover {
+.sidebar .side-menu > li > p:hover,  .sidebar .side-menu > li > a:hover{
   background: var(--grey);
 }
 .sidebar .side-menu > li > p.active .icon-right {
@@ -120,9 +120,6 @@
 .sidebar .side-dropdown li{
   border-bottom: 1px dotted   var(--dark-gray);
   padding: 15px 0 0 0px;
-}
-.sidebar .side-dropdown li a{
-  padding: 0px;
 }
 .sidebar .side-dropdown.show {
   max-height: 1000px;

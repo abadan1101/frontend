@@ -34,7 +34,7 @@ const Sidebar = () => {
       </div>
       <div>
         <ul className= 'side-menu'>
-          <li><Link to='/' className='inicio' onClick={() => setIsOpen(!isOpen)}><i className='bx bxs-home icon'></i> Início</Link><ul className='side-dropdown'></ul></li>
+          <li><Link to='/' className='inicio' onClick={() => setIsOpen(!isOpen)}><i className='bx bxs-home icon'></i> Início</Link></li>
           <li className='divider' data-text='Principal'>Principal</li>
           <li>
               <p><i className='bx bx-task icon' ></i> Trabalho <i className='bx bx-chevron-right icon-right' ></i></p>
@@ -52,9 +52,9 @@ const Sidebar = () => {
                 <li><Link to='/'>Anotações</Link></li>
               </ul>
           </li>
-          <li><Link to='bloconotas' onClick={() => setIsOpen(!isOpen)}><i className='bx bxs-calendar-check icon'></i> Lembretes</Link><ul className='side-dropdown'></ul></li>	
+          <li><Link to='bloconotas' onClick={() => setIsOpen(!isOpen)}><i className='bx bxs-calendar-check icon'></i> Lembretes</Link></li>	
           <li className='divider' data-text='Diversos'>Diversos</li>
-          <li><p><i className='bx bx-table icon'></i> Planejamento</p><ul className='side-dropdown'></ul></li>
+          <li><Link to='/'><i className='bx bx-table icon'></i> Planejamento</Link></li>
           <li>
               <p><i className='bx bxs-report icon'></i> Relatórios <i className='bx bx-chevron-right icon-right' ></i></p>
               <ul className='side-dropdown'>
@@ -63,7 +63,7 @@ const Sidebar = () => {
                 <li><Link to='/'>Anotações</Link></li>
               </ul>
           </li>
-          <li><p><i className='bx bxs-archive icon'></i> Arquivo</p><ul className='side-dropdown'></ul></li>
+          <li><Link to='/'><i className='bx bxs-archive icon'></i> Arquivo</Link></li>
         </ul>
         <div className='ads'>
           <div className='wrapper'>
