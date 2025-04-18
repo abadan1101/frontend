@@ -17,7 +17,7 @@
 .toggle-button {
   position: absolute;
   top: 15px;
-  left: 260px;
+  left: 265px;
   background: none;
   border: none;
   font-size: 24px;
@@ -91,15 +91,19 @@
 .sidebar .side-menu i{
   font-size: 20px;
 }
-.sidebar .side-menu > li > p:hover,  .sidebar .side-menu > li > a:hover{
+.sidebar .side-menu li p:hover,  .sidebar .side-menu li a:hover{
   background: var(--grey);
 }
-.sidebar .side-menu > li > p.active .icon-right {
+.sidebar .side-menu li p.active .icon-right {
   transform: rotateZ(90deg);
 }
-.sidebar .side-menu > li > p.active,
-.sidebar .side-menu > li > p.active:hover {
+.sidebar .side-menu li p.active,
+.sidebar .side-menu li p.active:hover {
   background: var(--grey);
+}
+.liDirectActive{
+  background: var(--grey);
+  border-radius: 10px;
 }
 .sidebar .divider {
   margin-top: 24px;
@@ -119,16 +123,20 @@
 }
 .sidebar .side-dropdown li{
   border-bottom: 1px dotted   var(--dark-gray);
-  padding: 15px 0 0 0px;
 }
 .sidebar .side-dropdown.show {
   max-height: 1000px;
 }
-.sidebar .side-dropdown a:hover {
+.sidebar .side-dropdown li a{
+  height: 30px;
+}
+.sidebar .side-dropdown li a:hover {
   color: var(--blue);
+  background: #fff;
 }
 .altSub{
-  background-image: linear-gradient(to right, rgb(221, 221, 223), rgb(252, 252, 252) 70%);
+  font-weight: bold;
+  color: var(--blue) !important;
   transition: all .5 ease;
 }
 .sidebar .ads {
