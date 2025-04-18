@@ -2,12 +2,14 @@ import './App.css';
 
 import { Outlet } from "react-router-dom"
 
-import Navbar from './components/menuPrincipal/Navbar';
+import Sidebar from './components/menuPrincipal/Sidebar.js';
+import Topbar from './components/barraSuperior/Topbar.js';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Topbar />
+      <Sidebar />
       <Outlet />
     </div>
   );

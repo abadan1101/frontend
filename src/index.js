@@ -4,10 +4,10 @@ import App from './App';
 
 import {  createBrowserRouter,  RouterProvider, createHashRouter } from 'react-router-dom'
 
-import Home from './routes/home';
-import Trabalho from './routes/Trabalho';
-import BlocoNotas from './routes/blocoNotas/index';
-import ErrorPage from './routes/ErrorPage';
+import Home from './pages/Home/home';
+import Trabalho from './pages/Trabalho/Trabalho';
+import BlocoNotas from './pages/blocoNotas/index';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 const router = createHashRouter([
   {

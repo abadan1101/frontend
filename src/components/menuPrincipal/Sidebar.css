@@ -1,0 +1,169 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: var(--light);
+    transition: left 0.3s ease;
+    z-index: 200;
+	  box-shadow: 5px 5px 5px #ccc;
+}
+  
+.sidebar.open {
+  left: 0;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 15px;
+  left: 260px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #777;
+  font-weight: bold;
+}
+
+.sidebar .brand{
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  font-weight: 700;
+  color: var(--blue);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--light);
+  transition: all .3s ease;
+  padding: 0 6px;
+  cursor: default;
+}
+.sidebar .brand img{
+  margin-top: auto;
+  width: 60px;
+}
+#func_app{
+  color: var(--dark-gray);
+  font-size: 10px;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar .icon {
+  min-width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6px;
+}
+.sidebar .icon-right {
+  margin-left: auto;
+  transition: all .3s ease;
+}
+.sidebar .side-menu {
+  margin: 20px 0;
+  padding: 0 20px;
+  transition: all .3s ease;
+}
+.sidebar .side-menu a,  .sidebar .side-menu p{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--dark);
+  padding: 12px 16px 12px 0;
+  transition: all .3s ease;
+  border-radius: 10px;
+  margin: 4px 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sidebar .side-menu .inicio, .sidebar .side-menu .inicio.active{
+  background: var(--dark-gray);
+  color: var(--light);
+}
+.sidebar .side-menu .inicio:hover, .sidebar .side-menu .inicio.active:hover{
+  background: var(--dark-gray2);
+}
+.sidebar .side-menu i{
+  font-size: 20px;
+}
+.sidebar .side-menu > li > p:hover {
+  background: var(--grey);
+}
+.sidebar .side-menu > li > p.active .icon-right {
+  transform: rotateZ(90deg);
+}
+.sidebar .side-menu > li > p.active,
+.sidebar .side-menu > li > p.active:hover {
+  background: var(--grey);
+}
+.sidebar .divider {
+  margin-top: 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark-gray);
+  transition: all .3s ease;
+  white-space: nowrap;
+  
+}
+.sidebar .side-dropdown {
+  padding-left: 54px;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all .15s ease;
+}
+.sidebar .side-dropdown li{
+  border-bottom: 1px dotted   var(--dark-gray);
+  padding: 15px 0 0 0px;
+}
+.sidebar .side-dropdown li a{
+  padding: 0px;
+}
+.sidebar .side-dropdown.show {
+  max-height: 1000px;
+}
+.sidebar .side-dropdown a:hover {
+  color: var(--blue);
+}
+.altSub{
+  background-image: linear-gradient(to right, rgb(221, 221, 223), rgb(252, 252, 252) 70%);
+  transition: all .5 ease;
+}
+.sidebar .ads {
+  width: 100%;
+  padding: 20px;
+}
+.sidebar .ads .wrapper {
+  background: var(--grey);
+  padding: 20px;
+  border-radius: 10px;
+}
+.sidebar .btn-upgrade {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+  color: var(--light);
+  background: var(--dark-gray);
+  transition: all .3s ease;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.sidebar .btn-upgrade:hover {
+    background: var(--dark-gray2);
+}
+.sidebar .ads .wrapper {
+  font-size: 12px;
+  color: var(--dark-gray);
+  text-align: center;
+}
+.sidebar .ads .wrapper span {
+  font-weight: 700;
+}
