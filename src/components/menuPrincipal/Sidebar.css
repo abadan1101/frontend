@@ -101,7 +101,10 @@
 .sidebar .side-menu li p.active:hover {
   background: var(--grey);
 }
-.liDirectActive{
+.sidebar .side-menu .liDirect .altSub{
+  font-weight: bold;
+  color: var(--blue) !important;
+  transition: all .5 ease;
   background: var(--grey);
   border-radius: 10px;
 }
@@ -134,7 +137,7 @@
   color: var(--blue);
   background: #fff;
 }
-.altSub{
+.sidebar .side-menu .side-dropdown .altSub{
   font-weight: bold;
   color: var(--blue) !important;
   transition: all .5 ease;
