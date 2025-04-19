@@ -1,23 +1,31 @@
+/* ------barra lateral------- */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background: var(--light);
-    transition: left 0.3s ease;
-    z-index: 200;
-	  box-shadow: 5px 5px 5px #ccc;
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  max-width: 260px;
+  height: 100%;
+  background: var(--light);
+  transition: left 0.3s ease;
+  z-index: 200;
+  box-shadow: 5px 5px 5px #ccc;
 }
-  
 .sidebar.open {
   left: 0;
 }
+.sidebar .navbar{
+  height: 100%;
+  overflow-y: auto;
+	scrollbar-width:thin;
+	scrollbar-color: var(--light-blue) var(--light);
+}
 
-.toggle-button {
+/* ------botão abrir barra lateral------ */
+.sidebar .toggleButton {
   position: absolute;
   top: 15px;
-  left: 265px;
+  left: 280px;
   background: none;
   border: none;
   font-size: 24px;
@@ -26,6 +34,7 @@
   font-weight: bold;
 }
 
+/* ------logotipo------- */
 .sidebar .brand{
   font-size: 24px;
   display: flex;
@@ -36,22 +45,26 @@
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 100;
   background: var(--light);
-  transition: all .3s ease;
   padding: 0 6px;
   cursor: default;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .sidebar .brand img{
   margin-top: auto;
   width: 60px;
 }
-#func_app{
+.sidebar .func_app{
   color: var(--dark-gray);
   font-size: 10px;
 }
-.sidebar::-webkit-scrollbar {
-  display: none;
+
+/* ------configuração do menu principal------- */
+.sidebar .sideMenu {
+  margin: 20px 0;
+  padding: 0 20px;
+  transition: all .3s ease;
 }
 .sidebar .icon {
   min-width: 48px;
@@ -64,12 +77,32 @@
   margin-left: auto;
   transition: all .3s ease;
 }
-.sidebar .side-menu {
-  margin: 20px 0;
-  padding: 0 20px;
-  transition: all .3s ease;
+.sidebar .altSub{
+  font-weight: bold;
+  color: var(--blue) !important;
+  transition: all .5 ease;
 }
-.sidebar .side-menu a,  .sidebar .side-menu p{
+
+/* ------botão inicio------- */
+.sidebar .home{
+  background: var(--dark-gray);
+  color: var(--light);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 12px 16px 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.sidebar .home:hover{
+  background: var(--dark-gray2);
+}
+.sidebar .home i{
+  font-size: 20px;
+}
+
+/* ------botões sem submenu-------- */
+.sidebar .liDirect{
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -81,67 +114,72 @@
   white-space: nowrap;
   cursor: pointer;
 }
-.sidebar .side-menu .inicio, .sidebar .side-menu .inicio.active{
-  background: var(--dark-gray);
-  color: var(--light);
+.sidebar .liDirect:hover{
+  background: var(--grey);
 }
-.sidebar .side-menu .inicio:hover, .sidebar .side-menu .inicio.active:hover{
-  background: var(--dark-gray2);
+.sidebar .liDirect.active{
+  background: var(--grey);
 }
-.sidebar .side-menu i{
+.sidebar .liDirect i{
   font-size: 20px;
 }
-.sidebar .side-menu li p:hover,  .sidebar .side-menu li a:hover{
-  background: var(--grey);
-}
-.sidebar .side-menu li p.active .icon-right {
-  transform: rotateZ(90deg);
-}
-.sidebar .side-menu li p.active,
-.sidebar .side-menu li p.active:hover {
-  background: var(--grey);
-}
-.sidebar .side-menu .liDirect .altSub{
-  font-weight: bold;
-  color: var(--blue) !important;
-  transition: all .5 ease;
-  background: var(--grey);
-  border-radius: 10px;
-}
+
+/* ------divisão de areas do menu principal-------- */
 .sidebar .divider {
   margin-top: 24px;
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--dark-gray);
-  transition: all .3s ease;
-  white-space: nowrap;
-  
 }
-.sidebar .side-dropdown {
+
+/* ------botões com submenu-------- */
+.sidebar .subMenu a,  .sidebar .subMenu p{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--dark);
+  padding: 12px 16px 12px 0;
+  transition: all .3s ease;
+  border-radius: 10px;
+  margin: 4px 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sidebar .subMenu i{
+  font-size: 20px;
+}
+.sidebar .subMenu p:hover{
+  background: var(--grey);
+}
+.sidebar .subMenu p.active .icon-right {
+  transform: rotateZ(90deg);
+}
+.sidebar .subMenu p.active{
+  background: var(--grey);
+}
+
+/* ------itens do submenu-------- */
+.sidebar .sideDropdown {
   padding-left: 54px;
   max-height: 0;
   overflow-y: hidden;
   transition: all .15s ease;
 }
-.sidebar .side-dropdown li{
+.sidebar .sideDropdown li{
   border-bottom: 1px dotted   var(--dark-gray);
 }
-.sidebar .side-dropdown.show {
+.sidebar .sideDropdown.show {
   max-height: 1000px;
 }
-.sidebar .side-dropdown li a{
+.sidebar .sideDropdown li a{
   height: 30px;
 }
-.sidebar .side-dropdown li a:hover {
+.sidebar .sideDropdown li a:hover {
   color: var(--blue);
-  background: #fff;
 }
-.sidebar .side-menu .side-dropdown .altSub{
-  font-weight: bold;
-  color: var(--blue) !important;
-  transition: all .5 ease;
-}
+
+/* ------area promocional-------- */
 .sidebar .ads {
   width: 100%;
   padding: 20px;
@@ -151,7 +189,7 @@
   padding: 20px;
   border-radius: 10px;
 }
-.sidebar .btn-upgrade {
+.sidebar .btnUpgrade {
   font-size: 14px;
   display: flex;
   justify-content: center;
@@ -164,7 +202,7 @@
   font-weight: 600;
   margin-bottom: 12px;
 }
-.sidebar .btn-upgrade:hover {
+.sidebar .btnUpgrade:hover {
     background: var(--dark-gray2);
 }
 .sidebar .ads .wrapper {

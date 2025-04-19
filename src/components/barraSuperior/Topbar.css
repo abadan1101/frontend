@@ -1,4 +1,4 @@
-#content {
+.content {
 	position: fixed;
 	width: 100%;
 	left: 2px;
@@ -8,7 +8,7 @@
 	z-index: 100;
 }
 /* NAVBAR */
-nav {
+.content nav {
 	background: var(--light);
 	height: 64px;
 	padding: 0 20px;
@@ -20,16 +20,16 @@ nav {
 	left: 0;
 	box-shadow: 5px 5px 5px #ccc;
 }
-nav form {
+.content nav form {
 	max-width: 400px;
 	width: 100%;
 	margin-right: auto;
 }
-nav .form-group {
+.content nav .form-group {
 	position: relative;
-	padding-left: 30px;
+	padding-left: 50px;
 }
-nav .form-group input {
+.content nav .form-group input {
 	width: 100%;
 	background: var(--grey);
 	border-radius: 5px;
@@ -38,24 +38,24 @@ nav .form-group input {
 	padding: 10px 36px 10px 16px;
 	transition: all .3s ease;
 }
-nav .form-group input:focus {
+.content nav .form-group input:focus {
 	box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
 }
-nav .form-group .icon {
+.content nav .form-group .icon {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	right: 16px;
 	color: var(--dark-gray);
 }
-nav .nav-link {
+.content nav .nav-link {
 	position: relative;
 }
-nav .nav-link .icon {
+.content nav .nav-link .icon {
 	font-size: 18px;
 	color: var(--dark);
 }
-nav .nav-link .badge {
+.content nav .nav-link .badge {
 	position: absolute;
 	top: -12px;
 	right: -12px;
@@ -71,23 +71,23 @@ nav .nav-link .badge {
 	font-size: 10px;
 	font-weight: 700;
 }
-nav .divider {
+.content nav .divider {
 	width: 1px;
 	background: var(--grey);
 	height: 12px;
 	display: block;
 }
-nav .profile {
+.content nav .profile {
 	position: relative;
 }
-nav .profile img {
+.content nav .profile img {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
 	object-fit: cover;
 	cursor: pointer;
 }
-nav .profile .profile-link {
+.content nav .profile .profile-link {
 	position: absolute;
 	top: calc(100% + 10px);
 	right: 0;
@@ -100,12 +100,12 @@ nav .profile .profile-link {
 	pointer-events: none;
 	transition: all .3s ease;
 }
-nav .profile .profile-link.show {
+.content nav .profile .profile-link.show {
 	opacity: 1;
 	pointer-events: visible;
 	top: 100%;
 }
-nav .profile .profile-link a {
+.content nav .profile .profile-link a {
 	padding: 10px 16px;
 	display: flex;
 	grid-gap: 10px;
@@ -114,9 +114,9 @@ nav .profile .profile-link a {
 	align-items: center;
 	transition: all .3s ease;
 }
-nav .profile .profile-link a:hover {
+.content nav .profile .profile-link a:hover {
 	background: var(--grey);
 }
-nav .profile .profile-link li:hover {
+.content nav .profile .profile-link li:hover {
 	background: var(--grey);
 }

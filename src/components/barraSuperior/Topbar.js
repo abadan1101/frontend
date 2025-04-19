@@ -6,7 +6,7 @@ import usuario from '../../img/usuario.png'
 const Topbar = () => {
 
   return (
-    <section id="content">
+    <section className="content">
       <nav>
           <form action='#'>
               <div className='form-group'>
