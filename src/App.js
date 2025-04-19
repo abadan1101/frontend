@@ -2,13 +2,13 @@ import './App.css';
 
 import { Outlet } from "react-router-dom"
 
-import Sidebar from './components/menuPrincipal/Sidebar.js';
-import Topbar from './components/barraSuperior/Topbar.js';
+import Sidebar from './components/sidebar';
+import Upperbar from './components/upperbar';
 
 function App() {
   return (
     <div className="App">
-      <Topbar />
+      <Upperbar />
       <Sidebar />
       <Outlet />
     </div>

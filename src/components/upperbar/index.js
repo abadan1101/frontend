@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './Topbar.css';
+import './styles.css';
 import usuario from '../../img/usuario.png'
 
-const Topbar = () => {
+const Upperbar = () => {
 
   return (
     <section className="content">
@@ -36,4 +36,4 @@ const Topbar = () => {
   )
 };
 
-export default Topbar;
+export default Upperbar;

@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import {  createBrowserRouter,  RouterProvider, createHashRouter } from 'react-router-dom'
+import {  RouterProvider, createHashRouter } from 'react-router-dom' // usar createBrowserRouter na vps
 
-import Home from './pages/Home/home';
-import Trabalho from './pages/Trabalho/Trabalho';
-import BlocoNotas from './pages/blocoNotas/index';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
+import Home from './pages/home';
+import Trabalho from './pages/trabalho';
+import BlocoNotas from './pages/blocoNotas';
+import ErrorPage from './pages/errorPage';
 
 const router = createHashRouter([
   {

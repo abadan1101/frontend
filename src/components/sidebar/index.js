@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import './Sidebar.css';
+import './styles.css';
 import logo1 from '../../img/logo1.png'
 
 const Sidebar = () => {
@@ -88,7 +88,7 @@ const Sidebar = () => {
                 <li onClick={openActiveSB}><Link to='/'>Anotações</Link></li>
               </ul>
             </div>
-            <div onClick={openActiveSB}><Link className='liDirect' to='bloconotas'><i className='bx bxs-calendar-check icon'></i> Lembretes</Link></div>	
+            <div onClick={openActiveSB}><Link className='liDirect' to='bloconotas'><i class='bx bx-edit icon'></i> Bloco de Notas</Link></div>	
             <div className='divider'>Principal</div>
             <div onClick={openActiveSB}><Link className='liDirect' to='bloconotas'><i className='bx bxs-calendar-check icon'></i> Lembretes</Link></div>	
             <div className='subMenu'>
