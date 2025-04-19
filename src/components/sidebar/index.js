@@ -30,8 +30,6 @@ const Sidebar = () => {
       x.classList.toggle('show');
       e.target.classList.toggle('active');
     }
-      
-    
   }
   
   // function para configurar botões do menu ao abrir paginas
@@ -52,6 +50,7 @@ const Sidebar = () => {
       e.target.classList.add('altSub');
       e.target.classList.add('active');
     }
+    setIsOpen(!isOpen)
   }
   
 
