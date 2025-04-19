@@ -70,7 +70,7 @@ const Sidebar = () => {
         </div>
         <div>
           <nav className= 'sideMenu'>
-            <div><Link className='home' to='/'><i className='bx bxs-home icon'></i> Início</Link></div>
+            <div onClick={openActiveSB}><Link className='home' to='/'><i className='bx bxs-home icon'></i> Início</Link></div>
             <div className='divider'>Principal</div>
             <div className='subMenu'>
               <p onClick={openSubMenu}><i className='bx bx-task icon'></i> Trabalho <i className='bx bx-chevron-right icon-right' ></i></p>

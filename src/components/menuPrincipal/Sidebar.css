@@ -50,6 +50,7 @@
   cursor: default;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1;
 }
 .sidebar .brand img{
   margin-top: auto;
@@ -60,7 +61,7 @@
   font-size: 10px;
 }
 
-/* ------configuração do menu principal------- */
+/* ------comuns aos itens do menu------- */
 .sidebar .sideMenu {
   margin: 20px 0;
   padding: 0 20px;
@@ -72,6 +73,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 6px;
+  font-size: 20px;
 }
 .sidebar .icon-right {
   margin-left: auto;
@@ -83,10 +85,20 @@
   transition: all .5 ease;
 }
 
+/* ------divisão de areas do menu principal-------- */
+.sidebar .divider {
+  margin-top: 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+
 /* ------botão inicio------- */
 .sidebar .home{
   background: var(--dark-gray);
-  color: var(--light);
+  color: var(--light) !important;
+  font-weight: 700;
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -96,9 +108,6 @@
 }
 .sidebar .home:hover{
   background: var(--dark-gray2);
-}
-.sidebar .home i{
-  font-size: 20px;
 }
 
 /* ------botões sem submenu-------- */
@@ -120,21 +129,9 @@
 .sidebar .liDirect.active{
   background: var(--grey);
 }
-.sidebar .liDirect i{
-  font-size: 20px;
-}
-
-/* ------divisão de areas do menu principal-------- */
-.sidebar .divider {
-  margin-top: 24px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--dark-gray);
-}
 
 /* ------botões com submenu-------- */
-.sidebar .subMenu a,  .sidebar .subMenu p{
+.sidebar .subMenu p{
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -145,9 +142,6 @@
   margin: 4px 0;
   white-space: nowrap;
   cursor: pointer;
-}
-.sidebar .subMenu i{
-  font-size: 20px;
 }
 .sidebar .subMenu p:hover{
   background: var(--grey);
@@ -160,22 +154,30 @@
 }
 
 /* ------itens do submenu-------- */
-.sidebar .sideDropdown {
+.sidebar .sideDropdown{
   padding-left: 54px;
   max-height: 0;
   overflow-y: hidden;
   transition: all .15s ease;
 }
-.sidebar .sideDropdown li{
-  border-bottom: 1px dotted   var(--dark-gray);
-}
 .sidebar .sideDropdown.show {
   max-height: 1000px;
 }
-.sidebar .sideDropdown li a{
-  height: 30px;
+.sidebar .sideDropdown li{
+  border-bottom: 1px dotted   var(--dark-gray);
 }
-.sidebar .sideDropdown li a:hover {
+.sidebar .sideDropdown a{
+  display: flex;
+  height: 30px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--dark);
+  padding: 12px 16px 12px 0;
+  border-radius: 10px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+.sidebar .sideDropdown a:hover {
   color: var(--blue);
 }
 
