@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styles from './styles.module.css';
-import logo1 from '../../img/logo1.png'
+import logo1 from '../../img/logo1.png';
 
 const Sidebar = () => {
 
@@ -81,25 +81,32 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-task`}></i> Trabalho <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu}><i className={`${styles.icon} bx bxs-widget`}></i> Controles <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
-                <li onClick={openActiveSB}><Link to='/'>Tarefas</Link></li>
-                <li onClick={openActiveSB}><Link to='/'>Compromissos</Link></li>
-                <li onClick={openActiveSB}><Link to='/'>Anotações</Link></li>
+                <li onClick={openActiveSB}><Link to='/'>Pedidos</Link></li>
+                <li onClick={openActiveSB}><Link to='/'>Ferramentas</Link></li>
+                <li onClick={openActiveSB}><Link to='/'>Produtos</Link></li>
+                <li onClick={openActiveSB}><Link to='/'>Equipe</Link></li>
               </ul>
             </div>
             <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><i className={`${styles.icon} bx bx-edit`}></i> Bloco de Notas</Link></div>	
             <div className={styles.divider}>Principal</div>
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><i className={`${styles.icon} bx bx-edit`}></i> Bloco de Notas</Link></div>	
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-task`}></i> Trabalho <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-chart`}></i> Planejamento <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <ul className={styles.sideDropdown}>
+                <li onClick={openActiveSB}><Link to='/'>Linhas</Link></li>
+                <li onClick={openActiveSB}><Link to='/'>Compromissos</Link></li>
+                <li onClick={openActiveSB}><Link to='/'>Logistica</Link></li>
+              </ul>
+            </div>
+            <div className={styles.subMenu}>
+              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-archive-in`}></i> Arquivo <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='/'>Tarefas</Link></li>
                 <li onClick={openActiveSB}><Link to='/'>Compromissos</Link></li>
                 <li onClick={openActiveSB}><Link to='/'>Anotações</Link></li>
               </ul>
-            </div>
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><i className={`${styles.icon} bx bx-edit`}></i> Bloco de Notas</Link></div>	
+            </div>	
           </nav>
           <div className={styles.ads}>
             <div className={styles.wrapper}>
