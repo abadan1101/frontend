@@ -11,10 +11,10 @@
   z-index: 200;
   box-shadow: 5px 5px 5px #ccc;
 }
-.sidebar.open {
+.open {
   left: 0;
 }
-.sidebar .navbar{
+.navbar{
   height: 100%;
   overflow-y: auto;
 	scrollbar-width:thin;
@@ -22,7 +22,7 @@
 }
 
 /* ------botão abrir barra lateral------ */
-.sidebar .toggleButton {
+.toggleButton {
   position: absolute;
   top: 15px;
   left: 280px;
@@ -33,9 +33,12 @@
   color: #777;
   font-weight: bold;
 }
+.toggleButton:hover {
+  color: #333;
+}
 
 /* ------logotipo------- */
-.sidebar .brand{
+.brand{
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -52,22 +55,22 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 1;
 }
-.sidebar .brand img{
+.brand img{
   margin-top: auto;
   width: 60px;
 }
-.sidebar .func_app{
+.func_app{
   color: var(--dark-gray);
   font-size: 10px;
 }
 
 /* ------comuns aos itens do menu------- */
-.sidebar .sideMenu {
+.sideMenu {
   margin: 20px 0;
   padding: 0 20px;
   transition: all .3s ease;
 }
-.sidebar .icon {
+.icon {
   min-width: 48px;
   display: flex;
   justify-content: center;
@@ -75,18 +78,19 @@
   margin-right: 6px;
   font-size: 20px;
 }
-.sidebar .icon-right {
+.iconRight {
+  font-size: 20px;
   margin-left: auto;
   transition: all .3s ease;
 }
-.sidebar .altSub{
+.altSub{
   font-weight: bold;
   color: var(--blue) !important;
   transition: all .5 ease;
 }
 
 /* ------divisão de areas do menu principal-------- */
-.sidebar .divider {
+.divider {
   margin-top: 24px;
   font-size: 12px;
   text-transform: uppercase;
@@ -95,7 +99,7 @@
 }
 
 /* ------botão inicio------- */
-.sidebar .home{
+.home{
   background: var(--dark-gray);
   color: var(--light) !important;
   font-weight: 700;
@@ -106,12 +110,12 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.sidebar .home:hover{
+.home:hover{
   background: var(--dark-gray2);
 }
 
 /* ------botões sem submenu-------- */
-.sidebar .liDirect{
+.liDirect{
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -123,15 +127,15 @@
   white-space: nowrap;
   cursor: pointer;
 }
-.sidebar .liDirect:hover{
+.liDirect:hover{
   background: var(--grey);
 }
-.sidebar .liDirect.active{
+.liDirect.active{
   background: var(--grey);
 }
 
 /* ------botões com submenu-------- */
-.sidebar .subMenu p{
+.subMenu p{
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -143,30 +147,30 @@
   white-space: nowrap;
   cursor: pointer;
 }
-.sidebar .subMenu p:hover{
+.subMenu p:hover{
   background: var(--grey);
 }
-.sidebar .subMenu p.active .icon-right {
+.subMenu p.active .iconRight {
   transform: rotateZ(90deg);
 }
-.sidebar .subMenu p.active{
+.subMenu p.active{
   background: var(--grey);
 }
 
 /* ------itens do submenu-------- */
-.sidebar .sideDropdown{
+.sideDropdown{
   padding-left: 54px;
   max-height: 0;
   overflow-y: hidden;
   transition: all .15s ease;
 }
-.sidebar .sideDropdown.show {
+.sideDropdown.show {
   max-height: 1000px;
 }
-.sidebar .sideDropdown li{
+.sideDropdown li{
   border-bottom: 1px dotted   var(--dark-gray);
 }
-.sidebar .sideDropdown a{
+.sideDropdown a{
   display: flex;
   height: 30px;
   align-items: center;
@@ -177,21 +181,21 @@
   margin: 4px 0;
   cursor: pointer;
 }
-.sidebar .sideDropdown a:hover {
+.sideDropdown a:hover {
   color: var(--blue);
 }
 
 /* ------area promocional-------- */
-.sidebar .ads {
+.ads {
   width: 100%;
   padding: 20px;
 }
-.sidebar .ads .wrapper {
+.ads .wrapper {
   background: var(--grey);
   padding: 20px;
   border-radius: 10px;
 }
-.sidebar .btnUpgrade {
+.btnUpgrade {
   font-size: 14px;
   display: flex;
   justify-content: center;
@@ -204,14 +208,14 @@
   font-weight: 600;
   margin-bottom: 12px;
 }
-.sidebar .btnUpgrade:hover {
+.btnUpgrade:hover {
     background: var(--dark-gray2);
 }
-.sidebar .ads .wrapper {
+.ads .wrapper {
   font-size: 12px;
   color: var(--dark-gray);
   text-align: center;
 }
-.sidebar .ads .wrapper span {
+.ads .wrapper span {
   font-weight: 700;
 }

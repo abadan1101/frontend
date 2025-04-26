@@ -2,8 +2,8 @@ import './App.css';
 
 import { Outlet } from "react-router-dom"
 
-import Sidebar from './components/sidebar';
-import Upperbar from './components/upperbar';
+import Sidebar from './components/sidebar/sidebar.js';
+import Upperbar from './components/upperbar/upperbar.js';
 
 function App() {
   return (

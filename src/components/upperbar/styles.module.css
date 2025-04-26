@@ -25,11 +25,11 @@
 	width: 100%;
 	margin-right: auto;
 }
-.content nav .form-group {
+.content nav .formGroup {
 	position: relative;
 	padding-left: 50px;
 }
-.content nav .form-group input {
+.content nav .formGroup input {
 	width: 100%;
 	background: var(--grey);
 	border-radius: 5px;
@@ -38,24 +38,24 @@
 	padding: 10px 36px 10px 16px;
 	transition: all .3s ease;
 }
-.content nav .form-group input:focus {
+.content nav .formGroup input:focus {
 	box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
 }
-.content nav .form-group .icon {
+.content nav .formGroup .icon {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	right: 16px;
 	color: var(--dark-gray);
 }
-.content nav .nav-link {
+.content nav .navlink {
 	position: relative;
 }
-.content nav .nav-link .icon {
+.content nav .navlink .icon {
 	font-size: 18px;
 	color: var(--dark);
 }
-.content nav .nav-link .badge {
+.content nav .navlink .badge {
 	position: absolute;
 	top: -12px;
 	right: -12px;
@@ -87,7 +87,7 @@
 	object-fit: cover;
 	cursor: pointer;
 }
-.content nav .profile .profile-link {
+.content nav .profile .profilelink {
 	position: absolute;
 	top: calc(100% + 10px);
 	right: 0;
@@ -100,12 +100,12 @@
 	pointer-events: none;
 	transition: all .3s ease;
 }
-.content nav .profile .profile-link.show {
+.content nav .profile .profilelink.show {
 	opacity: 1;
 	pointer-events: visible;
 	top: 100%;
 }
-.content nav .profile .profile-link a {
+.content nav .profile .profilelink a {
 	padding: 10px 16px;
 	display: flex;
 	grid-gap: 10px;
@@ -114,9 +114,9 @@
 	align-items: center;
 	transition: all .3s ease;
 }
-.content nav .profile .profile-link a:hover {
+.content nav .profile .profilelink a:hover {
 	background: var(--grey);
 }
-.content nav .profile .profile-link li:hover {
+.content nav .profile .profilelink li:hover {
 	background: var(--grey);
 }
