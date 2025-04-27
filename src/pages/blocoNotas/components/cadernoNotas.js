@@ -8,6 +8,15 @@ const CadernoNotas = ({f_handleSubmit}) => {
   const [title, setTitles] = useState((''));
   const [notes, setNotes] = useState((''));
 
+  //FUNÇÃO QUE MANDA OS DADOS PARA O COMPONENTE PAI
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    f_handleSubmit(title, notes); // Chama a função passada como prop
+    setTitles(''); // Limpa o título
+    setNotes(''); // Limpa as anotações
+  };
+
+  //HOOK QUE MONITORA O CAMPO DE TEXTO E HABILITA O BOTÃO DE SALVAR
   useEffect(() => {
     async function enableSubmitButton() {
       let btn = document.getElementById('btn_sumit');
@@ -49,7 +58,7 @@ const CadernoNotas = ({f_handleSubmit}) => {
   return (
     <aside className={styles.aside}>
         <strong>Caderno de Notas</strong>
-        <form onSubmit={f_handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
           <div className={styles.inputBlock}>
             <label htmlFor="title">Título da Anotação</label>

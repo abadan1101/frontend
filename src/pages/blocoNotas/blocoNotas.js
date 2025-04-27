@@ -21,11 +21,10 @@ const BlocoNotas = () => {
     getAllNotes();
   }, []);
   
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(title, notes) {
     const response = await api.post('/annotations', {
-      title: e.target[0].value,
-      notes:  e.target[1].value,
+      title: title,
+      notes:  notes,
       priority: false
     });
 
