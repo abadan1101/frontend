@@ -1,4 +1,4 @@
-aside{
+.aside{
     width: 320px;
     margin-bottom: 30px;
     background: #fff;
@@ -9,24 +9,24 @@ aside{
 }
 
 @media (max-width: 1000px) {
-    aside{
+    .aside{
         position: relative;
     }
     
 }
 
-aside strong{
+.aside strong{
     font-size: 20px;
     text-align: center;
     display: block;
     color: #333;
 }
 
-aside form{
+.aside form{
     margin-top: 30px;
 }
 
-aside form .input-block label{
+.aside form .inputBlock label{
     color: #acacac;
     font-size: 14px;
     font-weight: bold;
@@ -34,11 +34,11 @@ aside form .input-block label{
     
 }
 
-aside form .input-block{
+.aside form .inputBlock{
     margin-top: 20px;
 }
 
-aside form .input-block input{
+.aside form .inputBlock input{
     width: 100%;
     height: 32px;
     font-size: 14px;
@@ -47,7 +47,7 @@ aside form .input-block input{
     border-bottom: 1px solid #eee;
 }
 
-aside form .input-block textarea{
+.aside form .inputBlock textarea{
     margin-top: 7px;
     width: 100%;
     height: 200px;
@@ -59,7 +59,7 @@ aside form .input-block textarea{
     resize: none;
 }
 
-aside form button[type=submit] {
+.aside form button[type=submit] {
     width: 100%;
     border: 0;
     margin-top: 30px;
