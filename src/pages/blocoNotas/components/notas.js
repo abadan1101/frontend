@@ -1,9 +1,11 @@
 import React from "react";
 
+import styles from './notas.module.css';
+
 function Notes( {data} ) {
     return(
         <>
-            <li className="notepad-infos">
+            <li className={styles.notepadInfos}>
                 <div>
                 <strong>{data.title}</strong>
                 <div>x</div>

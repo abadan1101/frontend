@@ -5,7 +5,7 @@ import { createHashRouter } from 'react-router-dom' // usar createBrowserRouter 
 
 import Home from './pages/home';
 import Trabalho from './pages/trabalho';
-import BlocoNotas from './pages/blocoNotas';
+import BlocoNotas from './pages/blocoNotas/blocoNotas.js';
 import ErrorPage from './pages/errorPage';
 
 const router = createHashRouter([

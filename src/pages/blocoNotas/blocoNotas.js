@@ -2,11 +2,10 @@ import React,  { useState, useEffect} from 'react';
 
 import api from '../../services/api.js';
 
-import './styles/modulo.css';
+import styles from './blocoNotas.module.css';
 import './styles/sidebar.css';
-import './styles/main.css';
 
-import Notes from './components/nontas.js'
+import Notes from './components/notas.js'
 
 
 const BlocoNotas = () => {
@@ -78,7 +77,7 @@ const BlocoNotas = () => {
 
 
   return (
-    <div id="ModuloBlocoNotas">
+    <div className={styles.ModuloBlocoNotas}>
 
       <aside>
         <strong>Caderno de Notas</strong>
