@@ -14,7 +14,7 @@
     }
 
     .ModuloBlocoNotas main {
-        margin-left: 0;
+        margin-left: 0 !important;
         margin-top: 30PX;
     }
 
@@ -36,6 +36,9 @@
 }
 
 @media (max-width: 600px) {
+    .ModuloBlocoNotas main {
+        margin-left: 0px !important;
+    }
     .ModuloBlocoNotas main ul {
         grid-template-columns: 1fr;
     }
