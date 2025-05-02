@@ -1,44 +1,35 @@
 .ModuloBlocoNotas {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 90px 30px;
+    padding: 0 30px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
 }
 
-@media (max-width: 1000px) {
-    .ModuloBlocoNotas {
-        flex-direction: column;
-        align-items: unset;
-    }
-
-    .ModuloBlocoNotas main {
-        margin-left: 0 !important;
-        margin-top: 30PX;
-    }
-
-    .ModuloBlocoNotas aside {
-        width: 100%;
-    }
-}
-
 .ModuloBlocoNotas main {
-    flex: 1;
-    margin-left: 350px;
+    flex-grow: 1;
 }
 
 .ModuloBlocoNotas main ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
     list-style: none;
 }
 
-@media (max-width: 600px) {
-    .ModuloBlocoNotas main {
-        margin-left: 0px !important;
+@media (max-width: 1400px) {
+    .ModuloBlocoNotas main ul {
+        grid-template-columns: 1fr 1fr 1fr;
     }
+}
+
+@media (max-width: 1000px) {
+    .ModuloBlocoNotas main ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
     .ModuloBlocoNotas main ul {
         grid-template-columns: 1fr;
     }

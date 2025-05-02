@@ -3,7 +3,7 @@ import App from './App';
 
 import { createHashRouter } from 'react-router-dom' // usar createBrowserRouter na vps
 
-import Home from './pages/home';
+import Home from './pages/home/home.js';
 import Trabalho from './pages/trabalho';
 import BlocoNotas from './pages/blocoNotas/blocoNotas.js';
 import ErrorPage from './pages/errorPage';

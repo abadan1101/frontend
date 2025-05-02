@@ -7,7 +7,7 @@ import api from '../../services/api.js';
 import styles from './blocoNotas.module.css';
 
 //IMPORTAÇÃO DOS COMPONENTES
-import CadernoNotas from './components/cadernoNotas.js'; 
+// import CadernoNotas from './components/cadernoNotas.js'; 
 import Notes from './components/notas.js'
 
 
@@ -27,21 +27,21 @@ const BlocoNotas = () => {
   }, []);
   
   // FUNÇÃO PARA ADICIONAR ANOTAÇÕES
-  async function handleSubmit(title, notes) {
-    const response = await api.post('/annotations', {
-      title: title,
-      notes:  notes,
-      priority: false
-    });
+  // async function handleSubmit(title, notes) {
+  //   const response = await api.post('/annotations', {
+  //     title: title,
+  //     notes:  notes,
+  //     priority: false
+  //   });
 
-    setAllNotes([...allNotes, response.data]);
-  }
+  //   setAllNotes([...allNotes, response.data]);
+  // }
 
   // PAGINA DO MODULO DE ANOTAÇÕES
   return (
     <div className={styles.ModuloBlocoNotas}>
 
-      <CadernoNotas f_handleSubmit={handleSubmit}/>
+      {/* <CadernoNotas f_handleSubmit={handleSubmit}/> */}
 
       <main>
         <ul>

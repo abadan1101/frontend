@@ -1,0 +1,18 @@
+.nav{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    justify-content: center;
+    align-items: end;
+}
+
+main{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-bottom: solid 1px #999;
+    align-items: center;
+    justify-content: center;
+}

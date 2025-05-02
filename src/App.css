@@ -14,7 +14,7 @@ html, body, #root {
 }
 
 body {
-    background: #fbfcff;
+    background: #fff;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -41,4 +41,8 @@ li {
 	--light-blue: #D0E4FF;
 	--dark-blue: #0C5FCD;
 	--red: #FC3B56;
+}
+
+.App{
+	padding: 75px 0 0 0;
 }
