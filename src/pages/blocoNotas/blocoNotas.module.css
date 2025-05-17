@@ -1,6 +1,6 @@
 .ModuloBlocoNotas {
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 60px 30px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

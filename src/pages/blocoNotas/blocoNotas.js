@@ -8,6 +8,7 @@ import styles from './blocoNotas.module.css';
 
 //IMPORTAÇÃO DOS COMPONENTES
 // import CadernoNotas from './components/cadernoNotas.js'; 
+import Nav from './components/nav.js';
 import Notes from './components/notas.js'
 
 
@@ -40,6 +41,8 @@ const BlocoNotas = () => {
   // PAGINA DO MODULO DE ANOTAÇÕES
   return (
     <div className={styles.ModuloBlocoNotas}>
+
+      <Nav />
 
       {/* <CadernoNotas f_handleSubmit={handleSubmit}/> */}
 
