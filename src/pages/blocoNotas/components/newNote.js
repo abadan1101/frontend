@@ -6,7 +6,7 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
   const [title, setTitles] = useState((''));
   const [notes, setNotes] = useState((''));
 
-   //HOOK QUE MONITORA O CAMPO DE TEXTO E HABILITA O BOTÃO DE SALVAR
+  //HOOK QUE MONITORA O CAMPO DE TEXTO E HABILITA O BOTÃO DE SALVAR
   useEffect(() => {
     async function enableSubmitButton() {
       let btn = document.getElementById('btn_sumit');
@@ -19,20 +19,21 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
     enableSubmitButton();
   }, [title, notes]);
 
-  
-  
-
   //FUNÇÃO QUE MANDA OS DADOS PARA O COMPONENTE PAI
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   f_handleSubmit(title, notes); // Chama a função passada como prop
-  //   setTitles(''); // Limpa o título
-  //   setNotes(''); // Limpa as anotações
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onConfirm(title, notes); // Chama a função passada como prop
+    setTitles(''); // Limpa o título
+    setNotes(''); // Limpa as anotações
+    onCancel(); // Fecha o modal
+  };
 
- 
-
-
+  //FUNÇÃO QUE FECHA O MODAL
+  const handCancel = (e) => {
+    setTitles(''); // Limpa o título
+    setNotes(''); // Limpa as anotações
+    onCancel(); // Fecha o modal
+  };
 
   //funções em teste----------------------------------------------
   function handleKeyUp(e) {
@@ -46,7 +47,6 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
     }
   
   }
-
   function handleFocus(e) {
     setTimeout(()=>{
       e.preventDefault();
@@ -57,20 +57,20 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
   }
   //funções em teste----------------------------------------------
 
-
+  // Se o modal não estiver aberto, não renderiza nada
   if (!isOpen) return null;
 
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.closecontainer}>
-          <label className={styles.close} onClick={onCancel}>X</label>
+          <label className={styles.close} onClick={handCancel}>X</label>
         </div>
         <main className={styles.main}>
           
           <strong>Caderno de Notas</strong>
           
-          <form onSubmit={onConfirm}>
+          <form onSubmit={handleSubmit}>
   
             <div className={styles.inputBlock}>
               <label htmlFor="title">Título da Anotação</label>
