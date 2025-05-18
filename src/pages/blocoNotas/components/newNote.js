@@ -8,9 +8,9 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
 
   //HOOK QUE MONITORA O CAMPO DE TEXTO E HABILITA O BOTÃO DE SALVAR
   useEffect(() => {
-    async function enableSubmitButton() {
+    function enableSubmitButton() {
       let btn = document.getElementById('btn_sumit');
-      btn.style.background = '#FFD3CA';
+      if(btn){btn.style.background = '#FFD3CA';}
       if (title !== '' && notes !== '') {
         btn.style.background = '#EB8F7A';
       }
