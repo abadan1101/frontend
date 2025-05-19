@@ -7,6 +7,8 @@
     background: #fff;
     box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
     padding: 20px 20px 10px 20px;
+    height: 225px;
+    max-height: 225px;
 }
 
 .notepadInfos strong{
@@ -16,13 +18,15 @@
 }
 
 .notepadInfos div div {
-    color: #ffeae6;
+    color: #c4c4c4;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .notepadInfos div div:hover {
     color: #eb8f7a;
     transition: 0.2s;
+    font-size: 22px;
 }
 
 .notepadInfos textarea {
@@ -41,9 +45,11 @@
 .notepadInfos span {
     color: #c4c4c4;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .notepadInfos span:hover {
     color: #eb8f7a;
     transition: 0.2s;
+    font-size: 25px;
 }

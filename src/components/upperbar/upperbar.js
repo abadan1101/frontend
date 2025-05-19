@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import styles from './styles.module.css';
+import styles from './upperbar.module.css';
 import usuario from '../../img/usuario.png'
 
 const Upperbar = () => {

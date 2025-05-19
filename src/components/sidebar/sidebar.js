@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import styles from './styles.module.css';
+import styles from './sidebar.module.css';
 import logo1 from '../../img/logo1.png';
 
 const Sidebar = () => {

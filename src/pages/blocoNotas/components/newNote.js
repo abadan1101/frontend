@@ -3,21 +3,9 @@ import styles from "./newNote.module.css";
 
 const NewNote = ({ isOpen, onConfirm, onCancel }) => {
 
+  // CONSTANTES E VARIÁVEIS
   const [title, setTitles] = useState((''));
   const [notes, setNotes] = useState((''));
-
-  //HOOK QUE MONITORA O CAMPO DE TEXTO E HABILITA O BOTÃO DE SALVAR
-  useEffect(() => {
-    function enableSubmitButton() {
-      let btn = document.getElementById('btn_sumit');
-      if(btn){btn.style.background = '#FFD3CA';}
-      if (title !== '' && notes !== '') {
-        btn.style.background = '#EB8F7A';
-      }
-    }
-
-    enableSubmitButton();
-  }, [title, notes]);
 
   //FUNÇÃO QUE MANDA OS DADOS PARA O COMPONENTE PAI
   const handleSubmit = (e) => {
@@ -34,6 +22,19 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
     setNotes(''); // Limpa as anotações
     onCancel(); // Fecha o modal
   };
+
+  //HOOK QUE MONITORA O CAMPO DE TEXTO E HABILITA O BOTÃO DE SALVAR
+  useEffect(() => {
+    function enableSubmitButton() {
+      let btn = document.getElementById('btn_sumit');
+      if(btn){btn.style.background = '#FFD3CA';}
+      if (title !== '' && notes !== '') {
+        btn.style.background = '#EB8F7A';
+      }
+    }
+
+    enableSubmitButton();
+  }, [title, notes]);
 
   //funções em teste----------------------------------------------
   function handleKeyUp(e) {

@@ -63,7 +63,10 @@ const BlocoNotas = () => {
       <main>
         <ul>
           {allNotes.map(data => (
-            <Notes data={data} />
+            <Notes
+             data={data}
+             key={data._id}
+            />
           ))}
         </ul>
       </main>
