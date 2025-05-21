@@ -1,0 +1,88 @@
+.nav{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    justify-content: center;
+    align-items: end;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
+
+.nav div{
+    display: flex;
+    margin: 0 20px;
+    width: 100%;
+    border-bottom: solid 1px #ccc;
+    padding: 0 0 10px 10px;
+}
+
+.nav button{
+    background: #f0e68d;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #333;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.nav button:hover{
+    background: #e0d76d;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  gap: 0.4rem;
+}
+
+.radioInput {
+  display: none;
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #FFD3CA;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin-right: 6px;
+  transition: border-color 0.2s;
+}
+
+.radioInput:checked + .customRadio {
+  border-color: #FFD3CA;
+  background: #EB8F7A;
+}
+
+.customRadio::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.radioInput:checked + .customRadio::after {
+  opacity: 1;
+  background: #FFD3CA;
+}

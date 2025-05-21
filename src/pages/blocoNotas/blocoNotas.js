@@ -7,8 +7,10 @@ import api from '../../services/api.js';
 import styles from './blocoNotas.module.css';
 
 //IMPORTAÇÃO DOS COMPONENTES
+import Nav from './components/nav.js';
 import NewNote from "./components/newNote.js";
 import Notes from './components/notas.js'
+
 
 
 const BlocoNotas = () => {
@@ -48,28 +50,9 @@ const BlocoNotas = () => {
     <div className={styles.ModuloBlocoNotas}>
 
       {/* MENU SUPERIOR DE NOTAS */}
-      <div className={styles.nav}>
-        <div>
-          <button onClick={() => setNewNoteOpen(true)}>Nova Nota</button>
-          <section className={styles.radioGroup}>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="priority" id="all" className={styles.radioInput} defaultChecked />
-              <span className={styles.customRadio}></span>
-              Todas
-            </label>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="priority" id="priority" className={styles.radioInput} />
-              <span className={styles.customRadio}></span>
-              Prioridade
-            </label>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="priority" id="completed" className={styles.radioInput} />
-              <span className={styles.customRadio}></span>
-              Normais
-            </label>
-          </section>
-        </div>
-      </div>
+      <Nav 
+        openForm={setNewNoteOpen}
+      />
 
       {/* FORM PARA INCLUIR NOTAS */}
       <div>
