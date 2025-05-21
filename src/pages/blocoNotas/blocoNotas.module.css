@@ -69,3 +69,57 @@
         grid-template-columns: 1fr;
     }
 }
+
+.radioGroup {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  gap: 0.4rem;
+}
+
+.radioInput {
+  display: none;
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #FFD3CA;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin-right: 6px;
+  transition: border-color 0.2s;
+}
+
+.radioInput:checked + .customRadio {
+  border-color: #FFD3CA;
+  background: #EB8F7A;
+}
+
+.customRadio::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.radioInput:checked + .customRadio::after {
+  opacity: 1;
+  background: #FFD3CA;
+}
