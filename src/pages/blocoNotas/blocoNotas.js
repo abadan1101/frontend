@@ -10,6 +10,7 @@ import styles from './blocoNotas.module.css';
 import Nav from './components/nav.js';
 import NewNote from "./components/newNote.js";
 import Notes from './components/notas.js'
+import ConfirmModal from "../../components/modalConfirm/ConfirmModal.js";
 
 
 
@@ -18,6 +19,8 @@ const BlocoNotas = () => {
   // CONSTANTES E VARIÁVEIS
   const [allNotes, setAllNotes] = useState([]);
   const [NewNoteOpen, setNewNoteOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [msg, setMsg] = useState((''));
 
   // HOOK PARA BUSCAR AS ANOTAÇÕES
   useEffect(() => {
@@ -43,6 +46,26 @@ const BlocoNotas = () => {
   const handleCancel = () => {
     setNewNoteOpen(false);
   };
+
+  // FUNÇÃO PARA APAGAR ANOTAÇÕES
+  async function handleDelete(id) {
+    setMsg ("Você tem certeza que deseja apagar essa nota?");
+    setModalOpen(true)
+
+    await api.delete(`/annotations/${id}`);
+    setAllNotes(allNotes.filter(note => note._id !== id));
+  }
+
+  // FUNÇÃO CONFIRMAR DO MODAL DE CONFIRMAÇÃO
+  const handleConfirmModalConfirm = () => {
+    alert("Nota apagada com sucesso!");
+    setModalOpen(false);
+  };
+
+  // FUNÇÃO CANCELAR DO MODAL DE CONFIRMAÇÃO
+  const handleCancelModalConfirm = () => {
+    setModalOpen(false);
+  };
   
 
   // PAGINA DO MODULO DE ANOTAÇÕES
@@ -63,6 +86,14 @@ const BlocoNotas = () => {
         />
       </div>
 
+      {/* MODAL DE CONFIRMAÇÃO */}
+      <ConfirmModal
+        isOpen={modalOpen}
+        onConfirm={handleConfirmModalConfirm}
+        onCancel={handleCancelModalConfirm}
+        message={msg}
+      />
+
       {/* LISTA DE NOTAS */}
       <main>
         <ul>
@@ -70,6 +101,7 @@ const BlocoNotas = () => {
             <Notes
              data={data}
              key={data._id}
+             onDelete={handleDelete}
             />
           ))}
         </ul>
