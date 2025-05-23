@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
-import { SlOptionsVertical } from "react-icons/sl";
+import { CgOptions } from "react-icons/cg";
+
 
 import styles from './nav.module.css';
 
@@ -50,7 +51,7 @@ function Nav( {openForm} ) {
                         Normais
                     </label>
                 </section>
-                <SlOptionsVertical 
+                <CgOptions 
                     className={styles.configNotes}
                     onClick={() => setMenuOpen(!menuOpen)}
                 />
