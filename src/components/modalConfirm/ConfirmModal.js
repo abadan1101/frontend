@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ConfirmModal.module.css";
 
 const ConfirmModal = ({ isOpen, onConfirm, onCancel, message }) => {

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Trabalho = () => {
     return (
         <div>

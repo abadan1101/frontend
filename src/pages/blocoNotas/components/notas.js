@@ -1,4 +1,4 @@
-import React from "react";
+import { FiTrash, FiAlertCircle   } from "react-icons/fi";
 
 import styles from './notas.module.css';
 
@@ -8,10 +8,14 @@ function Notes( {data, onDelete} ) {
             <li className={styles.notepadInfos} key={data._id}>
                 <div>
                     <strong>{data.title}</strong>
-                    <div><i className='bx  bx-trash-alt' onClick={() => onDelete(data._id)}></i></div>
+                    <div>
+                        <FiTrash onClick={() => onDelete(data._id)}/>
+                    </div>
                 </div>
                 <textarea defaultValue={data.notes}></textarea>
-                <span><i className='bx  bx-info-circle'></i></span>
+                <span>
+                    <FiAlertCircle />
+                </span>
             </li>
         </>
     )

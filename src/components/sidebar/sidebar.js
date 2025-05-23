@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { IoHome, IoGridOutline, IoKeypadOutline, IoReceiptOutline, IoServerSharp, IoSaveOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import styles from './sidebar.module.css';
 import logo1 from '../../img/logo1.png';
@@ -69,10 +70,10 @@ const Sidebar = () => {
         </div>
         <div>
           <nav className= {styles.sideMenu}>
-            <div onClick={openActiveSB}><Link className={styles.home} to='/'><i className={`${styles.icon} bx bxs-home`}></i> Início</Link></div>
+            <div onClick={openActiveSB}><Link className={styles.home} to='/'><IoHome className={styles.icon}/> Início</Link></div>
             <div className={styles.divider}>Principal</div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-task`}></i> Tarefas <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu}><IoGridOutline className={styles.icon}/> Tarefas <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='/'>Linha 01</Link></li>
                 <li onClick={openActiveSB}><Link to='/'>Linha 02</Link></li>
@@ -81,7 +82,7 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><i className={`${styles.icon} bx bxs-widget`}></i> Controles <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu}><IoKeypadOutline className={styles.icon}/> Controles <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='/'>Pedidos</Link></li>
                 <li onClick={openActiveSB}><Link to='/'>Ferramentas</Link></li>
@@ -89,10 +90,10 @@ const Sidebar = () => {
                 <li onClick={openActiveSB}><Link to='/'>Equipe</Link></li>
               </ul>
             </div>
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><i className={`${styles.icon} bx bx-edit`}></i> Bloco de Notas</Link></div>	
+            <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><IoReceiptOutline className={styles.icon}/> Bloco de Notas</Link></div>	
             <div className={styles.divider}>Principal</div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-chart`}></i> Planejamento <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu}><IoServerSharp className={styles.icon}/> Planejamento <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='/'>Linhas</Link></li>
                 <li onClick={openActiveSB}><Link to='/'>Compromissos</Link></li>
@@ -100,7 +101,7 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><i className={`${styles.icon} bx bx-archive-in`}></i> Arquivo <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu}><IoSaveOutline className={styles.icon}/> Arquivo <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='/'>Tarefas</Link></li>
                 <li onClick={openActiveSB}><Link to='/'>Compromissos</Link></li>
