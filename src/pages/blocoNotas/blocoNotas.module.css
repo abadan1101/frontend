@@ -17,6 +17,8 @@
     list-style: none;
 }
 
+/* CONFIGURAÇÕES DE RESPONSIVIDADE */
+
 @media (max-width: 1400px) {
     .ModuloBlocoNotas main ul {
         grid-template-columns: 1fr 1fr 1fr;

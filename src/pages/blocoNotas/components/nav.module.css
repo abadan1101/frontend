@@ -45,20 +45,12 @@
     color: #a59805;
 }
 
-@media (max-width: 500px) {
-
-    .nav button{
-      display: none;
-    }
-    .addNotes{
-      display: block;
-    }
-}
-
 .radioGroup {
   display: flex;
   gap: 1rem;
   align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .radioLabel {
@@ -144,4 +136,20 @@
 
 .navItem i {
     margin-right: 8px;
+}
+
+
+/* CONFIGURAÇÕES DE RESPONSIVIDADE */
+@media (max-width: 500px) {
+
+    .nav button{
+      display: none;
+    }
+    .addNotes{
+      display: block;
+    }
+
+    .radioGroup {
+      font-size: 12px;
+    }
 }
