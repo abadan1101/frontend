@@ -3,6 +3,7 @@ import { RiAddCircleFill } from "react-icons/ri";
 import { CgOptions } from "react-icons/cg";
 
 
+
 import styles from './nav.module.css';
 
 function Nav( {openForm} ) {
@@ -58,19 +59,15 @@ function Nav( {openForm} ) {
                 {menuOpen && (
                     <ul className={styles.navList}>
                         <li className={styles.navItem}>
-                            <i className={`${styles.icon} bx bx-trash-alt`}></i>
                             Lixeira
                         </li>
                         <li className={styles.navItem}>
-                            <i className={`${styles.icon} bx bx-cog`}></i>
                             Configurações
                         </li>
                         <li className={styles.navItem}>
-                            <i className={`${styles.icon} bx bx-help-circle`}></i>
                             Ajuda
                         </li>
                         <li className={styles.navItem}>
-                            <i className={`${styles.icon} bx bx-info-circle`}></i>
                             Sobre
                         </li>
                     </ul>
