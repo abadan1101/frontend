@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { RiAddCircleFill } from "react-icons/ri";
+import { SlOptionsVertical } from "react-icons/sl";
 
 import styles from './nav.module.css';
 
@@ -30,7 +32,7 @@ function Nav( {openForm} ) {
         <div className={styles.nav}>
             <div>
                 <button onClick={() => setNewNoteOpen(true)}>Nova Nota</button>
-                <i className={`${styles.addNotes} bx  bxs-plus-circle addNotes`} onClick={() => setNewNoteOpen(true)}></i> 
+                <RiAddCircleFill className={styles.addNotes}  onClick={() => setNewNoteOpen(true)}/>
                 <section className={styles.radioGroup}>
                     <label className={styles.radioLabel}>
                         <input type="radio" name="priority" id="all" className={styles.radioInput} defaultChecked />
@@ -48,10 +50,10 @@ function Nav( {openForm} ) {
                         Normais
                     </label>
                 </section>
-                <i
-                    className={`${styles.configNotes} bx bx-dots-vertical-rounded`}
+                <SlOptionsVertical 
+                    className={styles.configNotes}
                     onClick={() => setMenuOpen(!menuOpen)}
-                ></i>
+                />
                 {menuOpen && (
                     <ul className={styles.navList}>
                         <li className={styles.navItem}>

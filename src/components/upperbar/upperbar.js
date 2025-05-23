@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { IoIosSearch } from "react-icons/io";
+import { FaBell } from "react-icons/fa";
+import { BiSolidMessageSquareDots } from "react-icons/bi";
 import styles from './upperbar.module.css';
 import usuario from '../../img/usuario.png'
 
@@ -10,25 +12,20 @@ const Upperbar = () => {
           <form action='#'>
               <div className={styles.formGroup}>
                   <input id="barrPesc_pesquisa" type='text' placeholder='Buscar...' />
-                  <i id="barrPesc_Ipesquisa" className={`${styles.icon} bx bx-search`}></i>
+                  <IoIosSearch className={styles.icon}/>
               </div>
           </form>
           <p className={styles.navlink}>
-              <i className={`${styles.icon} bx bxs-bell`}></i>
-              <span className={styles.badge}>5</span>
+            <FaBell className={styles.icon}/>
+            <span className={styles.badge}>5</span>
           </p>
           <p className={styles.navlink}>
-              <i className={`${styles.icon} bx bxs-message-square-dots`}></i>
-              <span className={styles.badge}>8</span>
+            <BiSolidMessageSquareDots className={styles.icon}/>
+            <span className={styles.badge}>8</span>
           </p>
           <span className={styles.divider}></span>
           <div className={styles.profile}>
               <img id='imgPerf' src={usuario} alt='' />
-              <ul className={styles.profilelink}>
-                  <li><Link to='/'><i className={`${styles.icon} bx bxs-user-circle`}></i> Perfil</Link></li>
-                  <li id="trf_menu_afConfiguracoes"><Link to='/'><i className='bx bxs-cog' ></i> Configurações</Link></li>		
-                  <li><Link to='/'><i className={`${styles.icon} bx bxs-log-out-circle`}></i> Logout</Link></li>
-              </ul>
           </div>
       </nav>
     </section>
