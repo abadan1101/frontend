@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from './nav.module.css';
 
@@ -12,7 +12,7 @@ function Nav( {openForm} ) {
     }
 
     // HOOK PARA FECHAR O MENU DE CONFIGURAÇÕES AO CLICAR FORA
-    React.useEffect(() => {
+    useEffect(() => {
         function handleClickOutside(event) {
             if (!event.target.closest(`.${styles.configNotes}`) && !event.target.closest(`.${styles.navList}`)) {
                 setMenuOpen(false);
