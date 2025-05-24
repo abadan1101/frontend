@@ -19,6 +19,9 @@ const BlocoNotas = () => {
   const [allNotes, setAllNotes] = useState([]);
   const [NewNoteOpen, setNewNoteOpen] = useState(false);
 
+  // Estado para controlar o índice da nota sendo arrastada
+  const [draggedIndex, setDraggedIndex] = useState(null);
+
   // HOOK PARA BUSCAR AS ANOTAÇÕES
   useEffect(() => {
     async function getAllNotes() {
@@ -50,6 +53,26 @@ const BlocoNotas = () => {
     setAllNotes(allNotes.filter(note => note._id !== id));
   }
 
+  // Função chamada quando o drag começa
+  const handleDragStart = (index) => {
+    setDraggedIndex(index);
+  };
+
+  // Permite o drop
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  // Troca as notas de lugar ao soltar
+  const handleDrop = (index) => {
+    if (draggedIndex === null || draggedIndex === index) return;
+    const updatedNotes = [...allNotes];
+    const [removed] = updatedNotes.splice(draggedIndex, 1);
+    updatedNotes.splice(index, 0, removed);
+    setAllNotes(updatedNotes);
+    setDraggedIndex(null);
+  };
+
   // PAGINA DO MODULO DE ANOTAÇÕES
   return (
     <div className={styles.ModuloBlocoNotas}>
@@ -71,12 +94,20 @@ const BlocoNotas = () => {
       {/* LISTA DE NOTAS */}
       <main>
         <ul>
-          {allNotes.map(data => (
-            <Notes
-             data={data}
-             key={data._id}
-             onDelete={handleDelete}
-            />
+          {allNotes.map((data, index) => (
+            <li
+              key={data._id}
+              draggable
+              onDragStart={() => handleDragStart(index)}
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop(index)}
+              style={{ cursor: 'grab' }}
+            >
+              <Notes
+                data={data}
+                onDelete={handleDelete}
+              />
+            </li>
           ))}
         </ul>
       </main>

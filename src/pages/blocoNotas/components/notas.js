@@ -5,7 +5,7 @@ import styles from './notas.module.css';
 function Notes( {data, onDelete} ) {
     return(
         <>
-            <li className={styles.notepadInfos} key={data._id}>
+            <main className={styles.notepadInfos} key={data._id}>
                 <div>
                     <strong>{data.title}</strong>
                     <div>
@@ -16,7 +16,7 @@ function Notes( {data, onDelete} ) {
                 <span>
                     <FiAlertCircle />
                 </span>
-            </li>
+            </main>
         </>
     )
 }
