@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import { CgOptions } from "react-icons/cg";
+import { FiTrash } from "react-icons/fi";
+import { IoSettingsOutline, IoHelpCircleOutline, IoTrailSignOutline   } from "react-icons/io5";
 
 
 
@@ -59,15 +61,19 @@ function Nav( {openForm} ) {
                 {menuOpen && (
                     <ul className={styles.navList}>
                         <li className={styles.navItem}>
+                            <FiTrash className={styles.icon}/>
                             Lixeira
                         </li>
                         <li className={styles.navItem}>
+                            <IoSettingsOutline className={styles.icon}/>
                             Configurações
                         </li>
                         <li className={styles.navItem}>
+                            <IoHelpCircleOutline className={styles.icon}/>
                             Ajuda
                         </li>
                         <li className={styles.navItem}>
+                            <IoTrailSignOutline className={styles.icon}/>
                             Sobre
                         </li>
                     </ul>
