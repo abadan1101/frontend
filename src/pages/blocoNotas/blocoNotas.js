@@ -64,13 +64,17 @@ const BlocoNotas = () => {
   };
 
   // Troca as notas de lugar ao soltar
-  const handleDrop = (index) => {
+  const handleDrop = async (index) => {
     if (draggedIndex === null || draggedIndex === index) return;
     const updatedNotes = [...allNotes];
     const [removed] = updatedNotes.splice(draggedIndex, 1);
     updatedNotes.splice(index, 0, removed);
     setAllNotes(updatedNotes);
     setDraggedIndex(null);
+
+    // Envia a nova ordem para o backend
+    const orderedIds = updatedNotes.map(note => note._id);
+    await api.put('/annotations/order', { orderedIds });
   };
 
   // PAGINA DO MODULO DE ANOTAÇÕES
