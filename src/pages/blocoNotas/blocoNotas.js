@@ -81,7 +81,7 @@ const BlocoNotas = () => {
 
     // Envia a nova ordem para o backend
     const orderedIds = updatedNotes.map(note => note._id);
-    await api.put('/annotations/order', { orderedIds });
+    await api.put('/contents/order', { orderedIds });
   };
   // FIM DAS FUNÇÕES DE DRAG AND DROP (ARRASTAR E SOLTAR NOTAS---------------
 
