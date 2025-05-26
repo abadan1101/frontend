@@ -15,14 +15,20 @@ import Notes from './components/notas.js'
 
 const BlocoNotas = () => {
   
-  // CONSTANTES E VARIÁVEIS
+  // CONSTANTES E VARIÁVEIS--------------------------------------------------
+  // Estado para armazenar todas as notas
   const [allNotes, setAllNotes] = useState([]);
+  // Estado para controlar a abertura do formulário de nova nota
   const [NewNoteOpen, setNewNoteOpen] = useState(false);
-
   // Estado para controlar o índice da nota sendo arrastada
   const [draggedIndex, setDraggedIndex] = useState(null);
+  // FIM DAS CONSTANTES E VARIÁVEIS------------------------------------------
 
-  // HOOK PARA BUSCAR AS ANOTAÇÕES
+
+  
+
+  // FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-------------------------------------
+  // hook para buscar todas as anotações ao carregar a página
   useEffect(() => {
     async function getAllNotes() {
       const response = await api.get('/annotations');
@@ -31,8 +37,8 @@ const BlocoNotas = () => {
 
     getAllNotes();
   }, []);
-  
-  // FUNÇÃO PARA ADICIONAR ANOTAÇÕES
+
+  // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
     const response = await api.post('/annotations', {
       title: title,
@@ -43,16 +49,17 @@ const BlocoNotas = () => {
     setAllNotes([...allNotes, response.data]);
   }
 
-  const handleCancel = () => {
-    setNewNoteOpen(false);
-  };
-
-  // FUNÇÃO PARA APAGAR ANOTAÇÕES
+  // função para deletar uma anotação
   async function handleDelete(id) {
     await api.delete(`/annotations/${id}`);
     setAllNotes(allNotes.filter(note => note._id !== id));
   }
+  // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
 
+
+
+  
+  // FUNÇÕES PARA DRAG AND DROP (ARRASTAR E SOLTAR NOTAS)--------------------
   // Função chamada quando o drag começa
   const handleDragStart = (index) => {
     setDraggedIndex(index);
@@ -76,8 +83,20 @@ const BlocoNotas = () => {
     const orderedIds = updatedNotes.map(note => note._id);
     await api.put('/annotations/order', { orderedIds });
   };
+  // FIM DAS FUNÇÕES DE DRAG AND DROP (ARRASTAR E SOLTAR NOTAS---------------
 
-  // PAGINA DO MODULO DE ANOTAÇÕES
+
+
+  // FUNÇÕES DIVERSAS--------------------------------------------------------
+   // função para fechar o formulário de nova nota
+  const handleCancel = () => {
+    setNewNoteOpen(false);
+  };
+  // FIM DAS FUNÇÕES DIVERSAS------------------------------------------------
+
+
+
+  // PAGINA DO MODULO DE ANOTAÇÕES-------------------------------------------
   return (
     <div className={styles.ModuloBlocoNotas}>
 
@@ -117,6 +136,8 @@ const BlocoNotas = () => {
       </main>
     </div>
   );
+  // FIM DA PAGINA DO MODULO DE ANOTAÇÕES------------------------------------
 }
+
 
 export default BlocoNotas;
