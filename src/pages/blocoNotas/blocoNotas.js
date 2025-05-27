@@ -172,7 +172,8 @@ const BlocoNotas = () => {
             </li>
           ))}
         </ul>
-      </main>
+      </main> 
+        
     </div>
   );
   // FIM DA PAGINA DO MODULO DE ANOTAÇÕES------------------------------------
