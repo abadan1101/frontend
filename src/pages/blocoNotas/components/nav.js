@@ -8,7 +8,7 @@ import { IoSettingsOutline, IoHelpCircleOutline, IoTrailSignOutline   } from "re
 
 import styles from './nav.module.css';
 
-function Nav( {openForm} ) {
+function Nav( {openForm, openTrash} ) {
     // VARIÁVEIS E CONSTANTES
     const [menuOpen, setMenuOpen] = useState(false);//abrir o menu de configurações
 
@@ -57,7 +57,7 @@ function Nav( {openForm} ) {
                 />
                 {menuOpen && (
                     <ul className={styles.navList}>
-                        <li className={styles.navItem}>
+                        <li className={styles.navItem} onClick={() => openTrash(true)}>
                             <FiTrash className={styles.icon}/>
                             Lixeira
                         </li>

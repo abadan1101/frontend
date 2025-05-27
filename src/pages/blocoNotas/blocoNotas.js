@@ -10,6 +10,7 @@ import styles from './blocoNotas.module.css';
 import Nav from './components/nav.js';
 import NewNote from "./components/newNote.js";
 import Notes from './components/notas.js'
+import Trash from './components/trash.js';
 
 
 
@@ -20,6 +21,8 @@ const BlocoNotas = () => {
   const [allNotes, setAllNotes] = useState([]);
   // Estado para controlar a abertura do formulário de nova nota
   const [NewNoteOpen, setNewNoteOpen] = useState(false);
+  // estado para controlar abertura da lixeira
+  const [trashOpen, setTrashOpen] = useState(false);
   // Estado para controlar o índice da nota sendo arrastada
   const [draggedIndex, setDraggedIndex] = useState(null);
   // FIM DAS CONSTANTES E VARIÁVEIS------------------------------------------
@@ -115,6 +118,7 @@ const BlocoNotas = () => {
       {/* MENU SUPERIOR DE NOTAS */}
       <Nav 
         openForm={setNewNoteOpen}
+        openTrash={setTrashOpen}
       />
 
       {/* FORM PARA INCLUIR NOTAS */}
@@ -176,6 +180,11 @@ const BlocoNotas = () => {
           ))}
         </ul>
       </main> 
+
+      {/* LIXEIRA */}
+      {trashOpen && (
+        <Trash />
+      )}
         
     </div>
   );
