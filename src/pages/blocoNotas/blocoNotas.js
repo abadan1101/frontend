@@ -101,7 +101,7 @@ const BlocoNotas = () => {
 
   // FUNÇÕES DIVERSAS--------------------------------------------------------
    // função para fechar o formulário de nova nota
-  const handleCancel = () => {
+  const handleCancelNewNote = () => {
     setNewNoteOpen(false);
   };
   // FIM DAS FUNÇÕES DIVERSAS------------------------------------------------
@@ -119,11 +119,14 @@ const BlocoNotas = () => {
 
       {/* FORM PARA INCLUIR NOTAS */}
       <div>
-        <NewNote
-          isOpen={NewNoteOpen}
-          onConfirm={handleSubmit}
-          onCancel={handleCancel}
-        />
+        {NewNoteOpen &&(
+          <NewNote
+            isOpen={NewNoteOpen}
+            onConfirm={handleSubmit}
+            onCancel={handleCancelNewNote}
+          />
+        )}
+        
       </div>
 
       {/* LISTA DE NOTAS */}

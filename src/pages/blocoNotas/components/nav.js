@@ -12,10 +12,6 @@ function Nav( {openForm} ) {
     // VARIÁVEIS E CONSTANTES
     const [menuOpen, setMenuOpen] = useState(false);//abrir o menu de configurações
 
-    // FUNÇÃO PARA ABRIR O FORM ADICIONAR NOVA NOTA
-    const setNewNoteOpen = (value) => {
-        openForm(value);
-    }
 
     // HOOK PARA FECHAR O MENU DE CONFIGURAÇÕES AO CLICAR FORA
     useEffect(() => {
@@ -32,11 +28,12 @@ function Nav( {openForm} ) {
         };
     }, [menuOpen]);
 
+    
     return(
         <div className={styles.nav}>
             <div>
-                <button onClick={() => setNewNoteOpen(true)}>Nova Nota</button>
-                <RiAddCircleFill className={styles.addNotes}  onClick={() => setNewNoteOpen(true)}/>
+                <button onClick={() =>  openForm(true)}>Nova Nota</button>
+                <RiAddCircleFill className={styles.addNotes}  onClick={() => openForm(true)}/>
                 <section className={styles.radioGroup}>
                     <label className={styles.radioLabel}>
                         <input type="radio" name="priority" id="all" className={styles.radioInput} defaultChecked />

@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import styles from "./newNote.module.css";
 
-const NewNote = ({ isOpen, onConfirm, onCancel }) => {
+const NewNote = ({ onConfirm, onCancel }) => {
 
   // CONSTANTES E VARIÁVEIS
   const [title, setTitles] = useState((''));
@@ -58,8 +58,6 @@ const NewNote = ({ isOpen, onConfirm, onCancel }) => {
   }
   //funções em teste----------------------------------------------
 
-  // Se o modal não estiver aberto, não renderiza nada
-  if (!isOpen) return null;
 
   return (
     <div className={styles.overlay}>
