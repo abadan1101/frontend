@@ -28,7 +28,7 @@ function Notes( {data, onTrash, onSaveEdit} ) {
         const txa = e.target;
         const locCursor = txa.selectionStart;
         var val = txa.value;
-        txa.value = val.slice(0, locCursor) + "📌 " + val.slice(locCursor);
+        txa.value = val.slice(0, locCursor) + "○  " + val.slice(locCursor);
         txa.selectionEnd = locCursor + 3;
         }
     
