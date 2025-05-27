@@ -32,7 +32,8 @@ const BlocoNotas = () => {
   useEffect(() => {
     async function getAllNotes() {
       const response = await api.get('/annotations');
-      setAllNotes(response.data);
+      // Filtra para mostrar apenas notas que não estão na lixeira
+      setAllNotes(response.data.filter(note => !note.trash));
     }
 
     getAllNotes();
@@ -49,10 +50,21 @@ const BlocoNotas = () => {
     setAllNotes([...allNotes, response.data]);
   }
 
-  // função para deletar uma anotação
-  async function handleDelete(id) {
-    await api.delete(`/annotations/${id}`);
+  // função para mover uma anotação para a lixeira
+  async function handleTrash(id) {
+    await api.post(`/trash/${id}`);
     setAllNotes(allNotes.filter(note => note._id !== id));
+  }
+
+  // função para salvar uma anotação editada
+  async function handleSaveEdit(id, updatedNotes) {
+    const response = await api.post(`/contents/${id}`, {
+      notes: updatedNotes
+    });
+
+    setAllNotes(allNotes.map(note =>
+      note._id === id ? response.data : note
+    ));
   }
   // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
 
@@ -120,15 +132,42 @@ const BlocoNotas = () => {
           {allNotes.map((data, index) => (
             <li
               key={data._id}
-              draggable
-              onDragStart={() => handleDragStart(index)}
+              // Só permite draggable se o mouse NÃO estiver sobre o textarea
+              draggable={true}
+              onMouseDown={e => {
+                // Se o mouse está sobre o textarea, desativa o draggable do li
+                if (
+                  e.target.tagName === 'TEXTAREA' ||
+                  e.target.closest('textarea')
+                ) {
+                  e.currentTarget.draggable = false;
+                } else {
+                  e.currentTarget.draggable = true;
+                }
+              }}
+              onMouseUp={e => {
+                // Sempre reativa o draggable após o mouse sair
+                e.currentTarget.draggable = true;
+              }}
+              onDragStart={e => {
+                // Impede arrastar se o evento começou dentro de um textarea
+                if (
+                  e.target.tagName === 'TEXTAREA' ||
+                  e.target.closest('textarea')
+                ) {
+                  e.preventDefault();
+                  return;
+                }
+                handleDragStart(index);
+              }}
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(index)}
               style={{ cursor: 'grab' }}
             >
               <Notes
                 data={data}
-                onDelete={handleDelete}
+                onSaveEdit={handleSaveEdit}
+                onTrash={handleTrash} // Usando a mesma função de delete para lixeira
               />
             </li>
           ))}
