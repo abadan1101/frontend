@@ -36,7 +36,7 @@ const BlocoNotas = () => {
     async function getAllNotes() {
       const response = await api.get('/annotations');
       // Filtra para mostrar apenas notas que não estão na lixeira
-      setAllNotes(response.data.filter(note => !note.trash));
+      setAllNotes(response.data);
     }
 
     getAllNotes();
@@ -102,15 +102,6 @@ const BlocoNotas = () => {
 
 
 
-  // FUNÇÕES DIVERSAS--------------------------------------------------------
-   // função para fechar o formulário de nova nota
-  const handleCancelNewNote = () => {
-    setNewNoteOpen(false);
-  };
-  // FIM DAS FUNÇÕES DIVERSAS------------------------------------------------
-
-
-
   // PAGINA DO MODULO DE ANOTAÇÕES-------------------------------------------
   return (
     <div className={styles.ModuloBlocoNotas}>
@@ -127,7 +118,7 @@ const BlocoNotas = () => {
           <NewNote
             isOpen={NewNoteOpen}
             onConfirm={handleSubmit}
-            onCancel={handleCancelNewNote}
+            onCancel={setNewNoteOpen}
           />
         )}
         
@@ -136,7 +127,9 @@ const BlocoNotas = () => {
       {/* LISTA DE NOTAS */}
       <main>
         <ul>
-          {allNotes.map((data, index) => (
+          {allNotes
+            .filter(note => !note.trash) // Garante que só notas não trash são renderizadas
+            .map((data, index) => (
             <li
               key={data._id}
               // Só permite draggable se o mouse NÃO estiver sobre o textarea
@@ -183,7 +176,10 @@ const BlocoNotas = () => {
 
       {/* LIXEIRA */}
       {trashOpen && (
-        <Trash />
+        <Trash
+          deletedNotes={allNotes.filter(note => note.trash)}
+          onCancel={setTrashOpen}
+        />
       )}
         
     </div>
