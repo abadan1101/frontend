@@ -17,8 +17,10 @@ import Trash from './components/trash.js';
 const BlocoNotas = () => {
   
   // CONSTANTES E VARIÁVEIS--------------------------------------------------
-  // Estado para armazenar todas as notas
+  // Estado para buscar todas as notas
   const [allNotes, setAllNotes] = useState([]);
+  // Estado para buscar notas excluídas
+  const [trashNotes, setTrashNotes] = useState([]);
   // Estado para controlar a abertura do formulário de nova nota
   const [NewNoteOpen, setNewNoteOpen] = useState(false);
   // estado para controlar abertura da lixeira
@@ -36,11 +38,24 @@ const BlocoNotas = () => {
     async function getAllNotes() {
       const response = await api.get('/annotations');
       // Filtra para mostrar apenas notas que não estão na lixeira
-      setAllNotes(response.data);
+      setAllNotes(response.data.filter(note => !note.trash));
     }
 
     getAllNotes();
   }, []);
+
+  // hook para buscar notas excluídas ao abrir a lixeira
+  useEffect(() => {
+    async function getTrashNotes() {
+      const response = await api.get('/trash');
+      // Filtra para mostrar apenas notas que não estão na lixeira
+      setTrashNotes(response.data.filter(note => note.trash));
+    }
+
+    getTrashNotes();
+  }, [allNotes, trashOpen]); // Recarrega as notas excluídas quando allNotes ou trashOpen mudarem
+
+  
 
   // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
@@ -128,7 +143,6 @@ const BlocoNotas = () => {
       <main>
         <ul>
           {allNotes
-            .filter(note => !note.trash) // Garante que só notas não trash são renderizadas
             .map((data, index) => (
             <li
               key={data._id}
@@ -177,7 +191,7 @@ const BlocoNotas = () => {
       {/* LIXEIRA */}
       {trashOpen && (
         <Trash
-          deletedNotes={allNotes.filter(note => note.trash)}
+          deletedNotes={trashNotes}
           onCancel={setTrashOpen}
         />
       )}

@@ -14,12 +14,13 @@
 .modal {
   background: #fff;
   padding: 24px 20px 16px 20px;
-  border-radius: 18px;
+  border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   text-align: center;
-  max-width: 420px;
+  max-width: 700px;
   width: 95%;
-  min-height: 320px;
+  max-height: 98vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -146,6 +147,7 @@
 @media (max-width: 600px) {
   .modal {
     max-width: 98vw;
+    max-height: 98vh;
     padding: 12px 4vw 10px 4vw;
   }
   .title {

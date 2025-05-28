@@ -6,15 +6,15 @@ const Trash = ({ deletedNotes = [], onCancel }) => {
       <main className={styles.modal}>
         <header className={styles.title}>
           <h2 className={styles.title}>Lixeira</h2>
-          <p className={styles.subtitle}>Aqui estão suas notas excluídas</p>
+          <p className={styles.subtitle}>Atenção! As notas serão definitivamente excluídas após 6 meses</p>
         </header>
         <section className={styles.content}>
           {deletedNotes.length === 0 ? (
             <p className={styles.empty}>Nenhuma nota excluída.</p>
           ) : (
-            <ul className={styles.list}>
+            <div className={styles.list}>
               {deletedNotes.map((note, idx) => (
-                <li key={note.id || idx} className={styles.item}>
+                <div key={note.id || idx} className={styles.item}>
                   <div className={styles.noteHeader}>
                     <h3>{note.title}</h3>
                     <span className={styles.deletedAt}>
@@ -46,10 +46,9 @@ const Trash = ({ deletedNotes = [], onCancel }) => {
                       </button>
                     </div>
                   </div>
-                  <p>{note.content}</p>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </section>
         <button className={styles.button} onClick={() => onCancel()}>
