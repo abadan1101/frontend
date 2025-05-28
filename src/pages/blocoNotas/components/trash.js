@@ -1,10 +1,13 @@
+import { MdOutlineRestartAlt, MdDeleteOutline  } from "react-icons/md";
+
 import styles from "./trash.module.css";
 
-const Trash = ({ deletedNotes = [], onCancel }) => {
+const Trash = ({ deletedNotes = [], onCancel, onDelete, clearTrash }) => {
   return (
     <div className={styles.overlay}>
       <main className={styles.modal}>
-        <header className={styles.title}>
+        <header>
+          <span className={styles.modalClose} onClick={() => onCancel()}>X</span>
           <h2 className={styles.title}>Lixeira</h2>
           <p className={styles.subtitle}>Atenção! As notas serão definitivamente excluídas após 6 meses</p>
         </header>
@@ -14,46 +17,41 @@ const Trash = ({ deletedNotes = [], onCancel }) => {
           ) : (
             <div className={styles.list}>
               {deletedNotes.map((note, idx) => (
-                <div key={note.id || idx} className={styles.item}>
-                  <div className={styles.noteHeader}>
-                    <h3>{note.title}</h3>
-                    <span className={styles.deletedAt}>
-                      Excluída em:{" "}
-                      {note.date
-                        ? new Date(note.date).toLocaleDateString("pt-BR", {
-                            day: "2-digit",
-                            month: "2-digit",
-                            year: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })
-                        : "Data desconhecida"}
-                    </span>
-                    <div className={styles.actions}>
-                      <button
-                        className={styles.restoreBtn}
-                        title="Restaurar"
-                        onClick={() => note.onRestore && note.onRestore(note)}
-                      >
-                        ♻️
-                      </button>
-                      <button
-                        className={styles.deleteBtn}
-                        title="Excluir permanentemente"
-                        onClick={() => note.onDelete && note.onDelete(note)}
-                      >
-                        🗑️
-                      </button>
+                <div key={note.id || idx} className={styles.noteItem}>
+                    <div>
+                      <p className={styles.noteInfo}>{note.title}</p>
+                      <span className={styles.deletedAt}>
+                        Excluída em:{" "}
+                        {note.date
+                          ? new Date(note.date).toLocaleDateString("pt-BR", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })
+                          : "Data desconhecida"}
+                      </span>
                     </div>
-                  </div>
+                    <div className={styles.actions}>
+                      <MdOutlineRestartAlt
+                        className={styles.restoreBtn}
+                        title="Restaurar nota" // Adiciona tooltip
+                      />
+                      <MdDeleteOutline
+                        className={styles.deleteBtn}
+                        title="Excluir definitivamente" // Adiciona tooltip
+                        onClick={() => onDelete(note._id)}
+                      />
+
+                    </div>
                 </div>
               ))}
             </div>
           )}
         </section>
-        <button className={styles.button} onClick={() => onCancel()}>
-          <span className={styles.icon}>🗑️</span>
-          <span className={styles.text}>Lixeira</span>
+        <button className={styles.button} onClick={() => clearTrash()}>
+          Limpar Lixeira
         </button>
       </main>
     </div>

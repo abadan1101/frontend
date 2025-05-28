@@ -13,7 +13,7 @@
 
 .modal {
   background: #fff;
-  padding: 24px 20px 16px 20px;
+  padding: 10px 20px 16px 20px;
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   text-align: center;
@@ -24,6 +24,19 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.modalClose{
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  color: #888;
+  padding: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  color: #222;
 }
 
 .title {
@@ -45,6 +58,12 @@
   margin-bottom: 12px;
 }
 
+.empty {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin: 32px 0;
+}
+
 .list {
   list-style: none;
   padding: 0;
@@ -54,32 +73,39 @@
   gap: 14px;
 }
 
-.item {
-  background: #f7f7fa;
-  border-radius: 10px;
-  padding: 14px 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: box-shadow 0.2s;
-}
-
 .item:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 }
 
-.noteHeader {
+.noteItem {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 6px;
+  text-align: left;
+  background: #f7f7fa;
+  border-radius: 10px;
+  padding: 14px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+
+.noteInfo{
+  color: #555;
+  font-weight: 500;
+}
+
+.deletedAt {
+  font-size: 0.92rem;
+  color: #ddcab2;
+  margin-left: 8px;
+  font-style: italic;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 20px;
 }
 
 .restoreBtn,
@@ -87,8 +113,7 @@
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 1.3rem;
-  padding: 6px;
+  font-size: 20px;
   border-radius: 50%;
   transition: background 0.15s;
 }
@@ -103,12 +128,6 @@
   color: #d32f2f;
 }
 
-.empty {
-  color: #aaa;
-  font-size: 1.1rem;
-  margin: 32px 0;
-}
-
 .button {
   margin-top: 10px;
   background: #222;
@@ -121,27 +140,13 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   transition: background 0.2s;
 }
 
 .button:hover {
   background: #444;
-}
-
-.icon {
-  font-size: 1.2rem;
-}
-
-.text {
-  font-size: 1rem;
-}
-
-.deletedAt {
-  font-size: 0.92rem;
-  color: #b06d1c;
-  margin-left: 8px;
-  font-style: italic;
 }
 
 @media (max-width: 600px) {
@@ -155,8 +160,5 @@
   }
   .subtitle {
     font-size: 0.95rem;
-  }
-  .item {
-    padding: 10px 6px;
   }
 }
