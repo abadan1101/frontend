@@ -2,7 +2,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import styles from './upperbar.module.css';
-import usuario from '../../img/usuario.png'
+import { LiaUserSolid } from "react-icons/lia";
 
 const Upperbar = () => {
 
@@ -25,7 +25,7 @@ const Upperbar = () => {
           </p>
           <span className={styles.divider}></span>
           <div className={styles.profile}>
-              <img id='imgPerf' src={usuario} alt='' />
+              <LiaUserSolid className={styles.icon}/>
           </div>
       </nav>
     </section>

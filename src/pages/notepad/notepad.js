@@ -4,7 +4,7 @@ import { useState, useEffect} from 'react';
 import api from '../../services/api.js';
 
 //IMPORTAÇÃO DOS ESTILOS
-import styles from './blocoNotas.module.css';
+import styles from './notepad.module.css';
 
 //IMPORTAÇÃO DOS COMPONENTES
 import Nav from './components/nav.js';

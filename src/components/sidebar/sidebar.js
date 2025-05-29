@@ -64,7 +64,7 @@ const Sidebar = () => {
         <div className={styles.brand}>
           <img src={logo1} alt='Logo'/>
           <div>
-              <p>GANM_Caracal</p>
+              <p>Caracal</p>
               <p className={styles.func_app}>Controle de tarefas avançado</p>
           </div>
         </div>

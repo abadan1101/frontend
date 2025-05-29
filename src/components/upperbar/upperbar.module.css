@@ -81,10 +81,7 @@
 .content nav .profile {
 	position: relative;
 }
-.content nav .profile img {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	object-fit: cover;
+.content nav .profile .icon {
+	font-size: 40px;
 	cursor: pointer;
 }
