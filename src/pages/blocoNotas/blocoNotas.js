@@ -36,7 +36,7 @@ const BlocoNotas = () => {
   // hook para buscar todas as anotações ao carregar a página
   useEffect(() => {
     async function getAllNotes() {
-      const response = await api.get('/annotations');
+      const response = await api.get('/annotations/read');
       // Filtra para mostrar apenas notas que não estão na lixeira
       setAllNotes(response.data.filter(note => !note.trash));
     }
@@ -57,7 +57,7 @@ const BlocoNotas = () => {
 
   // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
-    const response = await api.post('/annotations', {
+    const response = await api.post('/annotations/create', {
       title: title,
       notes:  notes,
       priority: false
@@ -82,12 +82,12 @@ const BlocoNotas = () => {
     setAllNotes(updatedNotes);
     // Atualiza a ordem no backend
     const orderedIds = updatedNotes.map(note => note._id);
-    await api.put('/contents/order', { orderedIds });
+    await api.put('/annotations/order', { orderedIds });
   }
 
   // função para salvar uma anotação editada
   async function handleSaveEdit(id, updatedNotes) {
-    const response = await api.post(`/contents/${id}`, {
+    const response = await api.post(`/annotations/update/${id}`, {
       notes: updatedNotes
     });
 
@@ -136,7 +136,7 @@ const BlocoNotas = () => {
 
     // Envia a nova ordem para o backend
     const orderedIds = updatedNotes.map(note => note._id);
-    await api.put('/contents/order', { orderedIds });
+    await api.put('/annotations/order', { orderedIds });
   };
   // FIM DAS FUNÇÕES DE DRAG AND DROP (ARRASTAR E SOLTAR NOTAS---------------
 
