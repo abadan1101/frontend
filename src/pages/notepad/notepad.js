@@ -44,17 +44,6 @@ const BlocoNotas = () => {
     getAllNotes();
   }, []);
 
-  // hook para buscar notas excluídas ao abrir a lixeira
-  useEffect(() => {
-    async function getTrashNotes() {
-      const response = await api.get('/trash/read');
-      // Filtra para mostrar apenas notas que não estão na lixeira
-      setTrashNotes(response.data.filter(note => note.trash));
-    }
-
-    getTrashNotes();
-  }, [allNotes, trashOpen]); // Recarrega as notas excluídas quando allNotes ou trashOpen mudarem
-
   // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
     const response = await api.post('/annotations/create', {
@@ -72,6 +61,33 @@ const BlocoNotas = () => {
     setAllNotes(allNotes.filter(note => note._id !== id));
   }
 
+  // função para salvar uma anotação editada
+  async function handleSaveEdit(id, updatedNotes) {
+    const response = await api.post(`/annotations/update/${id}`, {
+      notes: updatedNotes
+    });
+
+    setAllNotes(allNotes.map(note =>
+      note._id === id ? response.data : note
+    ));
+  }
+  // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
+
+
+
+  
+  // FUNÇÕES PARA MANIPULAR A LIXEIRA----------------------------------------
+  // hook para buscar notas excluídas ao abrir a lixeira
+  useEffect(() => {
+    async function getTrashNotes() {
+      const response = await api.get('/trash/read');
+      // Filtra para mostrar apenas notas que não estão na lixeira
+      setTrashNotes(response.data.filter(note => note.trash));
+    }
+
+    getTrashNotes();
+  }, [allNotes, trashOpen]); // Recarrega as notas excluídas quando allNotes ou trashOpen mudarem
+
   // função para restaurar uma anotação da lixeira
   async function handleRestoreNotes(id) {
     const response = await api.post(`/trash/restore/${id}`);
@@ -85,22 +101,9 @@ const BlocoNotas = () => {
     await api.put('/annotations/order', { orderedIds });
   }
 
-  // função para salvar uma anotação editada
-  async function handleSaveEdit(id, updatedNotes) {
-    const response = await api.post(`/annotations/update/${id}`, {
-      notes: updatedNotes
-    });
-
-    setAllNotes(allNotes.map(note =>
-      note._id === id ? response.data : note
-    ));
-  }
-
   // função para excluir uma anotação da lixeira
   async function handleDeleteNote(id) {
-    // Chama a API para excluir a nota permanentemente
     await api.delete(`/trash/delete/${id}`);
-    // Atualiza o estado para remover a nota excluída
     setTrashNotes(trashNotes.filter(note => note._id !== id));
   }
 
@@ -109,7 +112,7 @@ const BlocoNotas = () => {
     await api.delete('/trash/clear');
     setTrashNotes([]); // Limpa o estado local das notas da lixeira
   }
-  // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
+  //FUNÇÕES PARA MANIPULAR A LIXEIRA-----------------------------------------
 
 
 
