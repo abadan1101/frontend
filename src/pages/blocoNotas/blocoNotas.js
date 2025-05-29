@@ -77,8 +77,12 @@ const BlocoNotas = () => {
     const response = await api.post(`/trash/${id}`, { trash: toTrash });
     // Remove da lixeira
     setTrashNotes(trashNotes.filter(note => note._id !== id));
-    // Adiciona à lista principal
-    setAllNotes([...allNotes, response.data]);
+    // Adiciona à lista principal no final
+    const updatedNotes = [...allNotes, response.data];
+    setAllNotes(updatedNotes);
+    // Atualiza a ordem no backend
+    const orderedIds = updatedNotes.map(note => note._id);
+    await api.put('/contents/order', { orderedIds });
   }
 
   // função para salvar uma anotação editada
