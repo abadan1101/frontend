@@ -2,18 +2,18 @@ import { MdOutlineRestartAlt, MdDeleteOutline  } from "react-icons/md";
 
 import styles from "./trash.module.css";
 
-const Trash = ({ deletedNotes = [], onCancel, onDelete, clearTrash }) => {
+const Trash = ({ deletedNotes = [], onCancel, onDelete, onRestore ,clearTrash }) => {
   return (
     <div className={styles.overlay}>
       <main className={styles.modal}>
         <header>
           <span className={styles.modalClose} onClick={() => onCancel()}>X</span>
           <h2 className={styles.title}>Lixeira</h2>
-          <p className={styles.subtitle}>Atenção! As notas serão definitivamente excluídas após 6 meses</p>
+          <p className={styles.subtitle}>Atenção! As notas serão excluídas definitivamente após 180 dias.</p>
         </header>
         <section className={styles.content}>
           {deletedNotes.length === 0 ? (
-            <p className={styles.empty}>Nenhuma nota excluída.</p>
+            <p className={styles.empty}>A lixeira está vazia!</p>
           ) : (
             <div className={styles.list}>
               {deletedNotes.map((note, idx) => (
@@ -37,6 +37,7 @@ const Trash = ({ deletedNotes = [], onCancel, onDelete, clearTrash }) => {
                       <MdOutlineRestartAlt
                         className={styles.restoreBtn}
                         title="Restaurar nota" // Adiciona tooltip
+                        onClick={() => onRestore(note._id)}
                       />
                       <MdDeleteOutline
                         className={styles.deleteBtn}

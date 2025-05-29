@@ -67,9 +67,18 @@ const BlocoNotas = () => {
   }
 
   // função para mover uma anotação para a lixeira
-  async function handleTrash(id) {
-    await api.post(`/trash/${id}`);
+  async function handleTrash(id, toTrash = true) {
+    await api.post(`/trash/${id}`, { trash: toTrash });
     setAllNotes(allNotes.filter(note => note._id !== id));
+  }
+
+  // função para restaurar uma anotação da lixeira
+  async function handleRestoreNotes(id, toTrash = false) {
+    const response = await api.post(`/trash/${id}`, { trash: toTrash });
+    // Remove da lixeira
+    setTrashNotes(trashNotes.filter(note => note._id !== id));
+    // Adiciona à lista principal
+    setAllNotes([...allNotes, response.data]);
   }
 
   // função para salvar uma anotação editada
@@ -206,6 +215,7 @@ const BlocoNotas = () => {
           deletedNotes={trashNotes}
           onCancel={setTrashOpen}
           onDelete={handleDeleteNote}
+          onRestore={handleRestoreNotes}
           clearTrash={handleClearTrash}
         />
       )}
