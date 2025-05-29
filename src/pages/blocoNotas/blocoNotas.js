@@ -47,7 +47,7 @@ const BlocoNotas = () => {
   // hook para buscar notas excluídas ao abrir a lixeira
   useEffect(() => {
     async function getTrashNotes() {
-      const response = await api.get('/trash');
+      const response = await api.get('/trash/read');
       // Filtra para mostrar apenas notas que não estão na lixeira
       setTrashNotes(response.data.filter(note => note.trash));
     }
@@ -106,7 +106,7 @@ const BlocoNotas = () => {
 
   // função para limpar toda a lixeira
   async function handleClearTrash() {
-    await api.delete('/trash');
+    await api.delete('/trash/clear');
     setTrashNotes([]); // Limpa o estado local das notas da lixeira
   }
   // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
