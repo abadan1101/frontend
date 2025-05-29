@@ -68,7 +68,7 @@ const BlocoNotas = () => {
 
   // função para mover uma anotação para a lixeira
   async function handleTrash(id, toTrash = true) {
-    await api.post(`/trash/${id}`, { trash: toTrash });
+    await api.post(`/annotations/trash/${id}`, { trash: toTrash });
     setAllNotes(allNotes.filter(note => note._id !== id));
   }
 
