@@ -6,7 +6,7 @@ const ConfirmModal = () => {
     <div className={styles.ModuloBlocoNotas}>
         <div className={styles.modalLoading}>
             <div className={styles.loader}></div>
-            <span>Carregando notas...</span>
+            <span>Carregando...</span>
         </div>
     </div>
     );

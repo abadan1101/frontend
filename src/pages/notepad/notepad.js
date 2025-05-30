@@ -77,7 +77,9 @@ const BlocoNotas = () => {
     setAllNotes(allNotes.map(note =>
       note._id === id ? response.data : note
     ));
-    
+
+    // Retorne algo para indicar que terminou (pode ser o dado atualizado)
+    return response.data;
   }
   // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
 

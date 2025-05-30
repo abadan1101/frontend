@@ -10,12 +10,16 @@ function Notes({ data, onTrash, onSaveEdit }) {
     const [showSaved, setShowSaved] = useState(false);
 
     // Salva a nota ao sair do campo de edição
-    const handleBlur = () => {
+    const handleBlur = async () => {
         setIsEditing(false);
         if (notesValue !== data.notes && notesValue !== '') {
-            onSaveEdit(data._id, notesValue);
-            setShowSaved(true);
-            setTimeout(() => setShowSaved(false), 2000); // Esconde após 2s
+            try {
+                await onSaveEdit(data._id, notesValue); // Aguarda resposta do backend
+                setShowSaved(true);
+                setTimeout(() => setShowSaved(false), 2000); // Esconde após 2s
+            } catch (error) {
+                // Aqui você pode tratar erro, se quiser
+            }
         } else {
             setNotesValue(data.notes);
         }
