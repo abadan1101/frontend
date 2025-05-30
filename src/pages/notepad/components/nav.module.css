@@ -29,12 +29,9 @@
     cursor: pointer;
     border-radius: 50%;
     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
     border: none;
-    padding: 10px;       /* cor do contorno */
+    padding: 10px;
 }
 
 .addNotes:hover{
