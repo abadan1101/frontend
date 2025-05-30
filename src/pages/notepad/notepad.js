@@ -49,12 +49,13 @@ const BlocoNotas = () => {
 
   // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
+    setLoading(true);
     const response = await api.post('/annotations/create', {
       title: title,
       notes:  notes,
       priority: false
     });
-
+    setLoading(false);
     setAllNotes([...allNotes, response.data]);
   }
 
@@ -66,13 +67,17 @@ const BlocoNotas = () => {
 
   // função para salvar uma anotação editada
   async function handleSaveEdit(id, updatedNotes) {
+    setLoading(true);
     const response = await api.post(`/annotations/update/${id}`, {
       notes: updatedNotes
     });
 
+    setLoading(false);
+    
     setAllNotes(allNotes.map(note =>
       note._id === id ? response.data : note
     ));
+    
   }
   // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
 
