@@ -2,7 +2,7 @@
     display: flex;
     position: fixed;
     width: 100%;
-    height: 80px;
+    height: 70px;
     justify-content: center;
     align-items: center;
     bottom: 0;
@@ -13,41 +13,40 @@
 
 .nav div{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 0 20px;
     width: 100%;
 }
 
-.nav button{
-    background: #f0e68d;
-    width: 100px;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    color: #333;
-    padding: 5px;
-    border-radius: 20px;
-}
-
-.nav button:hover{
-    background: #e0d76d;
-}
-
 .addNotes{
-  color: #9c9205;
-  font-size: 30px;
-  cursor: pointer;
-  display: none;
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
+    color: #fff;
+    background: linear-gradient(135deg, #FFD600 60%, #FFB300 100%);
+    font-size: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    border: none;
+    padding: 10px;       /* cor do contorno */
 }
 
 .addNotes:hover{
-    color: #a59805;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #FFEA00 60%, #FFC107 100%);
+    color: #fff;
 }
 
 .radioGroup {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
@@ -55,6 +54,7 @@
 
 .radioLabel {
   display: flex;
+  flex-direction: column; /* coloca o label abaixo do radio */
   align-items: center;
   cursor: pointer;
   font-weight: 500;
@@ -101,12 +101,14 @@
 }
 
 .configNotes{
-  display: flex;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
   font-size: 25px;
   cursor: pointer;
   justify-content: end;
   align-items: flex-end;
-  color: #333 !important;
+  color: #777 !important;
 }
 
 .navList {
@@ -144,12 +146,8 @@
 
 /* CONFIGURAÇÕES DE RESPONSIVIDADE */
 @media (max-width: 500px) {
-
-    .nav button{
-      display: none;
-    }
-    .addNotes{
-      display: block;
+    .nav {
+      height: 60px;
     }
 
     .radioGroup {

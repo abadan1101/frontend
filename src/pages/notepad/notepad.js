@@ -149,12 +149,6 @@ const BlocoNotas = () => {
   return (
     <div className={styles.ModuloBlocoNotas}>
 
-      {/* MENU SUPERIOR DE NOTAS */}
-      <Nav 
-        openForm={setNewNoteOpen}
-        openTrash={setTrashOpen}
-      />
-
       {/* FORM PARA INCLUIR NOTAS */}
       <div>
         {NewNoteOpen &&(
@@ -215,6 +209,12 @@ const BlocoNotas = () => {
           ))}
         </ul>
       </main> 
+
+      {/* MENU INFERIOR DE NOTAS */}
+      <Nav 
+        openForm={setNewNoteOpen}
+        openTrash={setTrashOpen}
+      />
 
       {/* LIXEIRA */}
       {trashOpen && (

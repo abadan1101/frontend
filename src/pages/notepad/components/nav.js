@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RiAddCircleFill } from "react-icons/ri";
+import { PiNotePencilFill } from "react-icons/pi";
 import { CgOptions } from "react-icons/cg";
 import { FiTrash } from "react-icons/fi";
 import { IoSettingsOutline, IoHelpCircleOutline, IoTrailSignOutline   } from "react-icons/io5";
@@ -32,8 +32,7 @@ function Nav( {openForm, openTrash} ) {
     return(
         <div className={styles.nav}>
             <div>
-                <button onClick={() =>  openForm(true)}>Nova Nota</button>
-                <RiAddCircleFill className={styles.addNotes}  onClick={() => openForm(true)}/>
+                <PiNotePencilFill  className={styles.addNotes}  onClick={() => openForm(true)} title="adicionar nova nota"/>
                 <section className={styles.radioGroup}>
                     <label className={styles.radioLabel}>
                         <input type="radio" name="priority" id="all" className={styles.radioInput} defaultChecked />
