@@ -2,12 +2,13 @@
     display: flex;
     position: fixed;
     width: 100%;
-    height: 120px;
+    height: 80px;
     justify-content: center;
-    align-items: end;
-    top: 0;
+    align-items: center;
+    bottom: 0;
     left: 0;
-    background: #fff;
+    background: rgba(255,255,255,0.93); /* branco com transparência */
+    border-top: solid 1px #ccc;
 }
 
 .nav div{
@@ -16,8 +17,6 @@
     align-items: center;
     margin: 0 20px;
     width: 100%;
-    border-bottom: solid 1px #ccc;
-    padding: 0 0 10px 10px;
 }
 
 .nav button{
@@ -113,7 +112,7 @@
 .navList {
     position: absolute;
     right: 20px;
-    top: 110px;
+    bottom: 60px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
