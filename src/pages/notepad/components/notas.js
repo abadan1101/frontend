@@ -1,17 +1,22 @@
 import { useState } from "react";
-import { FiTrash, FiAlertCircle   } from "react-icons/fi";
+import { FiTrash, FiAlertCircle } from "react-icons/fi";
+import { GiConfirmed } from "react-icons/gi";
 
 import styles from './notas.module.css';
 
-function Notes( {data, onTrash, onSaveEdit} ) {
+function Notes({ data, onTrash, onSaveEdit }) {
     const [notesValue, setNotesValue] = useState(data.notes);
+    const [isEditing, setIsEditing] = useState(false);
+    const [showSaved, setShowSaved] = useState(false);
 
     // Salva a nota ao sair do campo de edição
     const handleBlur = () => {
+        setIsEditing(false);
         if (notesValue !== data.notes && notesValue !== '') {
             onSaveEdit(data._id, notesValue);
-        }else{
-            // Se o campo estiver vazio, não salva
+            setShowSaved(true);
+            setTimeout(() => setShowSaved(false), 2000); // Esconde após 2s
+        } else {
             setNotesValue(data.notes);
         }
     };
@@ -24,37 +29,46 @@ function Notes( {data, onTrash, onSaveEdit} ) {
     //funções em teste----------------------------------------------
     function handleKeyUp(e) {
         e.preventDefault();
-        if(e.key === 'Enter'){
-        const txa = e.target;
-        const locCursor = txa.selectionStart;
-        var val = txa.value;
-        txa.value = val.slice(0, locCursor) + "○  " + val.slice(locCursor);
-        txa.selectionEnd = locCursor + 3;
+        if (e.key === 'Enter') {
+            const txa = e.target;
+            const locCursor = txa.selectionStart;
+            var val = txa.value;
+            txa.value = val.slice(0, locCursor) + "○  " + val.slice(locCursor);
+            txa.selectionEnd = locCursor + 3;
         }
-    
     }
     //funções em teste----------------------------------------------
 
-    return(
+    return (
         <>
             <main className={styles.notepadInfos} key={data._id}>
                 <div>
                     <strong>{data.title}</strong>
                     <div>
-                        <FiTrash onClick={handleTrash}/>
+                        <FiTrash onClick={handleTrash} />
                     </div>
                 </div>
                 <textarea
                     value={notesValue}
                     onChange={e => {
                         setNotesValue(e.target.value);
+                        setIsEditing(true);
+                        setShowSaved(false);
                     }}
                     onBlur={handleBlur}
-                    onKeyUp={handleKeyUp}//em teste
+                    onKeyUp={handleKeyUp}
                 />
-                <span>
-                    <FiAlertCircle />
-                </span>
+                <div className={styles.notepadInfosFooter}>
+                    <span>
+                        <FiAlertCircle />
+                    </span>
+                    {isEditing && !showSaved && (
+                        <p className={styles.infoSave}>toque fora da nota para salvar</p>
+                    )}
+                    {showSaved && (
+                        <p className={styles.msgSave}>salvo com sucesso! <GiConfirmed /></p>
+                    )}
+                </div>
             </main>
         </>
     )

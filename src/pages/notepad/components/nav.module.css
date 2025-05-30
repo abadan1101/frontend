@@ -1,14 +1,20 @@
 .nav{
     display: flex;
     position: fixed;
-    width: 100%;
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 70px;
     justify-content: center;
     align-items: center;
-    bottom: 0;
-    left: 0;
-    background: rgba(255,255,255,0.93); /* branco com transparência */
-    border-top: solid 1px #ccc;
+    bottom: 20px;
+    background: rgba(255,255,255,0.75); /* vidro fosco */
+    border-top: solid 1px #e0e0e0;
+    border-radius: 18px 18px 24px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s, background 0.3s;
+    z-index: 200;
 }
 
 .nav div{

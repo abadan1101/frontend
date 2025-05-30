@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { IoHome, IoGridOutline, IoKeypadOutline, IoReceiptOutline, IoServerSharp, IoSaveOutline } from "react-icons/io5";
+import { IoHome, IoGridOutline, IoKeypadOutline, IoServerSharp, IoSaveOutline } from "react-icons/io5";
+import { TfiNotepad } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import styles from './sidebar.module.css';
 import logo1 from '../../img/logo1.png';
@@ -90,7 +91,7 @@ const Sidebar = () => {
                 <li onClick={openActiveSB}><Link to='/'>Equipe</Link></li>
               </ul>
             </div>
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><IoReceiptOutline className={styles.icon}/> Bloco de Notas</Link></div>	
+            <div onClick={openActiveSB}><Link className={styles.liDirect} to='bloconotas'><TfiNotepad className={styles.icon}/> Bloco de Notas</Link></div>	
             <div className={styles.divider}>Principal</div>
             <div className={styles.subMenu}>
               <p onClick={openSubMenu}><IoServerSharp className={styles.icon}/> Planejamento <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>

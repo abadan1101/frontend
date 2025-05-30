@@ -11,12 +11,15 @@ import Nav from './components/nav.js';
 import NewNote from "./components/newNote.js";
 import Notes from './components/notas.js'
 import Trash from './components/trash.js';
+import ModalLoad from '../../components/modalLoad/load.js';
 
 
 
 const BlocoNotas = () => {
   
   // CONSTANTES E VARIÁVEIS--------------------------------------------------
+  // Estado para controlar o carregamento inicial
+  const [loading, setLoading] = useState(true);
   // Estado para buscar todas as notas
   const [allNotes, setAllNotes] = useState([]);
   // Estado para buscar notas excluídas
@@ -36,11 +39,11 @@ const BlocoNotas = () => {
   // hook para buscar todas as anotações ao carregar a página
   useEffect(() => {
     async function getAllNotes() {
+      setLoading(true);
       const response = await api.get('/annotations/read');
-      // Filtra para mostrar apenas notas que não estão na lixeira
       setAllNotes(response.data.filter(note => !note.trash));
+      setLoading(false);
     }
-
     getAllNotes();
   }, []);
 
@@ -149,6 +152,13 @@ const BlocoNotas = () => {
   return (
     <div className={styles.ModuloBlocoNotas}>
 
+      {/* MODAL PARA AGUARDAR CARREGAMENTO DAS NOTAS */}
+      <div>
+        {loading &&(
+          <ModalLoad />
+        )}
+      </div>
+
       {/* FORM PARA INCLUIR NOTAS */}
       <div>
         {NewNoteOpen &&(
@@ -158,7 +168,6 @@ const BlocoNotas = () => {
             onCancel={setNewNoteOpen}
           />
         )}
-        
       </div>
 
       {/* LISTA DE NOTAS */}
