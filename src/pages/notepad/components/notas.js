@@ -64,7 +64,9 @@ function Notes({ data, onTrash, onSaveEdit }) {
                 />
                 <div className={styles.notepadInfosFooter}>
                     <span>
-                        <FiAlertCircle />
+                        {data.priority
+                            ? <FiAlertCircle className={styles.priority} title="Prioridade" />
+                            : <FiAlertCircle />}
                     </span>
                     {isEditing && !showSaved && (
                         <p className={styles.infoSave}>toque fora da nota para salvar</p>

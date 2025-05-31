@@ -30,6 +30,8 @@ const BlocoNotas = () => {
   const [trashOpen, setTrashOpen] = useState(false);
   // Estado para controlar o índice da nota sendo arrastada
   const [draggedIndex, setDraggedIndex] = useState(null);
+  // Estado para filtro
+  const [filter, setFilter] = useState(() => localStorage.getItem("notepadFilter") || "all");
   // FIM DAS CONSTANTES E VARIÁVEIS------------------------------------------
 
 
@@ -155,6 +157,21 @@ const BlocoNotas = () => {
 
 
 
+  // FUNÇÕES DE FILTRO-------------------------------------------------------
+  function handleFilterChange(newFilter) {
+    setFilter(newFilter);
+  }
+
+  const filteredNotes = allNotes.filter(note => {
+    if (filter === "all") return true;
+    if (filter === "priority") return note.priority === true;
+    if (filter === "completed") return note.priority === false;
+    return true;
+  });
+  // FIM DAS FUNÇÕES DE FILTRO----------------------------------------------
+
+
+
   // PAGINA DO MODULO DE ANOTAÇÕES-------------------------------------------
   return (
     <div className={styles.ModuloBlocoNotas}>
@@ -180,29 +197,25 @@ const BlocoNotas = () => {
       {/* LISTA DE NOTAS */}
       <main>
         <ul>
-          {allNotes
+          {filteredNotes
             .map((data, index) => (
             <li
               key={data._id}
-              // Só permite draggable se o mouse NÃO estiver sobre o textarea
-              draggable={true}
+              draggable={filter === "all"}
               onMouseDown={e => {
-                // Se o mouse está sobre o textarea, desativa o draggable do li
                 if (
                   e.target.tagName === 'TEXTAREA' ||
                   e.target.closest('textarea')
                 ) {
                   e.currentTarget.draggable = false;
                 } else {
-                  e.currentTarget.draggable = true;
+                  e.currentTarget.draggable = filter === "all";
                 }
               }}
               onMouseUp={e => {
-                // Sempre reativa o draggable após o mouse sair
-                e.currentTarget.draggable = true;
+                e.currentTarget.draggable = filter === "all";
               }}
               onDragStart={e => {
-                // Impede arrastar se o evento começou dentro de um textarea
                 if (
                   e.target.tagName === 'TEXTAREA' ||
                   e.target.closest('textarea')
@@ -210,16 +223,18 @@ const BlocoNotas = () => {
                   e.preventDefault();
                   return;
                 }
-                handleDragStart(index);
+                if (filter === "all") {
+                  handleDragStart(index);
+                }
               }}
-              onDragOver={handleDragOver}
-              onDrop={() => handleDrop(index)}
-              style={{ cursor: 'grab' }}
+              onDragOver={filter === "all" ? handleDragOver : undefined}
+              onDrop={filter === "all" ? () => handleDrop(index) : undefined}
+              style={{ cursor: filter === "all" ? 'grab' : 'default' }}
             >
               <Notes
                 data={data}
                 onSaveEdit={handleSaveEdit}
-                onTrash={handleTrash} // Usando a mesma função de delete para lixeira
+                onTrash={handleTrash}
               />
             </li>
           ))}
@@ -230,6 +245,7 @@ const BlocoNotas = () => {
       <Nav 
         openForm={setNewNoteOpen}
         openTrash={setTrashOpen}
+        onFilterChange={handleFilterChange}
       />
 
       {/* LIXEIRA */}

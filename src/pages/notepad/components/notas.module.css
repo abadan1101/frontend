@@ -59,6 +59,13 @@
     font-size: 25px;
 }
 
+.priority {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #eb8f7a;
+}
+
 .notepadInfosFooter p {
     color: #c4c4c4;
     font-size: 14px;
