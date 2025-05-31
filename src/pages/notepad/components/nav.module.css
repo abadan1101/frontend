@@ -1,20 +1,17 @@
 .nav{
     display: flex;
     position: fixed;
-    width: 95%;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
     height: 70px;
     justify-content: center;
     align-items: center;
-    bottom: 10px;
     background: rgba(255,255,255,0.75); /* vidro fosco */
-    border: solid 1px #e0e0e0;
-    border-radius: 18px 18px 24px 24px;
+    border-top: solid 1px #FFD3CA;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     backdrop-filter: blur(10px);
-    transition: box-shadow 0.3s, background 0.3s;
-    z-index: 200;
+    z-index: 100;
 }
 
 .nav div{
@@ -116,7 +113,7 @@
 
 .navList {
     position: absolute;
-    right: 20px;
+    right: 3px;
     bottom: 60px;
     background: #fff;
     border: 1px solid #ddd;

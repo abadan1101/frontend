@@ -7,10 +7,10 @@
   width: 260px;
   max-width: 260px;
   height: 100%;
-  background: var(--light);
+  background: linear-gradient(135deg, #786ff3 60%, #5240f5 100%);
   transition: left 0.3s ease;
+  box-shadow: 2px 2px 2px #c2bef7;
   z-index: 200;
-  box-shadow: 5px 5px 5px #ccc;
 }
 .open {
   left: 0;
@@ -19,7 +19,7 @@
   height: 100%;
   overflow-y: auto;
 	scrollbar-width:thin;
-	scrollbar-color: var(--light-blue) var(--light);
+	scrollbar-color: #aaa var(--light);
 }
 
 /* ------botão abrir barra lateral------ */
@@ -31,11 +31,11 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #777;
+  color: #eee;
   font-weight: bold;
 }
 .toggleButton:hover {
-  color: #333;
+  color: #aaa;
 }
 
 /* ------logotipo------- */
@@ -45,11 +45,11 @@
   align-items: center;
   height: 64px;
   font-weight: 700;
-  color: var(--blue);
+  color: #FFF;
   position: sticky;
   top: 0;
   left: 0;
-  background: var(--light);
+  background: linear-gradient(135deg, #786ff3 60%, #5240f5 100%);
   padding: 0 6px;
   cursor: default;
   border-bottom: 1px solid #ccc;
@@ -61,7 +61,7 @@
   width: 60px;
 }
 .func_app{
-  color: var(--dark-gray);
+  color: #fff;
   font-size: 10px;
 }
 
@@ -86,7 +86,7 @@
 }
 .altSub{
   font-weight: bold;
-  color: var(--blue) !important;
+  color: #FFF !important;
   transition: all .5 ease;
 }
 
@@ -96,13 +96,13 @@
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--dark-gray);
+  color: #fff;
 }
 
 /* ------botão inicio------- */
 .home{
-  background: var(--dark-gray);
-  color: var(--light) !important;
+  background: #fff;
+  color: #555 !important;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -112,7 +112,7 @@
   cursor: pointer;
 }
 .home:hover{
-  background: var(--dark-gray2);
+  background: #ccc;
 }
 
 /* ------botões sem submenu-------- */
@@ -120,7 +120,7 @@
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: var(--dark);
+  color: #fff;
   padding: 12px 16px 12px 0;
   transition: all .3s ease;
   border-radius: 10px;
@@ -129,10 +129,11 @@
   cursor: pointer;
 }
 .liDirect:hover{
-  background: var(--grey);
+  background: #5240f5;
 }
 .liDirect.active{
-  background: var(--grey);
+  background: #5240f5;
+  color: #fff !important;
 }
 
 /* ------botões com submenu-------- */
@@ -140,7 +141,7 @@
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: var(--dark);
+  color: #fff;
   padding: 12px 16px 12px 0;
   transition: all .3s ease;
   border-radius: 10px;
@@ -149,13 +150,13 @@
   cursor: pointer;
 }
 .subMenu p:hover{
-  background: var(--grey);
+  background: #5240f5;
 }
 .subMenu p.active .iconRight {
   transform: rotateZ(90deg);
 }
 .subMenu p.active{
-  background: var(--grey);
+  background: #5240f5;
 }
 
 /* ------itens do submenu-------- */
@@ -169,21 +170,21 @@
   max-height: 1000px;
 }
 .sideDropdown li{
-  border-bottom: 1px dotted   var(--dark-gray);
+  border-bottom: 1px dotted   #fff;
 }
 .sideDropdown a{
   display: flex;
   height: 30px;
   align-items: center;
   font-size: 14px;
-  color: var(--dark);
+  color: #ccc;
   padding: 12px 16px 12px 0;
   border-radius: 10px;
   margin: 4px 0;
   cursor: pointer;
 }
 .sideDropdown a:hover {
-  color: var(--blue);
+  color: #fff;
 }
 
 /* ------area promocional-------- */

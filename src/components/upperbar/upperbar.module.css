@@ -10,7 +10,7 @@
 }
 /* NAVBAR */
 .content nav {
-	background: var(--light);
+    background: linear-gradient(135deg, #786ff3 60%, #5240f5 100%);
 	height: 64px;
 	padding: 0 20px;
 	display: flex;
@@ -19,7 +19,7 @@
 	position: sticky;
 	top: 0;
 	left: 0;
-	box-shadow: 5px 5px 5px #ccc;
+	box-shadow: 5px 5px 5px #c2bef7;
 }
 .content nav form {
 	max-width: 400px;
@@ -32,7 +32,7 @@
 }
 .content nav .formGroup input {
 	width: 100%;
-	background: var(--grey);
+	background: #fff;
 	border-radius: 5px;
 	border: none;
 	outline: none;
@@ -54,7 +54,7 @@
 }
 .content nav .navlink .icon {
 	font-size: 18px;
-	color: var(--dark);
+	color: #fff;
 }
 .content nav .navlink .badge {
 	position: absolute;
@@ -74,7 +74,7 @@
 }
 .content nav .divider {
 	width: 1px;
-	background: var(--grey);
+	background: #fff;
 	height: 12px;
 	display: block;
 }
@@ -84,4 +84,5 @@
 .content nav .profile .icon {
 	font-size: 40px;
 	cursor: pointer;
+	color: #fff;
 }
