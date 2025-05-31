@@ -4,7 +4,7 @@ import { GiConfirmed } from "react-icons/gi";
 
 import styles from './notas.module.css';
 
-function Notes({ data, onTrash, onSaveEdit }) {
+function Notes({ data, onTrash, onSaveEdit, onTogglePriority }) {
     const [notesValue, setNotesValue] = useState(data.notes);
     const [isEditing, setIsEditing] = useState(false);
     const [showSaved, setShowSaved] = useState(false);
@@ -28,6 +28,11 @@ function Notes({ data, onTrash, onSaveEdit }) {
     // Função para mover nota para lixeira
     const handleTrash = () => {
         onTrash(data._id);
+    };
+
+    // Função para alternar prioridade
+    const handleTogglePriority = () => {
+        onTogglePriority(data._id);
     };
 
     //funções em teste----------------------------------------------
@@ -65,8 +70,13 @@ function Notes({ data, onTrash, onSaveEdit }) {
                 <div className={styles.notepadInfosFooter}>
                     <span>
                         {data.priority
-                            ? <FiAlertCircle className={styles.priority} title="Prioridade" />
-                            : <FiAlertCircle />}
+                            ? <FiAlertCircle
+                                className={styles.priority}
+                                title="Prioridade"
+                                onClick={handleTogglePriority} />
+                            : <FiAlertCircle
+                                 onClick={handleTogglePriority}/>
+                        }
                     </span>
                     {isEditing && !showSaved && (
                         <p className={styles.infoSave}>toque fora da nota para salvar</p>

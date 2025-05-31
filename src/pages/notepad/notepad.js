@@ -83,6 +83,16 @@ const BlocoNotas = () => {
     // Retorne algo para indicar que terminou (pode ser o dado atualizado)
     return response.data;
   }
+
+  // função para alternar prioridade
+  async function handleTogglePriority(id) {
+    setLoading(true);
+    const response = await api.post(`/priorities/${id}`);
+    setLoading(false);
+    setAllNotes(allNotes.map(note =>
+      note._id === id ? response.data : note
+    ));
+  }
   // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
 
 
@@ -235,6 +245,7 @@ const BlocoNotas = () => {
                 data={data}
                 onSaveEdit={handleSaveEdit}
                 onTrash={handleTrash}
+                onTogglePriority={handleTogglePriority}
               />
             </li>
           ))}
