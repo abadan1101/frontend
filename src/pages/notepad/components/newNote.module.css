@@ -40,8 +40,8 @@
 }
 
 .closecontainer label:hover {
-  color: #fff;
-  background: #ff7e67;
+  transform: scale(1.5);
+  transition: ease 0.2s, color 0.2s;
 }
 
 .main{
@@ -68,6 +68,7 @@
     display: block;
     margin-bottom: 6px;
     letter-spacing: 0.5px;
+    text-align: left;
 }
 
 .main form .inputBlock{
