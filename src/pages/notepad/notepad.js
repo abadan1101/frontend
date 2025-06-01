@@ -188,8 +188,10 @@ const BlocoNotas = () => {
     setDraggedIndex(null);
 
     // Envia a nova ordem para o backend
+    setLoading(true);
     const orderedIds = updatedNotes.map(note => note._id);
     await api.put('/annotations/order', { orderedIds });
+    setLoading(false);
   };
   // FIM DAS FUNÇÕES DE DRAG AND DROP (ARRASTAR E SOLTAR NOTAS---------------
 
