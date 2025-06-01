@@ -12,6 +12,7 @@ import NewNote from "./components/newNote.js";
 import Notes from './components/notas.js'
 import Trash from './components/trash.js';
 import ModalLoad from '../../components/modalLoad/load.js';
+import ConfirmModal from '../../components/modalConfirm/ConfirmModal.js';
 
 
 
@@ -32,6 +33,13 @@ const BlocoNotas = () => {
   const [draggedIndex, setDraggedIndex] = useState(null);
   // Estado para filtro
   const [filter, setFilter] = useState(() => localStorage.getItem("notepadFilter") || "all");
+  // estado para controlar a abertura do modal de confirmação
+  const [confirmModal, setConfirmModal] = useState({
+    isOpen: false,
+    message: "",
+    onConfirm: null,
+    onCancel: null,
+  });
   // FIM DAS CONSTANTES E VARIÁVEIS------------------------------------------
 
 
@@ -123,16 +131,36 @@ const BlocoNotas = () => {
     await api.put('/annotations/order', { orderedIds });
   }
 
+  
+  // função para confirmar a exclusão de uma anotação da lixeira
+  function handleConfirmDelete(id) {
+    setConfirmModal({
+      isOpen: true,
+      message: "Tem certeza que deseja excluir esta nota permanentemente?",
+      onConfirm: () => handleDeleteNote(id),
+      onCancel: () => setConfirmModal({ isOpen: false }),
+    });
+  }
   // função para excluir uma anotação da lixeira
   async function handleDeleteNote(id) {
     await api.delete(`/trash/delete/${id}`);
     setTrashNotes(trashNotes.filter(note => note._id !== id));
+    setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
   }
-
+  // função para confirmar a limpeza da lixeira
+  function handleConfirmClearTrash(id) {
+    setConfirmModal({
+      isOpen: true,
+      message: "Tem certeza que deseja limpar a lixeira permanentemente?",
+      onConfirm: () => handleClearTrash(id),
+      onCancel: () => setConfirmModal({ isOpen: false }),
+    });
+  }
   // função para limpar toda a lixeira
   async function handleClearTrash() {
     await api.delete('/trash/clear');
     setTrashNotes([]); // Limpa o estado local das notas da lixeira
+    setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
   }
   //FUNÇÕES PARA MANIPULAR A LIXEIRA-----------------------------------------
 
@@ -264,11 +292,19 @@ const BlocoNotas = () => {
         <Trash
           deletedNotes={trashNotes}
           onCancel={setTrashOpen}
-          onDelete={handleDeleteNote}
+          onDelete={handleConfirmDelete}
           onRestore={handleRestoreNotes}
-          clearTrash={handleClearTrash}
+          clearTrash={handleConfirmClearTrash}
         />
       )}
+
+      {/* MODAL DE CONFIRMAÇÃO */}
+      <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        onConfirm={confirmModal.onConfirm}
+        onCancel={confirmModal.onCancel}
+        message={confirmModal.message}
+      />
         
     </div>
   );

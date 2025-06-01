@@ -149,6 +149,11 @@
   background: #444;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
   .modal {
     max-width: 98vw;

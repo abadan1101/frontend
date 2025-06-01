@@ -51,7 +51,11 @@ const Trash = ({ deletedNotes = [], onCancel, onDelete, onRestore ,clearTrash })
             </div>
           )}
         </section>
-        <button className={styles.button} onClick={() => clearTrash()}>
+        <button
+          className={styles.button}
+          onClick={() => clearTrash()}
+          disabled={deletedNotes.length === 0}
+        >
           Limpar Lixeira
         </button>
       </main>
