@@ -234,50 +234,55 @@ const BlocoNotas = () => {
 
       {/* LISTA DE NOTAS */}
       <main>
-        <ul>
-          {filteredNotes
-            .map((data, index) => (
-            <li
-              key={data._id}
-              draggable={filter === "all"}
-              onMouseDown={e => {
-                if (
-                  e.target.tagName === 'TEXTAREA' ||
-                  e.target.closest('textarea')
-                ) {
-                  e.currentTarget.draggable = false;
-                } else {
+        {filteredNotes.length === 0 ? (
+          <p className={styles.empty}>Nenhuma nota encontrada.</p>
+        ) : (
+          <ul>
+            {filteredNotes
+              .map((data, index) => (
+              <li
+                key={data._id}
+                draggable={filter === "all"}
+                onMouseDown={e => {
+                  if (
+                    e.target.tagName === 'TEXTAREA' ||
+                    e.target.closest('textarea')
+                  ) {
+                    e.currentTarget.draggable = false;
+                  } else {
+                    e.currentTarget.draggable = filter === "all";
+                  }
+                }}
+                onMouseUp={e => {
                   e.currentTarget.draggable = filter === "all";
-                }
-              }}
-              onMouseUp={e => {
-                e.currentTarget.draggable = filter === "all";
-              }}
-              onDragStart={e => {
-                if (
-                  e.target.tagName === 'TEXTAREA' ||
-                  e.target.closest('textarea')
-                ) {
-                  e.preventDefault();
-                  return;
-                }
-                if (filter === "all") {
-                  handleDragStart(index);
-                }
-              }}
-              onDragOver={filter === "all" ? handleDragOver : undefined}
-              onDrop={filter === "all" ? () => handleDrop(index) : undefined}
-              style={{ cursor: filter === "all" ? 'grab' : 'default' }}
-            >
-              <Notes
-                data={data}
-                onSaveEdit={handleSaveEdit}
-                onTrash={handleTrash}
-                onTogglePriority={handleTogglePriority}
-              />
-            </li>
-          ))}
-        </ul>
+                }}
+                onDragStart={e => {
+                  if (
+                    e.target.tagName === 'TEXTAREA' ||
+                    e.target.closest('textarea')
+                  ) {
+                    e.preventDefault();
+                    return;
+                  }
+                  if (filter === "all") {
+                    handleDragStart(index);
+                  }
+                }}
+                onDragOver={filter === "all" ? handleDragOver : undefined}
+                onDrop={filter === "all" ? () => handleDrop(index) : undefined}
+                style={{ cursor: filter === "all" ? 'grab' : 'default' }}
+              >
+                <Notes
+                  data={data}
+                  onSaveEdit={handleSaveEdit}
+                  onTrash={handleTrash}
+                  onTogglePriority={handleTogglePriority}
+                  filter={filter}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </main> 
 
       {/* MENU INFERIOR DE NOTAS */}

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FiTrash, FiAlertCircle } from "react-icons/fi";
+import { FiTrash, FiAlertCircle, FiMove } from "react-icons/fi"; // Adicione FiMove
 import { GiConfirmed } from "react-icons/gi";
+
 
 import styles from './notas.module.css';
 
-function Notes({ data, onTrash, onSaveEdit, onTogglePriority }) {
+function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
     const [notesValue, setNotesValue] = useState(data.notes);
     const [isEditing, setIsEditing] = useState(false);
     const [showSaved, setShowSaved] = useState(false);
@@ -83,6 +84,11 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority }) {
                     )}
                     {showSaved && (
                         <p className={styles.msgSave}>salvo com sucesso! <GiConfirmed /></p>
+                    )}
+                    {filter === "all" && (
+                        <i className={styles.dragIcon}>
+                            <FiMove title="Arrastar nota" />
+                        </i>
                     )}
                 </div>
             </main>
