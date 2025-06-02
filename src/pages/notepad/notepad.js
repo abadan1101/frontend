@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react';
+import { SlNote } from "react-icons/sl";
 
 //IMPORTAÇÃO DA API
 import api from '../../services/api.js';
@@ -237,7 +238,10 @@ const BlocoNotas = () => {
       {/* LISTA DE NOTAS */}
       <main>
         {filteredNotes.length === 0 ? (
-          <p className={styles.empty}>Nenhuma nota encontrada.</p>
+          <p className={styles.empty}>
+            <SlNote className={styles.emptyIcon} />
+            Nenhuma nota encontrada.
+          </p>
         ) : (
           <ul>
             {filteredNotes
