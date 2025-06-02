@@ -63,13 +63,13 @@
   cursor: pointer;
   font-weight: 500;
   gap: 0.4rem;
-  color: #eb8f7a;
+  color: #555;
   transition: color 0.2s;
 }
 
 .radioLabel:hover,
 .radioInput:focus + .customRadio {
-  color: #ffb300;
+  color: #eb8f7a;
 }
 
 .radioInput {
@@ -90,27 +90,8 @@
 }
 
 .radioInput:checked + .customRadio {
-  border-color: #eb8f7a;
+  border: 3px solid #eb8f7a;
   box-shadow: 0 0 0 4px #ca7b6e33;
-  background: #eb8f7a;
-}
-
-.customRadio::after {
-  content: '';
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #fff;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.radioInput:checked + .customRadio::after {
-  opacity: 1;
   background: #fff;
 }
 
