@@ -186,4 +186,8 @@
       padding: 6px 6px;
       gap: 1rem;
     }
+
+    .configNotes {
+      font-size: 45px !important;
+    }
 }
