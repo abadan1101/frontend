@@ -37,6 +37,7 @@ const BlocoNotas = () => {
   // estado para controlar a abertura do modal de confirmação
   const [confirmModal, setConfirmModal] = useState({
     isOpen: false,
+    title: "",
     message: "",
     onConfirm: null,
     onCancel: null,
@@ -137,6 +138,7 @@ const BlocoNotas = () => {
   function handleConfirmDelete(id) {
     setConfirmModal({
       isOpen: true,
+      title: "Excluir",
       message: "Tem certeza que deseja excluir esta nota permanentemente?",
       onConfirm: () => handleDeleteNote(id),
       onCancel: () => setConfirmModal({ isOpen: false }),
@@ -152,6 +154,7 @@ const BlocoNotas = () => {
   function handleConfirmClearTrash(id) {
     setConfirmModal({
       isOpen: true,
+      title: "Limpar Lixeira",
       message: "Tem certeza que deseja limpar a lixeira permanentemente?",
       onConfirm: () => handleClearTrash(id),
       onCancel: () => setConfirmModal({ isOpen: false }),
@@ -314,6 +317,7 @@ const BlocoNotas = () => {
         isOpen={confirmModal.isOpen}
         onConfirm={confirmModal.onConfirm}
         onCancel={confirmModal.onCancel}
+        title={confirmModal.title}
         message={confirmModal.message}
       />
         

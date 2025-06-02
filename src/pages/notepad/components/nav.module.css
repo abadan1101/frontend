@@ -77,8 +77,8 @@
 }
 
 .customRadio {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border: 2.5px solid #FFD3CA;
   border-radius: 50%;
   display: inline-block;
@@ -91,20 +91,20 @@
 
 .radioInput:checked + .customRadio {
   border-color: #eb8f7a;
-  box-shadow: 0 0 0 4px #ffd3ca33;
+  box-shadow: 0 0 0 4px #ca7b6e33;
   background: #eb8f7a;
 }
 
 .customRadio::after {
   content: '';
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #fff;
   position: absolute;
-  top: 3px;
-  left: 3px;
+  top: 2px;
+  left: 2px;
   opacity: 0;
   transition: opacity 0.2s;
 }

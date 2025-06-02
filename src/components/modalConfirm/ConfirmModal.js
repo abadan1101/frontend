@@ -1,6 +1,6 @@
 import styles from "./ConfirmModal.module.css";
 
-const ConfirmModal = ({ isOpen, onConfirm, onCancel, message }) => {
+const ConfirmModal = ({ isOpen, onConfirm, onCancel, title, message }) => {
   if (!isOpen) return null;
   
 
@@ -32,6 +32,7 @@ const ConfirmModal = ({ isOpen, onConfirm, onCancel, message }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
+        <h3>{title}</h3>
         <p>{message}</p>
         <div className={styles.actions}>
           <button className={styles.confirm} onClick={onConfirm}>Confirmar</button>
