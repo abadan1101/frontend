@@ -45,11 +45,11 @@
   align-items: center;
   height: 64px;
   font-weight: 700;
-  color: #FFF;
+  color: #5240f5;
   position: sticky;
   top: 0;
   left: 0;
-  background: linear-gradient(135deg, #786ff3 60%, #5240f5 100%);
+  background: linear-gradient(135deg, #fff 85%, #5240f5 100%);
   padding: 0 6px;
   cursor: default;
   border-bottom: 1px solid #ccc;
@@ -61,7 +61,7 @@
   width: 60px;
 }
 .func_app{
-  color: #fff;
+  color: #555;
   font-size: 10px;
 }
 

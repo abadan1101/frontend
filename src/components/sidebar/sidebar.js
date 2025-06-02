@@ -3,7 +3,7 @@ import { IoHome, IoGridOutline, IoKeypadOutline, IoServerSharp, IoSaveOutline } 
 import { TfiNotepad } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import styles from './sidebar.module.css';
-import logo10 from '../../img/logo10.png';
+import logo1 from '../../img/logo1.png';
 
 const Sidebar = () => {
 
@@ -63,7 +63,7 @@ const Sidebar = () => {
       </button>
       <div className={styles.navbar}>
         <div className={styles.brand}>
-          <img src={logo10} alt='Logo'/>
+          <img src={logo1} alt='Logo'/>
           <div>
               <p>Caracal</p>
               <p className={styles.func_app}>Controle de tarefas avançado</p>
