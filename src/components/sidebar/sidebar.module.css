@@ -39,27 +39,37 @@
 }
 
 /* ------logotipo------- */
-.brand{
-  font-size: 24px;
+.brand {
+  font-size: 28px;
   display: flex;
   align-items: center;
-  height: 64px;
-  font-weight: 700;
+  height: 65px;
+  font-weight: 600;
   color: #5240f5;
   position: sticky;
   top: 0;
   left: 0;
-  background: linear-gradient(135deg, #fff 85%, #5240f5 100%);
-  padding: 0 6px;
+  padding-bottom: 5px;
+  background: linear-gradient(90deg, #fff 80%, #f3f1ff 100%);
   cursor: default;
-  border-bottom: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-bottom: 1.5px solid #e0e0f7;
+  box-shadow: 0 4px 12px rgba(82, 64, 245, 0.06);
   z-index: 1;
+  border-radius: 0 0 18px 18px;
+  letter-spacing: 1px;
+  gap: 5px;
+  transition: background 0.3s;
 }
-.brand img{
+
+.brand img {
   margin-top: auto;
   width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(82, 64, 245, 0.08);
+  margin-right: 5px;
 }
+
 .func_app{
   color: #555;
   font-size: 10px;
