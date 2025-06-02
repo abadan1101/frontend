@@ -89,6 +89,7 @@ function Nav({ openForm, openTrash, onFilterChange }) {
                 <CgOptions 
                     className={styles.configNotes}
                     onClick={() => setMenuOpen(!menuOpen)}
+                    title="ajustes"
                 />
                 {menuOpen && (
                     <ul className={styles.navList}>
