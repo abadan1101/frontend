@@ -57,14 +57,14 @@
 }
 
 .confirm {
-    background: #0078d4;
+    background: #786ff3;
     color: #fff;
-    border: 1px solid #0078d4;
+    border: 1px solid #786ff3;
 }
 
 .confirm:hover, .confirm:focus {
-    background: #005fa3;
-    border-color: #005fa3;
+    background: #5240f5;
+    border-color: #5240f5;
 }
 
 .cancel {
@@ -75,6 +75,6 @@
 
 .cancel:hover, .cancel:focus {
     background: #f3f2f1;
-    color: #0078d4;
-    border-color: #0078d4;
+    color: #5240f5;
+    border-color: #5240f5;
 }
