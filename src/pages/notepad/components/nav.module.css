@@ -44,6 +44,10 @@
     color: #fff;
 }
 
+.radioInput {
+  display: none;
+}
+
 .radioGroup {
   display: flex;
   gap: 2rem;
@@ -64,10 +68,11 @@
   font-weight: 500;
   gap: 0.4rem;
   color: #555;
+  transition: ease 0.2s;
 }
 
-.radioInput {
-  display: none;
+.radioLabel:hover {
+  transform: scale(1.2);
 }
 
 .customRadio {
@@ -95,6 +100,11 @@
   position: absolute;
   right: 20px;
   max-width: 100px;
+  transition: ease 0.2s;
+}
+
+.trashContainer:hover {
+  transform: scale(1.2);
 }
 
 .trashNotes {
@@ -105,10 +115,6 @@
   align-items: center;
   color: #999 !important;
   margin-bottom: 5px;
-}
-
-.trashNotes:hover {
-  transform: scale(1.2);
 }
 
 .trashLabel {
