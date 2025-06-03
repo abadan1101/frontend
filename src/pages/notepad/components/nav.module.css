@@ -98,8 +98,8 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  right: 20px;
-  max-width: 100px;
+  right: 0px;
+  max-width: 60px;
   transition: ease 0.2s;
   cursor: pointer;
 }
