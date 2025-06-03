@@ -7,7 +7,7 @@
   width: 260px;
   max-width: 260px;
   height: 100%;
-  background: linear-gradient(135deg, #786ff3 60%, #5240f5 100%);
+  background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
   transition: left 0.3s ease;
   box-shadow: 2px 2px 2px #c2bef7;
   z-index: 200;
@@ -45,7 +45,7 @@
   align-items: center;
   height: 65px;
   font-weight: 600;
-  color: #5240f5;
+  color: #2575fc;
   position: sticky;
   top: 0;
   left: 0;
