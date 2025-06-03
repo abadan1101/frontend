@@ -71,7 +71,7 @@ const Sidebar = () => {
         </div>
         <div>
           <nav className= {styles.sideMenu}>
-            <div onClick={openActiveSB}><Link className={styles.home} to='/'><IoHome className={styles.icon}/> Início</Link></div>
+            <div onClick={openActiveSB}><Link className={styles.home} to='home'><IoHome className={styles.icon}/> Início</Link></div>
             <div className={styles.divider}>Principal</div>
             <div className={styles.subMenu}>
               <p onClick={openSubMenu}><IoGridOutline className={styles.icon}/> Tarefas <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>

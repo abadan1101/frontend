@@ -1,15 +1,18 @@
 import './App.css';
 
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom";
 
 import Sidebar from './components/sidebar/sidebar.js';
 import Upperbar from './components/upperbar/upperbar.js';
 
 function App() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/";
+
   return (
     <div className="App">
-      <Upperbar />
-      <Sidebar />
+      {!isLoginPage && <Upperbar />}
+      {!isLoginPage && <Sidebar />}
       <Outlet />
     </div>
   );

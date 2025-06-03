@@ -3,6 +3,7 @@ import App from './App';
 
 import { createHashRouter } from 'react-router-dom' // usar createBrowserRouter na vps
 
+import Login from './pages/login/login.js';
 import Home from './pages/home/home.js';
 import Trabalho from './pages/trabalho';
 import BlocoNotas from './pages/notepad/notepad.js';
@@ -16,6 +17,10 @@ const router = createHashRouter([
     children: [
       {
         path: "/",
+        element: <Login />
+      },
+      {
+        path: "home",
         element: <Home />
       },
       {
