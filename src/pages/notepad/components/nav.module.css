@@ -95,32 +95,19 @@
   background: #fff;
 }
 
-.configNotes {
+.trashNotes {
   position: absolute;
   right: 20px;
-  bottom: 10px;
-  font-size: 50px !important;
+  font-size: 25px !important;
   cursor: pointer;
   display: flex;
-  justify-content: end;
-  align-items: flex-end;
-  color: #eb8f7a !important;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 12px rgba(255, 179, 0, 0.10);
-  padding: 10px;
-  transition: 
-    color 0.2s,
-    background 0.2s,
-    box-shadow 0.2s,
-    transform 0.18s;
+  justify-content: center;
+  align-items: center;
+  color: #999 !important;
 }
 
-.configNotes:hover {
-  color: #fff !important;
-  background: linear-gradient(135deg, #FFD600 60%, #FFB300 100%);
-  box-shadow: 0 4px 24px rgba(255, 179, 0, 0.18);
-  transform: scale(1.12) rotate(-10deg);
+.trashNotes:hover {
+  transform: scale(1.2);
 }
 
 .navList {

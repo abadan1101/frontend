@@ -33,6 +33,7 @@
   color: #888;
   padding: 5px 5px 0 0;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .modalClose:hover {

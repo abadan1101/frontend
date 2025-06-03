@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { PiNotePencilFill } from "react-icons/pi";
-import { CgOptions } from "react-icons/cg";
-import { FiTrash } from "react-icons/fi";
-import { IoSettingsOutline, IoHelpCircleOutline, IoTrailSignOutline   } from "react-icons/io5";
+import { FaTrash } from "react-icons/fa";
 
 
 
@@ -10,26 +8,11 @@ import styles from './nav.module.css';
 
 function Nav({ openForm, openTrash, onFilterChange }) {
     // VARIÁVEIS E CONSTANTES
-    const [menuOpen, setMenuOpen] = useState(false); // abrir o menu de configurações
     const [filter, setFilter] = useState(() => {
         // Tenta pegar o filtro salvo no localStorage, senão usa "all"
         return localStorage.getItem("notepadFilter") || "all";
     });
 
-    // HOOK PARA FECHAR O MENU DE CONFIGURAÇÕES AO CLICAR FORA
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (!event.target.closest(`.${styles.configNotes}`) && !event.target.closest(`.${styles.navList}`)) {
-                setMenuOpen(false);
-            }
-        }
-        if (menuOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        }
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [menuOpen]);
 
     // Salva o filtro no localStorage sempre que mudar
     useEffect(() => {
@@ -86,31 +69,11 @@ function Nav({ openForm, openTrash, onFilterChange }) {
                         Normais
                     </label>
                 </section>
-                <CgOptions 
-                    className={styles.configNotes}
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    title="ajustes"
+                <FaTrash 
+                    className={styles.trashNotes}
+                    title="lixeira"
+                    onClick={() => openTrash(true)}
                 />
-                {menuOpen && (
-                    <ul className={styles.navList}>
-                        <li className={styles.navItem} onClick={() => openTrash(true)}>
-                            <FiTrash className={styles.icon}/>
-                            Lixeira
-                        </li>
-                        <li className={styles.navItem}>
-                            <IoSettingsOutline className={styles.icon}/>
-                            Configurações
-                        </li>
-                        <li className={styles.navItem}>
-                            <IoHelpCircleOutline className={styles.icon}/>
-                            Ajuda
-                        </li>
-                        <li className={styles.navItem}>
-                            <IoTrailSignOutline className={styles.icon}/>
-                            Sobre
-                        </li>
-                    </ul>
-                )}
             </div>
         </div>
     )
