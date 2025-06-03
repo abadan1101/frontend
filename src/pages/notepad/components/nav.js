@@ -74,7 +74,7 @@ function Nav({ openForm, openTrash, onFilterChange }) {
                         className={styles.trashNotes}
                         title="lixeira"
                     />
-                    <span className={styles.trashLabel}>Lixeira</span>
+                    <span className={styles.trashLabel}>lixeira</span>
                 </div>
             </div>
         </div>

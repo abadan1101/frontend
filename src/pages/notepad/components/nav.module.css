@@ -130,13 +130,23 @@
       height: 60px;
     }
 
+    .radioLabel:hover {
+      transform: scale(1);
+    }
+
     .radioGroup {
       font-size: 12px;
       padding: 6px 6px;
       gap: 1rem;
     }
 
+    .trashContainer:hover {
+      transform: scale(1);
+    }
+
     .trashLabel {
       font-size: 12px;
     }
+
+
 }
