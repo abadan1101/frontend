@@ -101,6 +101,7 @@
   right: 20px;
   max-width: 100px;
   transition: ease 0.2s;
+  cursor: pointer;
 }
 
 .trashContainer:hover {
@@ -109,7 +110,6 @@
 
 .trashNotes {
   font-size: 20px !important;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +120,6 @@
 .trashLabel {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   font-weight: 500;
   color: #555;
 }

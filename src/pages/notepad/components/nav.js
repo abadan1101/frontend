@@ -69,11 +69,10 @@ function Nav({ openForm, openTrash, onFilterChange }) {
                         Normais
                     </label>
                 </section>
-                <div className={styles.trashContainer}>
+                <div className={styles.trashContainer} onClick={() => openTrash(true)}>
                     <FaRegTrashAlt  
                         className={styles.trashNotes}
                         title="lixeira"
-                        onClick={() => openTrash(true)}
                     />
                     <span className={styles.trashLabel}>Lixeira</span>
                 </div>
