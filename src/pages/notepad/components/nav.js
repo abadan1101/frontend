@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PiNotePencilFill } from "react-icons/pi";
-import { FaTrash } from "react-icons/fa";
+import { FaRegTrashAlt  } from "react-icons/fa";
 
 
 
@@ -69,11 +69,14 @@ function Nav({ openForm, openTrash, onFilterChange }) {
                         Normais
                     </label>
                 </section>
-                <FaTrash 
-                    className={styles.trashNotes}
-                    title="lixeira"
-                    onClick={() => openTrash(true)}
-                />
+                <div className={styles.trashContainer}>
+                    <FaRegTrashAlt  
+                        className={styles.trashNotes}
+                        title="lixeira"
+                        onClick={() => openTrash(true)}
+                    />
+                    <span className={styles.trashLabel}>Lixeira</span>
+                </div>
             </div>
         </div>
     )
