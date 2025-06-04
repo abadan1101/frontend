@@ -5,6 +5,7 @@ import styles from "./login.module.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [continuarConectado, setContinuarConectado] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +40,15 @@ export default function Login() {
                 required
                 className={styles.input}
             />
+            <div className={styles.checkboxContainer}>
+                <input
+                    type="checkbox"
+                    id="continuarConectado"
+                    checked={continuarConectado}
+                    onChange={() => setContinuarConectado(!continuarConectado)}
+                />
+                <label htmlFor="continuarConectado">Continuar conectado</label>
+            </div>
             <button type="submit" className={styles.button}>
                 Login
             </button>
@@ -46,6 +56,12 @@ export default function Login() {
             <Link to='home' className={styles.link}>
                 Esqueceu a senha?
             </Link>
+            <div className={styles.cadastroContainer}>
+                <span>Não tem uma conta?</span>
+                <Link to='/cadastro' className={styles.link}>
+                    Cadastre-se
+                </Link>
+            </div>
         </div>
     </div>
   );
