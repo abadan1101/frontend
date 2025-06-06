@@ -7,7 +7,7 @@ import Upperbar from './components/upperbar/upperbar.js';
 
 function App() {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/";
+  const isLoginPage = location.pathname === "/" || location.pathname === "/register";
 
   return (
     <div className="App">

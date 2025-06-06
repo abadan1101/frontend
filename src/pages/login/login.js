@@ -1,17 +1,32 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import api from '../../services/api.js';
+import { Link, useNavigate } from "react-router-dom"; // importe o hook
 import styles from "./login.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [continuarConectado, setContinuarConectado] = useState(false);
+  const navigate = useNavigate(); // inicialize o hook
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // lógica de autenticação aqui
-    alert("Login enviado!");
-  };
+  // função para logar
+async function handleSubmit(e) {
+  e.preventDefault();
+  try {
+    const response = await api.post('/auth/login', {
+      email: email,
+      password: senha,
+    });
+    // Se login for bem-sucedido, redirecione para home
+    if (response.status === 200) {
+      navigate('/bloconotas');
+    } else {
+      alert(response.data.msg || "Erro ao fazer login.");
+    }
+  } catch (error) {
+    alert(error.response?.data?.msg || "Erro ao fazer login.");
+  }
+}
 
   return (
     <div className={styles.container}>
@@ -58,7 +73,7 @@ export default function Login() {
             </Link>
             <div className={styles.cadastroContainer}>
                 <span>Não tem uma conta?</span>
-                <Link to='/cadastro' className={styles.link}>
+                <Link to='/register' className={styles.link}>
                     Cadastre-se
                 </Link>
             </div>

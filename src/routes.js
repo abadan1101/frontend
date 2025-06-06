@@ -8,6 +8,7 @@ import Home from './pages/home/home.js';
 import Trabalho from './pages/trabalho';
 import BlocoNotas from './pages/notepad/notepad.js';
 import ErrorPage from './pages/errorPage';
+import Register from './pages/register/register.js';
 
 const router = createHashRouter([
   {
@@ -18,6 +19,10 @@ const router = createHashRouter([
       {
         path: "/",
         element: <Login />
+      },
+      {
+        path: "register",
+        element: <Register />
       },
       {
         path: "home",
