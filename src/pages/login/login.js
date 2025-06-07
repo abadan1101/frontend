@@ -19,7 +19,7 @@ async function handleSubmit(e) {
     });
     // Se login for bem-sucedido, redirecione para home
     if (response.status === 200) {
-      navigate('/bloconotas');
+      navigate('/home');
     } else {
       alert(response.data.msg || "Erro ao fazer login.");
     }
