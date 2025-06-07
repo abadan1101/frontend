@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from '../../services/api.js';
 import { Link, useNavigate } from "react-router-dom"; // importe o hook
 import styles from "./login.module.css";
@@ -7,26 +7,57 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [continuarConectado, setContinuarConectado] = useState(false);
-  const navigate = useNavigate(); // inicialize o hook
+  const [loading, setLoading] = useState(true);
+  const [autenticado, setAutenticado] = useState(false);
+  const navigate = useNavigate();
 
-  // função para logar
-async function handleSubmit(e) {
-  e.preventDefault();
-  try {
-    const response = await api.post('/auth/login', {
-      email: email,
-      password: senha,
-    });
-    // Se login for bem-sucedido, redirecione para home
-    if (response.status === 200) {
-      navigate('/home');
-    } else {
-      alert(response.data.msg || "Erro ao fazer login.");
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        await api.get('/auth/validate');
+        setAutenticado(true);
+        navigate('/home');
+      } catch {
+        setAutenticado(false);
+      } finally {
+        setLoading(false);
+      }
     }
-  } catch (error) {
-    alert(error.response?.data?.msg || "Erro ao fazer login.");
+    checkAuth();
+  }, [navigate]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const response = await api.post('/auth/login', {
+        email: email,
+        password: senha,
+        continuarConectado: continuarConectado
+      });
+      if (response.status === 200) {
+        navigate('/home');
+      } else {
+        alert(response.data.msg || "Erro ao fazer login.");
+      }
+    } catch (error) {
+      alert(error.response?.data?.msg || "Erro ao fazer login.");
+    }
   }
+
+  if (loading) {
+  return (
+    <div className={styles.loaderContainer}>
+      <div className={styles.loader}>
+        <div className={styles.spinner}></div>
+        <span className={styles.loaderText}>Carregando...</span>
+      </div>
+    </div>
+  );
 }
+
+  if (autenticado) {
+    return null; // Ou um redirect, se preferir
+  }
 
   return (
     <div className={styles.container}>
