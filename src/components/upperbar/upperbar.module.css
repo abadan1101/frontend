@@ -40,14 +40,14 @@
 	transition: all .3s ease;
 }
 .content nav .formGroup input:focus {
-	box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
+	box-shadow: 0 0 0 1px #1775F1, 0 0 0 4px #D0E4FF;
 }
 .content nav .formGroup .icon {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	right: 16px;
-	color: var(--dark-gray);
+	color: #8D8D8D;
 }
 .content nav .navlink {
 	position: relative;
@@ -63,12 +63,12 @@
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	border: 2px solid var(--light);
-	background: var(--red);
+	border: 2px solid #fff;
+	background: #FC3B56;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: var(--light);
+	color: #fff;
 	font-size: 10px;
 	font-weight: 700;
 }

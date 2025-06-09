@@ -45,15 +45,15 @@ export default function Login() {
   }
 
   if (loading) {
-  return (
-    <div className={styles.loaderContainer}>
-      <div className={styles.loader}>
-        <div className={styles.spinner}></div>
-        <span className={styles.loaderText}>Carregando...</span>
+    return (
+      <div className={styles.loaderContainer}>
+        <div className={styles.loader}>
+          <div className={styles.spinner}></div>
+          <span className={styles.loaderText}>Carregando...</span>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
   if (autenticado) {
     return null; // Ou um redirect, se preferir

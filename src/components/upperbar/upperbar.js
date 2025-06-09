@@ -1,7 +1,8 @@
+//IMPORTAÇÃO DOS COMPONENTES---------------------------------------------------
+import styles from './upperbar.module.css';
 import { IoIosSearch } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
-import styles from './upperbar.module.css';
 import { LiaUserSolid } from "react-icons/lia";
 
 const Upperbar = () => {

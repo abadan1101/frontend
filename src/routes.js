@@ -29,11 +29,11 @@ const router = createHashRouter([
         element: <Home />
       },
       {
-        path: "trabalho",
+        path: "work",
         element: <Trabalho />
       },
       {
-        path: "bloconotas",
+        path: "notepad",
         element: <BlocoNotas />
       },
     ]

@@ -29,19 +29,10 @@ li {
 }
 
 :root {
-	--grey: #F1F0F6;
-	--dark-gray: #8D8D8D;
-	--dark-gray2:#575555;
-	--light: #fff;
-	--dark: #000;
-	--green: #81D43A;
-	--light-green: #E3FFCB;
-	--blue: #1775F1;
-	--light-blue: #D0E4FF;
-	--dark-blue: #0C5FCD;
-	--red: #FC3B56;
+	--themeColor01: #6a11cb;
+	--themeColor02: #2575fc;
 }
 
 .App{
-	padding: 75px 0 0 0;
+	padding: 0 0 0 0;
 }
