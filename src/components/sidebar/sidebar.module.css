@@ -90,9 +90,8 @@
   font-size: 20px;
 }
 .iconRight {
-  font-size: 20px;
+  font-size: 15px;
   margin-left: auto;
-  transform: rotateZ(90deg);
 }
 .altSub{
   font-weight: bold;

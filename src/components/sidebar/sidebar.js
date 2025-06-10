@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import styles from './sidebar.module.css';
 import { TfiNotepad } from "react-icons/tfi";
 import { MdOutlineWorkOutline, MdOutlineTaskAlt  } from "react-icons/md";
-import { IoFlagSharp , IoHomeOutline ,IoSchoolOutline , IoCarOutline, IoCalendarNumberOutline } from "react-icons/io5";
+import { IoFlagSharp , IoHomeOutline ,IoSchoolOutline , IoCarOutline, IoCalendarNumberOutline, IoChevronDown } from "react-icons/io5";
 import logo1 from '../../img/logo1.png';
 
 
@@ -34,19 +34,9 @@ const Sidebar = () => {
 
   // método para abrir os submenus
   function openSubMenu(e){
-    // const sb_Menu = [...document.getElementsByClassName("sbMenu")]
-    // sb_Menu.map((evt)=>{
-    //     evt.classList.remove(styles.active);
-    //     return evt;
-    // });
-    if(e.target.classList.contains(styles.iconRight) || e.target.classList.contains(styles.icon)){
-      const x = e.target.parentElement.parentElement.children[1];
-      x.classList.toggle(styles.show);
-      // e.target.parentElement.classList.toggle(styles.active);
-    }else{
-      const x = e.target.parentElement.children[1];
-      x.classList.toggle(styles.show);
-      // e.target.classList.toggle(styles.active);
+    const el = e.target.closest(`.${styles.subMenu}`)
+    if(el){
+      el.children[1].classList.toggle(styles.show);
     }
   }
 
@@ -104,7 +94,7 @@ const Sidebar = () => {
             <div onClick={openActiveSB}><Link className={styles.home} to='home'><IoFlagSharp  className={styles.icon}/> Início</Link></div>
             <div className={styles.divider}>Principal</div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu} className='sbMenu'><IoHomeOutline  className={styles.icon}/> Casa <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><IoHomeOutline  className={styles.icon}/> Casa <IoChevronDown className={styles.iconRight}/></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Finanças</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Manutenção</Link></li>
@@ -113,7 +103,7 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu} className='sbMenu'><IoCarOutline className={styles.icon}/> Carro <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><IoCarOutline className={styles.icon}/> Carro <IoChevronDown className={styles.iconRight}/></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Manutenção</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Reparos</Link></li>
@@ -121,14 +111,14 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu} className='sbMenu'><MdOutlineWorkOutline className={styles.icon}/> Trabalho <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><MdOutlineWorkOutline className={styles.icon}/> Trabalho <IoChevronDown className={styles.iconRight}/></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Tarefas</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Comprimissos</Link></li>
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu} className='sbMenu'><IoSchoolOutline  className={styles.icon}/> Estudo <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><IoSchoolOutline  className={styles.icon}/> Estudo <IoChevronDown className={styles.iconRight}/></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Tarefas</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Comprimissos</Link></li>
