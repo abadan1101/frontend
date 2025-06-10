@@ -142,7 +142,8 @@
   background: #5240f5;
 }
 .liDirect.active{
-  background: #5240f5;
+  background: transparent;
+  border: solid 1px #9084fc;
   color: #fff !important;
 }
 
@@ -166,7 +167,8 @@
   transform: rotateZ(90deg);
 }
 .subMenu p.active{
-  background: #5240f5;
+  border: solid 1px #9084fc;
+  background: transparent;
 }
 
 /* ------itens do submenu-------- */
