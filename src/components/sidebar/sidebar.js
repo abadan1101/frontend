@@ -34,19 +34,19 @@ const Sidebar = () => {
 
   // método para abrir os submenus
   function openSubMenu(e){
-    const sb_Menu = [...document.getElementsByClassName("sbMenu")]
-    sb_Menu.map((evt)=>{
-        evt.classList.remove(styles.active);
-        return evt;
-    });
+    // const sb_Menu = [...document.getElementsByClassName("sbMenu")]
+    // sb_Menu.map((evt)=>{
+    //     evt.classList.remove(styles.active);
+    //     return evt;
+    // });
     if(e.target.classList.contains(styles.iconRight) || e.target.classList.contains(styles.icon)){
       const x = e.target.parentElement.parentElement.children[1];
       x.classList.toggle(styles.show);
-      e.target.parentElement.classList.toggle(styles.active);
+      // e.target.parentElement.classList.toggle(styles.active);
     }else{
       const x = e.target.parentElement.children[1];
       x.classList.toggle(styles.show);
-      e.target.classList.toggle(styles.active);
+      // e.target.classList.toggle(styles.active);
     }
   }
 
@@ -76,12 +76,13 @@ const Sidebar = () => {
       e.target.classList.add(styles.active);
     }
 
-    if(e.target.parentElement.parentElement.classList.contains(styles.sideDropdown)){
-      e.target.parentElement.parentElement.parentElement.children[0].classList.add(styles.active)
+    const el = e.target.closest(`.${styles.sideDropdown}`)
+    if(el){
+     el.parentElement.children[0].classList.add(styles.active)
     }
-    console.log(e.target.parentElement.parentElement)
     setIsOpen(!isOpen)
   }
+  
   
 
   //html do componente
