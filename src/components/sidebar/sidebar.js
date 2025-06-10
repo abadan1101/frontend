@@ -34,6 +34,11 @@ const Sidebar = () => {
 
   // método para abrir os submenus
   function openSubMenu(e){
+    const sb_Menu = [...document.getElementsByClassName("sbMenu")]
+    sb_Menu.map((evt)=>{
+        evt.classList.remove(styles.active);
+        return evt;
+    });
     if(e.target.classList.contains(styles.iconRight) || e.target.classList.contains(styles.icon)){
       const x = e.target.parentElement.parentElement.children[1];
       x.classList.toggle(styles.show);
@@ -50,6 +55,11 @@ const Sidebar = () => {
   // método para configurar botões do menu ao abrir paginas
   function openActiveSB(e){
     //remove configurações dos botões ativos
+    const sb_Menu = [...document.getElementsByClassName("sbMenu")]
+    sb_Menu.map((evt)=>{
+        evt.classList.remove(styles.active);
+        return evt;
+    });
     const y = [...document.getElementsByClassName(styles.altSub)];
     y.map((evt)=>{
       evt.classList.remove(styles.altSub);
@@ -65,6 +75,11 @@ const Sidebar = () => {
       e.target.classList.add(styles.altSub);
       e.target.classList.add(styles.active);
     }
+
+    if(e.target.parentElement.parentElement.classList.contains(styles.sideDropdown)){
+      e.target.parentElement.parentElement.parentElement.children[0].classList.add(styles.active)
+    }
+    console.log(e.target.parentElement.parentElement)
     setIsOpen(!isOpen)
   }
   
@@ -88,7 +103,7 @@ const Sidebar = () => {
             <div onClick={openActiveSB}><Link className={styles.home} to='home'><IoFlagSharp  className={styles.icon}/> Início</Link></div>
             <div className={styles.divider}>Principal</div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><IoHomeOutline  className={styles.icon}/> Casa <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><IoHomeOutline  className={styles.icon}/> Casa <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Finanças</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Manutenção</Link></li>
@@ -97,7 +112,7 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><IoCarOutline className={styles.icon}/> Carro <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><IoCarOutline className={styles.icon}/> Carro <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Manutenção</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Reparos</Link></li>
@@ -105,23 +120,23 @@ const Sidebar = () => {
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><MdOutlineWorkOutline className={styles.icon}/> Trabalho <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><MdOutlineWorkOutline className={styles.icon}/> Trabalho <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Tarefas</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Comprimissos</Link></li>
               </ul>
             </div>
             <div className={styles.subMenu}>
-              <p onClick={openSubMenu}><IoSchoolOutline  className={styles.icon}/> Estudo <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
+              <p onClick={openSubMenu} className='sbMenu'><IoSchoolOutline  className={styles.icon}/> Estudo <i className={`${styles.iconRight} bx bx-chevron-right`}></i></p>
               <ul className={styles.sideDropdown}>
                 <li onClick={openActiveSB}><Link to='home'>Tarefas</Link></li>
                 <li onClick={openActiveSB}><Link to='home'>Comprimissos</Link></li>
               </ul>
             </div>
             <div className={styles.divider}>Ferramentas</div>
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='home'><MdOutlineTaskAlt  className={styles.icon}/> Tarefas</Link></div>	
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='notepad'><TfiNotepad className={styles.icon}/> Bloco de Notas</Link></div>	
-            <div onClick={openActiveSB}><Link className={styles.liDirect} to='home'><IoCalendarNumberOutline  className={styles.icon}/> Calendário</Link></div>	
+            <div onClick={openActiveSB}><Link className={`${styles.liDirect} sbMenu`} to='home'><MdOutlineTaskAlt  className={styles.icon}/> Tarefas</Link></div>	
+            <div onClick={openActiveSB}><Link className={`${styles.liDirect} sbMenu`} to='notepad'><TfiNotepad className={styles.icon}/> Bloco de Notas</Link></div>	
+            <div onClick={openActiveSB}><Link className={`${styles.liDirect} sbMenu`} to='home'><IoCalendarNumberOutline  className={styles.icon}/> Calendário</Link></div>	
           </nav>
           <div className={styles.ads}>
             <div className={styles.wrapper}>
