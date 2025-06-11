@@ -1,5 +1,5 @@
 .container {
-  min-height: calc(100vh - 75px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,6 +102,11 @@
 
 .button:hover {
   background: #2563eb;
+}
+
+.loginContainer{
+  display: flex;
+  margin-top: 10px;
 }
 
 @media (max-width: 500px) {

@@ -1,9 +1,17 @@
+//IMPORTAÇÃO DAS BIBLIOTECAS---------------------------------------------------
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+
+
+//IMPORTAÇÃO DOS MÓDULOS-------------------------------------------------------
 import api from '../../services/api.js';
-import { Link, useNavigate } from "react-router-dom"; // importe o hook
 import styles from "./login.module.css";
 
+
+
 export default function Login() {
+  //variáveis
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [continuarConectado, setContinuarConectado] = useState(false);
@@ -11,6 +19,9 @@ export default function Login() {
   const [autenticado, setAutenticado] = useState(false);
   const navigate = useNavigate();
 
+
+
+  //hook para validar o login automático em caso de token válido
   useEffect(() => {
     async function checkAuth() {
       try {
@@ -26,9 +37,11 @@ export default function Login() {
     checkAuth();
   }, [navigate]);
 
+  //método para efetuar login
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await api.post('/auth/login', {
         email: email,
         password: senha,
@@ -37,13 +50,16 @@ export default function Login() {
       if (response.status === 200) {
         navigate('/home');
       } else {
+        setLoading(false);
         alert(response.data.msg || "Erro ao fazer login.");
       }
     } catch (error) {
+      setLoading(false);
       alert(error.response?.data?.msg || "Erro ao fazer login.");
     }
   }
 
+  //modal de carregamento
   if (loading) {
     return (
       <div className={styles.loaderContainer}>
@@ -55,6 +71,7 @@ export default function Login() {
     );
   }
 
+  //redirecionar em caso específico
   if (autenticado) {
     return null; // Ou um redirect, se preferir
   }
@@ -99,7 +116,7 @@ export default function Login() {
                 Login
             </button>
             </form>
-            <Link to='home' className={styles.link}>
+            <Link className={styles.link}>
                 Esqueceu a senha?
             </Link>
             <div className={styles.cadastroContainer}>
