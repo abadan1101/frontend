@@ -116,7 +116,7 @@ const BlocoNotas = () => {
       // Filtra para mostrar apenas notas que não estão na lixeira
       setTrashNotes(response.data.filter(note => note.trash));
     }
-
+    
     getTrashNotes();
   }, [allNotes, trashOpen]); // Recarrega as notas excluídas quando allNotes ou trashOpen mudarem
 
