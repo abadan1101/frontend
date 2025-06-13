@@ -1,5 +1,7 @@
 import { useState, useEffect} from 'react';
 import { SlNote } from "react-icons/sl";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //IMPORTAÇÃO DA API
 import api from '../../services/api.js';
@@ -57,7 +59,7 @@ const BlocoNotas = () => {
         setAllNotes(response.data);
       } catch (error) {
         console.error('Erro ao carregar anotações:', error);
-        alert("Erro ao carregar anotações")
+        toast.error("Erro ao carregar anotações")
       } finally {
         setLoading(false);
       }
@@ -68,36 +70,70 @@ const BlocoNotas = () => {
 
   // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
-    setLoading(true);
+      toast.loading("Criando anotação...");
     try {
       const response = await api.post('/annotations/create', {
         title,
         notes,
         priority: false
       });
+
       setAllNotes(prevNotes => [...prevNotes, response.data]);
+      toast.dismiss(); // remove loading
+      toast.success("Anotação criada com sucesso!");
+
     } catch (error) {
       console.error('Erro ao criar anotação:', error);
-      alert("Erro ao criar anotação")
+      toast.dismiss(); // remove loading
+      toast.error("Erro ao criar anotação");
     } finally {
-      setLoading(false);
     }
   }
 
   // função para mover uma anotação para a lixeira
   async function handleTrash(id, toTrash = true) {
+    // 1. Backup das anotações
+    const previousNotes = [...allNotes];
+
+    // 2. Atualização otimista: remove ou restaura visualmente
+    setAllNotes(prev =>
+      prev.filter(note => note._id !== id)
+    );
+
+    toast.loading(
+      toTrash
+        ? "Enviando para a lixeira..."
+        : "Restaurando anotação..."
+    );
+
     try {
       await api.post(`/annotations/trash/${id}`, { trash: toTrash });
-      setAllNotes(prevNotes => prevNotes.filter(note => note._id !== id));
+
+      toast.dismiss(); // remove loading
+      toast.success(
+        toTrash
+          ? "Anotação enviada para a lixeira com sucesso!"
+          : "Anotação restaurada com sucesso!"
+      );
+
     } catch (error) {
-      console.error('Erro ao mover anotação para a lixeira:', error);
-       alert("Erro ao mover anotação para a lixeira")
+      console.error('Erro ao alterar status da anotação:', error);
+
+      // Reverte
+      setAllNotes(previousNotes);
+
+      toast.dismiss();
+      toast.error(
+        toTrash
+          ? "Erro ao mover anotação para a lixeira"
+          : "Erro ao restaurar anotação"
+      );
     }
   }
 
   // função para salvar uma anotação editada
   async function handleSaveEdit(id, updatedNotes) {
-    setLoading(true);
+    toast.loading("Alterando anotação...");
     try {
       const response = await api.post(`/annotations/update/${id}`, {
         notes: updatedNotes
@@ -108,34 +144,44 @@ const BlocoNotas = () => {
           note._id === id ? response.data : note
         )
       );
-
+      toast.dismiss();
+      toast.success("Alterações gravadas com sucesso!");
       return response.data;
 
     } catch (error) {
       console.error('Erro ao salvar edição da anotação:', error);
-      alert("Erro ao salvar edição da anotação")
+      toast.dismiss();
+      toast.error("Erro ao salvar edição da anotação")
       return null;
 
-    } finally {
-      setLoading(false);
     }
   }
 
   // função para alternar prioridade
   async function handleTogglePriority(id) {
-    setLoading(true);
+    toast.loading("Alterando anotação...");
+    // 1. Salva o estado atual da nota
+    const previousNotes = [...allNotes];
+
+    // 2. Aplica atualização otimista
+    setAllNotes(prevNotes =>
+      prevNotes.map(note =>
+        note._id === id ? { ...note, priority: !note.priority } : note
+      )
+    );
+
     try {
-      const response = await api.post(`/priorities/${id}`);
-      setAllNotes(prevNotes =>
-        prevNotes.map(note =>
-          note._id === id ? response.data : note
-        )
-      );
+      // 3. Tenta atualizar no servidor
+      await api.post(`/priorities/${id}`);
+      toast.dismiss();
+      toast.success("Prioridade alterada com sucesso!");
     } catch (error) {
-      console.error('Erro ao alternar prioridade da anotação:', error);
-      alert("Erro ao alternar prioridade")
-    } finally {
-      setLoading(false);
+      console.error('Erro ao alternar prioridade:', error);
+      
+      // 4. Reverte caso dê problema
+      setAllNotes(previousNotes);
+      toast.dismiss();
+      toast.error("Erro ao alternar prioridade")
     }
   }
   // FIM DAS FUNÇÕES PARA MANIPULAR AS ANOTAÇÕES-----------------------------
@@ -155,7 +201,7 @@ const BlocoNotas = () => {
         setLoading(false);
       } catch (error) {
         console.error('Erro ao buscar notas excluídas:', error);
-        alert("Erro ao buscar notas excluídas")
+        toast.error("Erro ao buscar notas excluídas")
         setLoading(false);
       }
     }
@@ -237,20 +283,32 @@ const BlocoNotas = () => {
     e.preventDefault();
   };
 
-  // Troca as notas de lugar ao soltar
   const handleDrop = async (index) => {
     if (draggedIndex === null || draggedIndex === index) return;
+    toast.loading("Alterando ordem...");
+
     const updatedNotes = [...allNotes];
     const [removed] = updatedNotes.splice(draggedIndex, 1);
     updatedNotes.splice(index, 0, removed);
+
+    // Backup da ordem anterior
+    const previousNotes = [...allNotes];
+
     setAllNotes(updatedNotes);
     setDraggedIndex(null);
 
-    // Envia a nova ordem para o backend
-    setLoading(true);
     const orderedIds = updatedNotes.map(note => note._id);
-    await api.put('/annotations/order', { orderedIds });
-    setLoading(false);
+
+    try {
+      await api.put('/annotations/order', { orderedIds });
+      toast.dismiss();
+      toast.success("Ordem alterada com sucesso!");
+    } catch (error) {
+      console.error('Erro ao salvar nova ordem:', error);
+      setAllNotes(previousNotes); // Restaura se falhar
+      toast.dismiss();
+      toast.error("Erro ao alterar a ordem")
+    }
   };
   // FIM DAS FUNÇÕES DE DRAG AND DROP (ARRASTAR E SOLTAR NOTAS---------------
 
@@ -375,6 +433,7 @@ const BlocoNotas = () => {
         title={confirmModal.title}
         message={confirmModal.message}
       />
+      <ToastContainer />
         
     </div>
   );

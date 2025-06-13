@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FiTrash, FiAlertCircle, FiMove } from "react-icons/fi"; // Adicione FiMove
-import { GiConfirmed } from "react-icons/gi";
 
 
 import styles from './notas.module.css';
@@ -8,7 +7,6 @@ import styles from './notas.module.css';
 function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
     const [notesValue, setNotesValue] = useState(data.notes);
     const [isEditing, setIsEditing] = useState(false);
-    const [showSaved, setShowSaved] = useState(false);
 
     // Salva a nota ao sair do campo de edição
     const handleBlur = async () => {
@@ -16,8 +14,6 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
         if (notesValue !== data.notes && notesValue !== '') {
             try {
                 await onSaveEdit(data._id, notesValue); // Aguarda resposta do backend
-                setShowSaved(true);
-                setTimeout(() => setShowSaved(false), 2000); // Esconde após 2s
             } catch (error) {
                 // Aqui você pode tratar erro, se quiser
             }
@@ -63,7 +59,6 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
                     onChange={e => {
                         setNotesValue(e.target.value);
                         setIsEditing(true);
-                        setShowSaved(false);
                     }}
                     onBlur={handleBlur}
                     onKeyUp={handleKeyUp}
@@ -79,11 +74,8 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
                                  onClick={handleTogglePriority}/>
                         }
                     </span>
-                    {isEditing && !showSaved && (
+                    {isEditing && (
                         <p className={styles.infoSave}>toque fora da nota para salvar</p>
-                    )}
-                    {showSaved && (
-                        <p className={styles.msgSave}>salvo com sucesso! <GiConfirmed /></p>
                     )}
                     {filter === "all" && (
                         <i className={styles.dragIcon}>
