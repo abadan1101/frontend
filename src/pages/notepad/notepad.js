@@ -433,7 +433,18 @@ const BlocoNotas = () => {
         title={confirmModal.title}
         message={confirmModal.message}
       />
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
         
     </div>
   );
