@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/frontend/notepad/static/css/main.0eb6249c.css",
+    "main.js": "/frontend/notepad/static/js/main.11e2d6c7.js",
+    "static/media/logo1.png": "/frontend/notepad/static/media/logo1.fb04fa9e8db1f4f38573.png",
+    "index.html": "/frontend/notepad/index.html",
+    "main.0eb6249c.css.map": "/frontend/notepad/static/css/main.0eb6249c.css.map",
+    "main.11e2d6c7.js.map": "/frontend/notepad/static/js/main.11e2d6c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0eb6249c.css",
+    "static/js/main.11e2d6c7.js"
+  ]
+}
