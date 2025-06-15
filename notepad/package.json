@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://abadan1101.github.io/frontend_teste",
+  "homepage": "https://abadan1101.github.io/frontend",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
