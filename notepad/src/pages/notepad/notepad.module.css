@@ -1,0 +1,72 @@
+.ModuloBlocoNotas {
+    margin: 0 auto;
+    padding: 85px 30px 170px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.ModuloBlocoNotas main {
+    flex-grow: 1;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    color: #b0b0b0;
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: rgba(245, 245, 245, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    animation: fadeIn 0.7s;
+    margin: 30px 0;
+    gap: 12px;
+}
+
+.emptyIcon{
+    font-size: 48px;
+    opacity: 0.7;
+    margin-Bottom: 8;
+    animation: bounce 1.2s infinite alternate;
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+.ModuloBlocoNotas main ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    list-style: none;
+}
+
+/* CONFIGURAÇÕES DE RESPONSIVIDADE */
+
+@media (max-width: 1400px) {
+    .ModuloBlocoNotas main ul {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 1000px) {
+    .ModuloBlocoNotas main ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .ModuloBlocoNotas {
+        padding: 85px 10px 170px 10px;
+    }
+    .ModuloBlocoNotas main ul {
+        grid-template-columns: 1fr;
+    }
+}

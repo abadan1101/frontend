@@ -1,0 +1,38 @@
+/*--componentes externos--*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, button, textarea {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+
+:root {
+	--themeColor01: #6a11cb;
+	--themeColor02: #2575fc;
+}
+
+.App{
+	padding: 0 0 0 0;
+}

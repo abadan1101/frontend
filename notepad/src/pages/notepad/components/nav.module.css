@@ -1,0 +1,152 @@
+.nav{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.75); /* vidro fosco */
+    border-top: solid 1px #FFD3CA;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.nav div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    width: 100%;
+}
+
+.addNotes{
+    position: absolute;
+    right: 10px;
+    bottom: 80px;
+    color: #fff;
+    background: linear-gradient(135deg, #FFD600 60%, #FFB300 100%);
+    font-size: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    border: none;
+    padding: 10px;
+}
+
+.addNotes:hover{
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #FFEA00 60%, #FFC107 100%);
+    color: #fff;
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: rgba(255, 211, 202, 0.08);
+  padding: 10px 18px;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(255, 211, 202, 0.10);
+}
+
+.radioLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  gap: 0.4rem;
+  color: #555;
+  transition: ease 0.2s;
+}
+
+.radioLabel:hover {
+  transform: scale(1.2);
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid #FFD3CA;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin-right: 6px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(235, 143, 122, 0.08);
+}
+
+.radioInput:checked + .customRadio {
+  border: 3px solid #eb8f7a;
+  background: #f7e7e3;
+}
+
+.trashContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  max-width: 60px;
+  transition: ease 0.2s;
+  cursor: pointer;
+}
+
+.trashContainer:hover {
+  transform: scale(1.2);
+}
+
+.trashNotes {
+  font-size: 20px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999 !important;
+  margin-bottom: 5px;
+}
+
+.trashLabel {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #555;
+}
+
+/* CONFIGURAÇÕES DE RESPONSIVIDADE */
+@media (max-width: 500px) {
+    .nav {
+      height: 60px;
+    }
+
+    .radioLabel:hover {
+      transform: scale(1);
+    }
+
+    .radioGroup {
+      font-size: 12px;
+      padding: 6px 6px;
+      gap: 1rem;
+    }
+
+    .trashContainer:hover {
+      transform: scale(1);
+    }
+
+    .trashLabel {
+      font-size: 12px;
+    }
+
+
+}
