@@ -29,7 +29,6 @@ export default function Login() {
       try {
         await api.get('/auth/validate');
         setAutenticado(true);
-        navigate('/home');
       } catch {
         setAutenticado(false);
       } finally {
@@ -62,7 +61,7 @@ export default function Login() {
 
       if (response.status === 200) {
         console.log("Login bem-sucedido!");
-        navigate('/home');
+        setAutenticado(true);
       } else {
         console.warn("Erro no login:", response.data);
         setErrorMessage(response.data.msg || "Erro ao fazer login.");
@@ -93,7 +92,7 @@ export default function Login() {
 
   //redirecionar em caso específico
   if (autenticado) {
-    return null; // Ou um redirect, se preferir
+    navigate('/notepad');
   }
 
   return (
