@@ -13,7 +13,7 @@ const Upperbar = () => {
       <nav>
           <div className={styles.logo}>
               <img src={logo} alt="Logo" />
-              <span className={styles.logoText}>Notepad</span>
+              <span className={styles.logoText}>FlyNotes</span>
           </div>
           <form action='#'>
               <div className={styles.formGroup}>

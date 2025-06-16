@@ -30,9 +30,10 @@
 }
 .logoText{
 	position: absolute;
-	left: 5px;
-	top: 40px;
+	left: 8px;
+	top: 43px;
 	color: #fff;
+	font-size: 14px;
 	margin-left: 10px;
 }
 
