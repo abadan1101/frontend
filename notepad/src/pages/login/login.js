@@ -46,6 +46,13 @@ export default function Login() {
     }
   }, [errorMessage]);
 
+  // redireciona após autenticação
+  useEffect(() => {
+    if (autenticado) {
+      navigate('/notepad');
+    }
+  }, [autenticado, navigate]);
+
   //método para efetuar login
   async function handleSubmit(e) {
     e.preventDefault();
@@ -88,11 +95,6 @@ export default function Login() {
         </div>
       </div>
     );
-  }
-
-  //redirecionar em caso específico
-  if (autenticado) {
-    navigate('/notepad');
   }
 
   return (

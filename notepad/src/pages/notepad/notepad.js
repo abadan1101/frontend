@@ -1,4 +1,5 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useCallback} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SlNote } from "react-icons/sl";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,12 +17,19 @@ import Notes from './components/notas.js'
 import Trash from './components/trash.js';
 import ModalLoad from '../../components/modalLoad/load.js';
 import ConfirmModal from '../../components/modalConfirm/ConfirmModal.js';
+import AlertModal from '../../components/alertModal/alertModal.js';
 
 
 
 const BlocoNotas = () => {
   
   // CONSTANTES E VARIÁVEIS--------------------------------------------------
+  // Estado para armazenar o erro
+  const [error, setError] = useState(null); // Estado para armazenar o erro
+  // Hook para navegação
+  const navigate = useNavigate(); // Hook para navegação
+  // Estado para controlar se já redirecionou
+  const [hasRedirected, setHasRedirected] = useState(false);
   // Estado para controlar o carregamento inicial
   const [loading, setLoading] = useState(true);
   // Estado para buscar todas as notas
@@ -44,6 +52,12 @@ const BlocoNotas = () => {
     onConfirm: null,
     onCancel: null,
   });
+  const [alertModal, setAlertModal] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    onConfirm: null,
+  });
   // FIM DAS CONSTANTES E VARIÁVEIS------------------------------------------
 
 
@@ -57,8 +71,10 @@ const BlocoNotas = () => {
       try {
         const response = await api.get('/annotations/read');
         setAllNotes(response.data);
-      } catch (error) {
-        console.error('Erro ao carregar anotações:', error);
+        setError(null); // Limpa o erro se sucesso
+      } catch (err) {
+        setError(err); // Salva o erro
+        console.error('Erro ao carregar anotações:', err);
         toast.error("Erro ao carregar anotações")
       } finally {
         setLoading(false);
@@ -67,6 +83,31 @@ const BlocoNotas = () => {
 
     getAllNotes();
   }, []);
+
+  //MÉTODO PARA REDIRECIONAR PARA A PÁGINA DE LOGIN CASO A SESSÃO EXPIRE
+  const handleRedirectLogin = useCallback(() => {
+    setAlertModal({
+      isOpen: true,
+      title: "Sessão expirada",
+      message: "Sua sessão expirou. Você será redirecionado para a página de login.",
+      onConfirm: () => {
+        setAlertModal({ isOpen: false });
+        navigate('/');
+      },
+    });
+  }, [navigate, setAlertModal]);
+
+  // Hook para redirecionar para a página de login se ocorrer um erro 401
+  useEffect(() => {
+    if (
+      error &&
+      error.response?.status === 401 &&
+      !hasRedirected
+    ) {
+      setHasRedirected(true);
+      handleRedirectLogin();
+    }
+  }, [allNotes, error, navigate, hasRedirected, handleRedirectLogin]);
 
   // função para adicionar uma nova anotação
   async function handleSubmit(title, notes) {
@@ -77,13 +118,14 @@ const BlocoNotas = () => {
         notes,
         priority: false
       });
-
+      setError(null); // Limpa o erro se sucesso
       setAllNotes(prevNotes => [...prevNotes, response.data]);
       toast.dismiss(); // remove loading
       toast.success("Anotação criada com sucesso!");
 
     } catch (error) {
       console.error('Erro ao criar anotação:', error);
+      setError(error); // Salva o erro
       toast.dismiss(); // remove loading
       toast.error("Erro ao criar anotação");
     } finally {
@@ -115,8 +157,10 @@ const BlocoNotas = () => {
           ? "Anotação enviada para a lixeira com sucesso!"
           : "Anotação restaurada com sucesso!"
       );
+      setError(null); // Limpa o erro se sucesso
 
     } catch (error) {
+      setError(error); // Limpa o erro se sucesso
       console.error('Erro ao alterar status da anotação:', error);
 
       // Reverte
@@ -146,9 +190,11 @@ const BlocoNotas = () => {
       );
       toast.dismiss();
       toast.success("Alterações gravadas com sucesso!");
+      setError(null); // Limpa o erro se sucesso
       return response.data;
 
     } catch (error) {
+      setError(error); // Salva o erro
       console.error('Erro ao salvar edição da anotação:', error);
       toast.dismiss();
       toast.error("Erro ao salvar edição da anotação")
@@ -175,7 +221,9 @@ const BlocoNotas = () => {
       await api.post(`/priorities/${id}`);
       toast.dismiss();
       toast.success("Prioridade alterada com sucesso!");
+      setError(null); // Limpa o erro se sucesso
     } catch (error) {
+      setError(error); // Salva o erro
       console.error('Erro ao alternar prioridade:', error);
       
       // 4. Reverte caso dê problema
@@ -199,7 +247,9 @@ const BlocoNotas = () => {
         const response = await api.get('/trash/read');
         setTrashNotes(response.data.filter(note => note.trash));
         setLoading(false);
+        setError(null); // Limpa o erro se sucesso
       } catch (error) {
+        setError(error); // Salva o erro
         console.error('Erro ao buscar notas excluídas:', error);
         toast.error("Erro ao buscar notas excluídas")
         setLoading(false);
@@ -223,11 +273,14 @@ const BlocoNotas = () => {
 
       const orderedIds = updatedNotes.map(note => note._id);
       await api.put('/annotations/order', { orderedIds });
+      toast.success("Anotação restaurada com sucesso!");
+      setError(null); // Limpa o erro se sucesso
 
       return response.data;
     } catch (error) {
+      setError(error); // Salva o erro
+      toast.error("Erro ao restaurar anotação da lixeira");
       console.error('Erro ao restaurar anotação:', error);
-      alert("Erro ao restaurar anotação da lixeira")
       return null;
     }
   }
@@ -245,9 +298,18 @@ const BlocoNotas = () => {
 
   // função para excluir uma anotação da lixeira
   async function handleDeleteNote(id) {
-    await api.delete(`/trash/delete/${id}`);
-    setTrashNotes(trashNotes.filter(note => note._id !== id));
-    setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
+    try {
+      await api.delete(`/trash/delete/${id}`);
+      setTrashNotes(prevTrash => prevTrash.filter(note => note._id !== id));
+      setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
+      toast.success("Anotação excluída permanentemente!");
+      setError(null); // Limpa o erro se sucesso
+    } catch (error) {
+      setError(error); // Salva o erro
+      console.error('Erro ao excluir anotação:', error);
+      toast.error("Erro ao excluir anotação da lixeira.");
+      setConfirmModal({ isOpen: false });
+    }
   }
 
   // função para confirmar a limpeza da lixeira
@@ -263,9 +325,18 @@ const BlocoNotas = () => {
 
   // função para limpar toda a lixeira
   async function handleClearTrash() {
-    await api.delete('/trash/clear');
-    setTrashNotes([]); // Limpa o estado local das notas da lixeira
-    setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
+    try {
+      await api.delete('/trash/clear');
+      setTrashNotes([]); // Limpa o estado local das notas da lixeira
+      setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
+      toast.success("Lixeira limpa com sucesso!");
+      setError(null); // Limpa o erro se sucesso
+    } catch (error) {
+      setError(error); // Salva o erro
+      console.error('Erro ao limpar a lixeira:', error);
+      toast.error("Erro ao limpar a lixeira.");
+      setConfirmModal({ isOpen: false });
+    }
   }
   //FUNÇÕES PARA MANIPULAR A LIXEIRA-----------------------------------------
 
@@ -303,7 +374,9 @@ const BlocoNotas = () => {
       await api.put('/annotations/order', { orderedIds });
       toast.dismiss();
       toast.success("Ordem alterada com sucesso!");
+      setError(null); // Limpa o erro se sucesso
     } catch (error) {
+      setError(error); // Salva o erro
       console.error('Erro ao salvar nova ordem:', error);
       setAllNotes(previousNotes); // Restaura se falhar
       toast.dismiss();
@@ -432,6 +505,13 @@ const BlocoNotas = () => {
         onCancel={confirmModal.onCancel}
         title={confirmModal.title}
         message={confirmModal.message}
+      />
+      {/* MODAL DE ALERTA */}
+      <AlertModal
+        isOpen={alertModal.isOpen}
+        onConfirm={alertModal.onConfirm}
+        title={alertModal.title}
+        message={alertModal.message}
       />
       <ToastContainer
         position="top-right"
