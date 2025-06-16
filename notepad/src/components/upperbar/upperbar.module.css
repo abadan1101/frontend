@@ -21,6 +21,21 @@
 	left: 0;
 	box-shadow: 5px 5px 5px #c2bef7;
 }
+.logo img {
+	position: absolute;
+	left: 5px;
+	top: -8px;
+	width: 60px;
+	height: 60px;
+}
+.logoText{
+	position: absolute;
+	left: 5px;
+	top: 40px;
+	color: #fff;
+	margin-left: 10px;
+}
+
 .content nav form {
 	max-width: 400px;
 	width: 100%;

@@ -4,12 +4,17 @@ import { IoIosSearch } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
+import logo from '../../img/logo0.jpeg';
 
 const Upperbar = () => {
 
   return (
     <section className={styles.content}>
       <nav>
+          <div className={styles.logo}>
+              <img src={logo} alt="Logo" />
+              <span className={styles.logoText}>Notepad</span>
+          </div>
           <form action='#'>
               <div className={styles.formGroup}>
                   <input id="barrPesc_pesquisa" type='text' placeholder='Buscar...' />
