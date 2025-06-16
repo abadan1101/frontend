@@ -1,10 +1,9 @@
 //IMPORTAÇÃO DOS COMPONENTES---------------------------------------------------
 import styles from './upperbar.module.css';
 import { IoIosSearch } from "react-icons/io";
-import { FaBell } from "react-icons/fa";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
-import logo from '../../img/logo0.jpeg';
+import logo from '../../img/logo3.png';
 
 const Upperbar = () => {
 
@@ -13,7 +12,7 @@ const Upperbar = () => {
       <nav>
           <div className={styles.logo}>
               <img src={logo} alt="Logo" />
-              <span className={styles.logoText}>FlyNotes</span>
+              <span className={styles.logoText}>tS notes</span>
           </div>
           <form action='#'>
               <div className={styles.formGroup}>
