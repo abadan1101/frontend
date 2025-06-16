@@ -22,10 +22,6 @@ const Upperbar = () => {
               </div>
           </form>
           <p className={styles.navlink}>
-            <FaBell className={styles.icon}/>
-            <span className={styles.badge}>5</span>
-          </p>
-          <p className={styles.navlink}>
             <BiSolidMessageSquareDots className={styles.icon}/>
             <span className={styles.badge}>8</span>
           </p>
