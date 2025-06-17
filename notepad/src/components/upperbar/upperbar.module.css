@@ -10,7 +10,7 @@
 }
 /* NAVBAR */
 .content nav {
-    background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(120deg, var(--themeColor01) 0%, var(--themeColor02) 100%);
 	height: 64px;
 	padding: 0 20px;
 	display: flex;
