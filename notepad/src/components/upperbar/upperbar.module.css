@@ -27,6 +27,7 @@
 	top: 2px;
 	width: 45px;
 	height: 45px;
+	cursor: pointer;
 }
 .logoText{
 	position: absolute;
@@ -35,6 +36,7 @@
 	color: #fff;
 	font-size: 12px;
 	margin-left: 10px;
+	cursor: pointer;
 }
 
 .content nav form {
@@ -71,6 +73,8 @@
 .content nav .navlink .icon {
 	font-size: 18px;
 	color: #fff;
+	cursor: pointer;
+	transition: all .3s ease;
 }
 .content nav .navlink .badge {
 	position: absolute;

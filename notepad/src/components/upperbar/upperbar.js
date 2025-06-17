@@ -11,8 +11,35 @@ import api from '../../services/api.js';
 const Upperbar = () => {
 
     const [menuAberto, setMenuAberto] = useState(false);
+    const [msgUser, setMsgUser] = useState('');
+    const [qtdMsg, setQtdMsg] = useState(0);
     const menuRef = useRef(null);
     const navigate = useNavigate();
+
+    // Verifica se o usuário tem mensagens
+    useEffect(() => {
+      async function verificarMensagens() {
+        try {
+          //const response = await api.get('/messages');
+          //simulação de resposta
+          const response = {
+            data: [
+              { id: 1, content: 'Mensagem 1' },
+              { id: 2, content: 'Mensagem 2' }
+            ]
+          };
+          if (response.data && response.data.length > 0) {
+            setMsgUser(true);
+            setQtdMsg(response.data.length);
+          } else {
+            setMsgUser(false);
+          }
+        } catch (error) {
+          console.error('Erro ao verificar mensagens:', error);
+        }
+      }
+      verificarMensagens();
+    }, []);
 
     // Fecha o menu ao clicar fora
     useEffect(() => {
@@ -37,7 +64,7 @@ const Upperbar = () => {
   return (
     <section className={styles.content}>
       <nav>
-          <div className={styles.logo}>
+          <div className={styles.logo} onClick={() => navigate('/register')}>{/* somente para testes */}
               <img src={logo} alt="Logo" />
               <span className={styles.logoText}>tS notes</span>
           </div>
@@ -49,7 +76,7 @@ const Upperbar = () => {
           </form>
           <p className={styles.navlink}>
             <BiSolidMessageSquareDots className={styles.icon}/>
-            <span className={styles.badge}>8</span>
+            {msgUser && <span className={styles.badge}>{qtdMsg}</span>}
           </p>
           <span className={styles.divider}></span>
         <div className={styles.profile} ref={menuRef}>
@@ -63,7 +90,7 @@ const Upperbar = () => {
           {menuAberto && (
             <ul className={styles.dropdownMenu}>
               <li>Configurações</li>
-              <li>Perfil</li>
+              <li>Instruções</li>
               <li onClick={sair}>Sair</li>
             </ul>
           )}

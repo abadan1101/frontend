@@ -64,8 +64,20 @@
 
 @media (max-width: 600px) {
     .ModuloBlocoNotas {
-        padding: 85px 10px 170px 10px;
+        padding: 65px 5px 170px 5px;
     }
+    .empty {
+        transform: scale(0.8);
+        transform-origin: top left;
+        width: 125%;
+        height: 125%;
+    }
+    .ModuloBlocoNotas main ul {
+        gap: 10px
+    }
+}
+
+@media (max-width: 350px) {
     .ModuloBlocoNotas main ul {
         grid-template-columns: 1fr;
     }

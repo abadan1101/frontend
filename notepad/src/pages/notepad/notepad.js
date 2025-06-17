@@ -299,16 +299,16 @@ const BlocoNotas = () => {
   // função para excluir uma anotação da lixeira
   async function handleDeleteNote(id) {
     try {
+      setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
       await api.delete(`/trash/delete/${id}`);
       setTrashNotes(prevTrash => prevTrash.filter(note => note._id !== id));
-      setConfirmModal({ isOpen: false }); // Fecha o modal de confirmação
       toast.success("Anotação excluída permanentemente!");
       setError(null); // Limpa o erro se sucesso
     } catch (error) {
+      setConfirmModal({ isOpen: false });
       setError(error); // Salva o erro
       console.error('Erro ao excluir anotação:', error);
       toast.error("Erro ao excluir anotação da lixeira.");
-      setConfirmModal({ isOpen: false });
     }
   }
 

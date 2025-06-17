@@ -75,7 +75,7 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
                         }
                     </span>
                     {isEditing && (
-                        <p className={styles.infoSave}>toque fora da nota para salvar</p>
+                        <p className={styles.infoSave}>toque fora para salvar</p>
                     )}
                     {filter === "all" && (
                         <i className={styles.dragIcon}>

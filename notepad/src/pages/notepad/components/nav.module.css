@@ -125,28 +125,13 @@
 }
 
 /* CONFIGURAÇÕES DE RESPONSIVIDADE */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .nav {
-      height: 60px;
+        transform: scale(0.8);
+        transform-origin: bottom left;
+        width: 125%;
     }
-
-    .radioLabel:hover {
-      transform: scale(1);
-    }
-
     .radioGroup {
-      font-size: 12px;
-      padding: 6px 6px;
       gap: 1rem;
     }
-
-    .trashContainer:hover {
-      transform: scale(1);
-    }
-
-    .trashLabel {
-      font-size: 12px;
-    }
-
-
 }
