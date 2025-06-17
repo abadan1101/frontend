@@ -103,7 +103,7 @@ export default function Login() {
             <div className={styles.logoCircle}>
                 <span className={styles.logoText}>P</span>
             </div>
-            <span className={styles.brandName}>Projeto Caracal</span>
+            <span className={styles.brandName}>toSky notes</span>
         </div>
         <div className={styles.loginBox}>
             <h2 className={styles.title}>Entrar</h2>
