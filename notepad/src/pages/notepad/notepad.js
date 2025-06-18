@@ -42,6 +42,8 @@ const BlocoNotas = () => {
   const [trashOpen, setTrashOpen] = useState(false);
   // Estado para controlar o índice da nota sendo arrastada
   const [draggedIndex, setDraggedIndex] = useState(null);
+  // Estado para controlar o índice da nota onde o drop está ocorrendo
+  const [dragOverIndex, setDragOverIndex] = useState(null);
   // Estado para filtro
   const [filter, setFilter] = useState(() => localStorage.getItem("notepadFilter") || "all");
   // estado para controlar a abertura do modal de confirmação
@@ -438,6 +440,9 @@ const BlocoNotas = () => {
               <li
                 key={data._id}
                 draggable={filter === "all"}
+                  className={
+                    `${draggedIndex === index ? styles.dragging : ""} ${dragOverIndex === index ? styles.dropTarget : ""}`
+                  }
                 onMouseDown={e => {
                   if (
                     e.target.tagName === 'TEXTAREA' ||
@@ -463,8 +468,16 @@ const BlocoNotas = () => {
                     handleDragStart(index);
                   }
                 }}
-                onDragOver={filter === "all" ? handleDragOver : undefined}
-                onDrop={filter === "all" ? () => handleDrop(index) : undefined}
+                onDragEnd={() => setDraggedIndex(null)}
+                onDragOver={filter === "all" ? (e) => {
+                  handleDragOver(e);
+                  setDragOverIndex(index);
+                } : undefined}
+                onDragLeave={() => setDragOverIndex(null)}
+                onDrop={filter === "all" ? () => {
+                  handleDrop(index);
+                  setDragOverIndex(null);
+                } : undefined}
                 style={{ cursor: filter === "all" ? 'grab' : 'default' }}
               >
                 <Notes

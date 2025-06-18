@@ -48,6 +48,24 @@
     list-style: none;
 }
 
+.dragging {
+  box-shadow: 0 12px 32px 0 rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  transform: scale(0.70) rotate(-2deg);
+  opacity: 0.5;
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  transition: 
+    box-shadow 0.2s cubic-bezier(.4,2,.6,1), 
+    transform 0.2s cubic-bezier(.4,2,.6,1), 
+    opacity 0.2s, 
+    border 0.2s;
+}
+
+.dropTarget {
+    opacity: 0.2;
+}
+
 /* CONFIGURAÇÕES DE RESPONSIVIDADE */
 
 @media (max-width: 1400px) {
