@@ -140,3 +140,21 @@
 		height: 125%;
     }
 }
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+  .content nav {
+    background: linear-gradient(120deg, #23243a 0%, #1a1b2e 100%);
+    box-shadow: 5px 5px 5px #11101a;
+  }
+  .content nav .navlink .icon,
+  .content nav .profile .icon,
+  .logoText {
+    color: #e0e0e0;
+  }
+  .dropdownMenu {
+    background: #23243a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+  }
+}

@@ -36,3 +36,10 @@ li {
 .App{
 	padding: 0 0 0 0;
 }
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #000;
+    }
+}

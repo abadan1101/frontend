@@ -82,3 +82,18 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+    .ModuloBlocoNotas {
+        background: #000;
+    }
+    .empty {
+        background: rgba(30, 30, 30, 0.7);
+        color: #b0b0b0;
+    }
+    .emptyIcon {
+        color: #b0b0b0;
+    }
+
+}

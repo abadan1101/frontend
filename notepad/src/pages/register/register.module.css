@@ -108,6 +108,9 @@
   display: flex;
   margin-top: 10px;
 }
+.loginContainer span{
+  margin-right: 5px;
+}
 
 @media (max-width: 500px) {
   .form {
@@ -116,5 +119,38 @@
   }
   .title {
     font-size: 1.5rem;
+  }
+}
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: #000;
+  }
+  .title{
+    color: #ccc;
+  }
+  .form {
+    background: #1e1e1e;
+  }
+  .label {
+    color: #b0b0b0;
+  }
+  .input {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+  }
+  .input:focus {
+    border-color: #3182ce;
+  }
+  .button {
+    background: #3182ce;
+  }
+  .button:hover {
+    background: #2563eb;
+  }
+  .loginContainer{
+    color: #ccc;
   }
 }

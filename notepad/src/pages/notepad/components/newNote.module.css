@@ -112,3 +112,39 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+  .overlay {
+    background: rgba(30, 41, 59, 0.85); /* Azul escuro translúcido */
+  }
+
+  .modal {
+    background: #000; /* Azul escuro */
+    color: #f8fafc; /* Branco suave */
+  }
+
+  .main strong {
+    color: #ccc; /* Azul claro */
+  }
+
+  .main form .inputBlock input,
+  .main form .inputBlock textarea {
+    background: #334155; /* Cinza escuro */
+    color: #f8fafc; /* Branco suave */
+    border: 1px solid #475569; /* Cinza mais claro */
+  }
+
+  .main form .inputBlock input:focus,
+  .main form .inputBlock textarea:focus {
+    border-color: #ff7e67; /* Laranja suave */
+    box-shadow: 0 2px 8px rgba(255, 126, 103, 0.08);
+    background: #1e293b; /* Azul escuro */
+  }
+
+  .main form button[type=submit] {
+    background: #ff7e67; /* Laranja suave */
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+}

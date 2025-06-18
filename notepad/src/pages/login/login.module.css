@@ -227,3 +227,58 @@
   color: #e67e22;
   background-color: rgba(230, 126, 34, 0.1);
 }
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+  .container, .loaderContainer {
+    background: #000;
+  }
+
+  .loginBox {
+    background: #2c2c2c;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.3);
+  }
+
+  .title {
+    color: #4f8cff;
+  }
+
+  .input {
+    border-color: #444;
+    background: #3c3c3c;
+    color: #fff;
+  }
+
+  .input:focus {
+    border-color: #4f8cff;
+  }
+
+  .button {
+    background: #4f8cff;
+    color: #fff;
+  }
+
+  .button:hover {
+    background: #6a11cb;
+  }
+
+  .link {
+    color: #4f8cff;
+  }
+
+  .link:hover {
+    color: #6a11cb;
+  }
+
+  .checkboxContainer input[type="checkbox"] {
+    accent-color: #4f8cff;
+  }
+
+  .checkboxContainer label{
+    color: #ccc;
+  }
+
+  .cadastroContainer span{
+    color: #ccc;
+  }
+}
