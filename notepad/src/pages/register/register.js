@@ -37,7 +37,7 @@ export default function Cadastro() {
                 <div className={styles.logoCircle}>
                     <span className={styles.logoText}>P</span>
                 </div>
-                <span className={styles.brandName}>Projeto Caracal</span>
+                <span className={styles.brandName}>toSky notes</span>
             </div>
             <div className={styles.cadastroBox}>
                 <h2 className={styles.title}>Cadastro</h2>

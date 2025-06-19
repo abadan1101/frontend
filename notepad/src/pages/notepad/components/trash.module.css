@@ -172,7 +172,7 @@
 /* Tema Escuro */
 @media (prefers-color-scheme: dark) {
   .overlay {
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(70, 70, 70, 0.8);
   }
   .modal {
     background: #1a1a1a;
@@ -195,5 +195,18 @@
   }
   .noteInfo {
     color: #ccc;
+  }
+  .button {
+    background: #fff;
+    color: #000;
+  }
+
+  .button:hover {
+    background: #888;
+  }
+
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }

@@ -88,6 +88,7 @@
     .modal {
         background: #1e293b; /* Azul escuro */
         color: #f8fafc; /* Branco suave */
+        border: solid 1px #334155; /* Azul mais escuro */
         box-shadow: 0 8px 32px rgba(30, 41, 59, 0.18), 0 1.5px 6px rgba(0,0,0,0.08);
     }
 

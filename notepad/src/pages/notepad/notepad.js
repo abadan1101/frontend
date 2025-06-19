@@ -421,7 +421,7 @@ const BlocoNotas = () => {
           <NewNote
             isOpen={NewNoteOpen}
             onConfirm={handleSubmit}
-            onCancel={setNewNoteOpen}
+            onCancel={() => setNewNoteOpen(false)}
           />
         )}
       </div>
