@@ -24,6 +24,8 @@ import AlertModal from '../../components/alertModal/alertModal.js';
 const BlocoNotas = () => {
   
   // CONSTANTES E VARIÁVEIS--------------------------------------------------
+  // Estado para armazenar o tema
+  const [theme, setTheme] = useState("light");
   // Estado para armazenar o erro
   const [error, setError] = useState(null); // Estado para armazenar o erro
   // Hook para navegação
@@ -84,6 +86,15 @@ const BlocoNotas = () => {
     }
 
     getAllNotes();
+  }, []);
+
+  // Hook para definir o tema com base na preferência do usuário
+  useEffect(() => {
+    const match = window.matchMedia("(prefers-color-scheme: dark)");
+    setTheme(match.matches ? "dark" : "light");
+    const handler = (e) => setTheme(e.matches ? "dark" : "light");
+    match.addEventListener("change", handler);
+    return () => match.removeEventListener("change", handler);
   }, []);
 
   //MÉTODO PARA REDIRECIONAR PARA A PÁGINA DE LOGIN CASO A SESSÃO EXPIRE
@@ -536,7 +547,7 @@ const BlocoNotas = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme={theme}
       />
         
     </div>
