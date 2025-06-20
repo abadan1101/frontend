@@ -7,6 +7,7 @@ import Login from './pages/login/login.js';
 import BlocoNotas from './pages/notepad/notepad.js';
 import ErrorPage from './pages/errorPage';
 import Register from './pages/register/register.js';
+import UserSettings from './pages/userSettings/userSettings.js';
 
 const router = createHashRouter([
   {
@@ -21,6 +22,10 @@ const router = createHashRouter([
       {
         path: "register",
         element: <Register />
+      },
+      {
+        path: "settings",
+        element: <UserSettings />
       },
       {
         path: "notepad",

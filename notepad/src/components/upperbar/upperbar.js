@@ -89,7 +89,7 @@ const Upperbar = () => {
           />
           {menuAberto && (
             <ul className={styles.dropdownMenu}>
-              <li>Configurações</li>
+              <li onClick={() => navigate("/settings")}>Configurações</li>
               <li>Instruções</li>
               <li onClick={sair}>Sair</li>
             </ul>
