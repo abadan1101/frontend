@@ -12,7 +12,7 @@
 .content nav {
     background: linear-gradient(120deg, var(--themeColor01) 0%, var(--themeColor02) 100%);
 	height: 64px;
-	padding: 0 20px;
+	padding: 0 20px 0 0;
 	display: flex;
 	align-items: center;
 	grid-gap: 28px;
@@ -22,20 +22,11 @@
 	box-shadow: 5px 5px 5px #c2bef7;
 }
 .logo img {
-	position: absolute;
-	left: 15px;
-	top: 2px;
-	width: 45px;
-	height: 45px;
-	cursor: pointer;
-}
-.logoText{
-	position: absolute;
-	left: 10px;
-	top: 43px;
-	color: #fff;
-	font-size: 12px;
-	margin-left: 10px;
+	display: flex;
+	margin-left: 5px;
+	margin-top: 4px;
+	width: 60px;
+	height: 60px;
 	cursor: pointer;
 }
 
@@ -46,7 +37,6 @@
 }
 .content nav .formGroup {
 	position: relative;
-	padding-left: 50px;
 }
 .content nav .formGroup input {
 	width: 100%;

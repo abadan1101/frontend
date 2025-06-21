@@ -5,7 +5,7 @@ import styles from './upperbar.module.css';
 import { IoIosSearch } from "react-icons/io";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
-import logo from '../../img/logo3.png';
+import logo from '../../img/logo4.png';
 import api from '../../services/api.js';
 
 const Upperbar = () => {
@@ -66,7 +66,6 @@ const Upperbar = () => {
       <nav>
           <div className={styles.logo} onClick={() => navigate('/register')}>{/* somente para testes */}
               <img src={logo} alt="Logo" />
-              <span className={styles.logoText}>tS notes</span>
           </div>
           <form action='#'>
               <div className={styles.formGroup}>
