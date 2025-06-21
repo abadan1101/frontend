@@ -3,17 +3,17 @@
   "name": "toSky notes",
   "icons": [
     {
-      "src": "logo5.jpeg",
+      "src": "logo4.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo5.jpeg",
+      "src": "logo2.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo5.jpeg",
+      "src": "logo2.png",
       "type": "image/png",
       "sizes": "512x512"
     }
