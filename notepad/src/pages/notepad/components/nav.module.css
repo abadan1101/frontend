@@ -144,7 +144,7 @@
         border-top: solid 1px #555;
     }
     .radioGroup {
-        background: #000;
+        background: transparent;
     }
     .radioLabel {
         color: #ddd;
