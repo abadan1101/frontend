@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from '../../services/api.js';
 import styles from "./register.module.css";
+import logo from '../../img/logo6.png';
 
 export default function Cadastro() {
     const [name, setNome] = useState("");
@@ -35,7 +36,7 @@ export default function Cadastro() {
         <div className={styles.container}>
             <div className={styles.brand}>
                 <div className={styles.logoCircle}>
-                    <span className={styles.logoText}>P</span>
+                    <span className={styles.logoText}><img src={logo} alt="Logo" /></span>
                 </div>
                 <span className={styles.brandName}>toSky notes</span>
             </div>

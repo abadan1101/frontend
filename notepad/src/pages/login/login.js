@@ -1,6 +1,7 @@
 //IMPORTAÇÃO DAS BIBLIOTECAS---------------------------------------------------
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logo from '../../img/logo6.png';
 
 
 
@@ -101,7 +102,7 @@ export default function Login() {
     <div className={styles.container}>
         <div className={styles.brand}>
             <div className={styles.logoCircle}>
-                <span className={styles.logoText}>P</span>
+                <span className={styles.logoText}><img src={logo} alt="Logo" /></span>
             </div>
             <span className={styles.brandName}>toSky notes</span>
         </div>

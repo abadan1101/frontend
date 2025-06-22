@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <link id="favicon" rel="icon" href="%PUBLIC_URL%/logo4.png" />
+    <link id="appleicon" rel="apple-touch-icon" href="%PUBLIC_URL%/logo4.png" />
     <script>
-      function setFaviconByTheme(e) {
+      function setFaviconByTheme() {
         const favicon = document.getElementById('favicon');
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          favicon.href = '%PUBLIC_URL%/logo5.png'; // ícone para tema escuro
-        } else {
-          favicon.href = '%PUBLIC_URL%/logo4.png'; // ícone para tema claro
-        }
+        const appleicon = document.getElementById('appleicon');
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const icon = isDark ? '%PUBLIC_URL%/logo5.png' : '%PUBLIC_URL%/logo4.png';
+        if (favicon) favicon.href = icon;
+        if (appleicon) appleicon.href = icon;
       }
       setFaviconByTheme();
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFaviconByTheme);
@@ -21,7 +22,7 @@
       name="description"
       content="Web site notepad for toSky Notes"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo4.png" />
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>toSky Notes</title>
   </head>

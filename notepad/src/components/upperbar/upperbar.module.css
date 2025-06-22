@@ -10,7 +10,7 @@
 }
 /* NAVBAR */
 .content nav {
-    background: linear-gradient(120deg, var(--themeColor01) 0%, var(--themeColor02) 100%);
+    background: #fff;
 	height: 64px;
 	padding: 0 20px 0 0;
 	display: flex;
@@ -19,14 +19,14 @@
 	position: sticky;
 	top: 0;
 	left: 0;
-	box-shadow: 5px 5px 5px #c2bef7;
+	box-shadow: 5px 5px 5px #ddd;
 }
 .logo img {
 	display: flex;
-	margin-left: 5px;
-	margin-top: 4px;
-	width: 60px;
-	height: 60px;
+	margin-left: 10px;
+	margin-top: 0;
+	width: 40px;
+	height: 40px;
 	cursor: pointer;
 }
 
@@ -42,7 +42,7 @@
 	width: 100%;
 	background: #fff;
 	border-radius: 5px;
-	border: none;
+	border: solid 1px #ddd;
 	outline: none;
 	padding: 10px 36px 10px 16px;
 	transition: all .3s ease;
@@ -62,7 +62,7 @@
 }
 .content nav .navlink .icon {
 	font-size: 18px;
-	color: #fff;
+	color: #2575fc;
 	cursor: pointer;
 	transition: all .3s ease;
 }
@@ -84,7 +84,7 @@
 }
 .content nav .divider {
 	width: 1px;
-	background: #fff;
+	background: #555;
 	height: 12px;
 	display: block;
 }
@@ -94,7 +94,7 @@
 .content nav .profile .icon {
 	font-size: 40px;
 	cursor: pointer;
-	color: #fff;
+	color: #2575fc;
 }
 
 .dropdownMenu {
