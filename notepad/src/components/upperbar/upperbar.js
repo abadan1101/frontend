@@ -5,8 +5,8 @@ import styles from './upperbar.module.css';
 import { IoIosSearch } from "react-icons/io";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
-import logo from '../../img/logo3.png';
-import darkLogo from '../../img/logo4.png';
+import logo from '../../img/logo10.png';
+import darkLogo from '../../img/logo9.png';
 import api from '../../services/api.js';
 
 const Upperbar = () => {
