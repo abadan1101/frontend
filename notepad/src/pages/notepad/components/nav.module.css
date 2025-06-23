@@ -4,7 +4,6 @@
     width: 100%;
     left: 0px;
     bottom: 0px;
-    height: 70px;
     justify-content: center;
     align-items: center;
     background: #fff;
@@ -63,8 +62,9 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  font-size: 14px;
   font-weight: 500;
-  gap: 0.4rem;
+  gap: 0.2rem;
   color: #555;
   transition: ease 0.2s;
 }
@@ -74,8 +74,8 @@
 }
 
 .customRadio {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border: 1px solid #ddd;
   border-radius: 50%;
   display: inline-block;
@@ -107,17 +107,18 @@
 }
 
 .trashNotes {
-  font-size: 20px !important;
+  font-size: 18px !important;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #999 !important;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .trashLabel {
   display: flex;
   flex-direction: column;
+  font-size: 14px;
   font-weight: 500;
   color: #555;
 }
