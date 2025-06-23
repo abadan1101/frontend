@@ -2,82 +2,88 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './upperbar.module.css';
+import api from '../../services/api.js';
+
+
+
+//IMPORTAÇÃO ICONES
 import { IoIosSearch } from "react-icons/io";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
 import logo from '../../img/logo16.png';
 import darkLogo from '../../img/logo13.png';
-import api from '../../services/api.js';
 
 
 
 //BARRA SUPERIOR DE NAVEGAÇÃO--------------------------------------------------
 const Upperbar = () => {
 
-    const [menuAberto, setMenuAberto] = useState(false);
-    const [msgUser, setMsgUser] = useState('');
-    const [qtdMsg, setQtdMsg] = useState(0);
-    const menuRef = useRef(null);
-    const [logoSrc, setLogoSrc] = useState(logo);
-    const navigate = useNavigate();
+  //variáveis e constantes
+  const [logoSrc, setLogoSrc] = useState(logo);
+  const [menuAberto, setMenuAberto] = useState(false);
+  const menuRef = useRef(null);
+  const [msgUser, setMsgUser] = useState('');
+  const [qtdMsg, setQtdMsg] = useState(0);
+  const navigate = useNavigate();
 
-    //hook para definir logo claro ou dark
-    useEffect(() => {
-      function updateLogo() {
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setLogoSrc(isDark ? darkLogo : logo);
-      }
-      updateLogo();
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateLogo);
-      return () => {
-        window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateLogo);
-      };
-    }, []);
-
-    // Verifica se o usuário tem mensagens
-    useEffect(() => {
-      async function verificarMensagens() {
-        try {
-          //const response = await api.get('/messages');
-          //simulação de resposta
-          const response = {
-            data: [
-              { id: 1, content: 'Mensagem 1' },
-              { id: 2, content: 'Mensagem 2' }
-            ]
-          };
-          if (response.data && response.data.length > 0) {
-            setMsgUser(true);
-            setQtdMsg(response.data.length);
-          } else {
-            setMsgUser(false);
-          }
-        } catch (error) {
-          console.error('Erro ao verificar mensagens:', error);
-        }
-      }
-      verificarMensagens();
-    }, []);
-
-    // Fecha o menu ao clicar fora
-    useEffect(() => {
-      function handleClickFora(event) {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-          setMenuAberto(false);
-        }
-      }
-      document.addEventListener('mousedown', handleClickFora);
-      return () => document.removeEventListener('mousedown', handleClickFora);
-    }, []);
-
-    async function sair() {
-      try {
-        await api.post('/auth/logout');
-      } catch (error) {
-        console.error('Erro ao fazer logout:', error);
-      }
-      navigate('/');
+  //hook para definir logo claro ou dark
+  useEffect(() => {
+    function updateLogo() {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setLogoSrc(isDark ? darkLogo : logo);
     }
+    updateLogo();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateLogo);
+    return () => {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateLogo);
+    };
+  }, []);
+
+  // Verifica se o usuário tem mensagens
+  useEffect(() => {
+    async function verificarMensagens() {
+      try {
+        //const response = await api.get('/messages');
+        //simulação de resposta
+        const response = {
+          data: [
+            { id: 1, content: 'Mensagem 1' },
+            { id: 2, content: 'Mensagem 2' }
+          ]
+        };
+        if (response.data && response.data.length > 0) {
+          setMsgUser(true);
+          setQtdMsg(response.data.length);
+        } else {
+          setMsgUser(false);
+        }
+      } catch (error) {
+        console.error('Erro ao verificar mensagens:', error);
+      }
+    }
+    verificarMensagens();
+  }, []);
+
+  // Fecha o menu ao clicar fora
+  useEffect(() => {
+    function handleClickFora(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuAberto(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickFora);
+    return () => document.removeEventListener('mousedown', handleClickFora);
+  }, []);
+
+  // função logout
+  async function sair() {
+    try {
+      await api.post('/auth/logout');
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+    }
+    navigate('/');
+  }
 
   return (
     <section className={styles.content}>
