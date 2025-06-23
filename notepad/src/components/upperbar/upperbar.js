@@ -5,7 +5,7 @@ import styles from './upperbar.module.css';
 import { IoIosSearch } from "react-icons/io";
 import { BiSolidMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
-import logo from '../../img/logo14.png';
+import logo from '../../img/logo16.png';
 import darkLogo from '../../img/logo13.png';
 import api from '../../services/api.js';
 
