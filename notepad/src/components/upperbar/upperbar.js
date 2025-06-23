@@ -9,6 +9,9 @@ import logo from '../../img/logo16.png';
 import darkLogo from '../../img/logo13.png';
 import api from '../../services/api.js';
 
+
+
+//BARRA SUPERIOR DE NAVEGAÇÃO--------------------------------------------------
 const Upperbar = () => {
 
     const [menuAberto, setMenuAberto] = useState(false);
@@ -18,6 +21,7 @@ const Upperbar = () => {
     const [logoSrc, setLogoSrc] = useState(logo);
     const navigate = useNavigate();
 
+    //hook para definir logo claro ou dark
     useEffect(() => {
       function updateLogo() {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -29,7 +33,6 @@ const Upperbar = () => {
         window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateLogo);
       };
     }, []);
-
 
     // Verifica se o usuário tem mensagens
     useEffect(() => {
@@ -67,14 +70,14 @@ const Upperbar = () => {
       return () => document.removeEventListener('mousedown', handleClickFora);
     }, []);
 
-  async function sair() {
-    try {
-      await api.post('/auth/logout');
-    } catch (error) {
-      console.error('Erro ao fazer logout:', error);
+    async function sair() {
+      try {
+        await api.post('/auth/logout');
+      } catch (error) {
+        console.error('Erro ao fazer logout:', error);
+      }
+      navigate('/');
     }
-    navigate('/');
-  }
 
   return (
     <section className={styles.content}>
@@ -104,7 +107,6 @@ const Upperbar = () => {
           {menuAberto && (
             <ul className={styles.dropdownMenu}>
               <li onClick={() => navigate("/settings")}>Configurações</li>
-              <li>Instruções</li>
               <li onClick={sair}>Sair</li>
             </ul>
           )}
