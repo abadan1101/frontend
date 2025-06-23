@@ -122,15 +122,6 @@
   background: #f3f3f3;
 }
 
-@media (max-width: 600px) {
-    .content {
-        transform: scale(0.8);
-        transform-origin: top left;
-		width: 125%;
-		height: 125%;
-    }
-}
-
 /* Tema Escuro */
 @media (prefers-color-scheme: dark) {
   .content nav {
