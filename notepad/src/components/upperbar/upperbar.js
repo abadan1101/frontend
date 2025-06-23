@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './upperbar.module.css';
+import UserMessages from './components/userMessages.js';
 import api from '../../services/api.js';
 
 
@@ -24,6 +25,8 @@ const Upperbar = () => {
   const menuRef = useRef(null);
   const [msgUser, setMsgUser] = useState('');
   const [qtdMsg, setQtdMsg] = useState(0);
+  const [showMessages, setShowMessages] = useState(false);
+  const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
 
   //hook para definir logo claro ou dark
@@ -47,13 +50,14 @@ const Upperbar = () => {
         //simulação de resposta
         const response = {
           data: [
-            { id: 1, content: 'Mensagem 1' },
+            { id: 1, content: 'Aproveite e utilize tambem nosso app para controlar a manutenção do seu carro. use o link https://teste.com' },
             { id: 2, content: 'Mensagem 2' }
           ]
         };
         if (response.data && response.data.length > 0) {
           setMsgUser(true);
           setQtdMsg(response.data.length);
+          setMessages(response.data);
         } else {
           setMsgUser(false);
         }
@@ -97,7 +101,7 @@ const Upperbar = () => {
                   <IoIosSearch className={styles.icon}/>
               </div>
           </form>
-          <p className={styles.navlink}>
+          <p className={styles.navlink} onClick={() => setShowMessages(true)}>
             <BiSolidMessageSquareDots className={styles.icon}/>
             {msgUser && <span className={styles.badge}>{qtdMsg}</span>}
           </p>
@@ -118,6 +122,11 @@ const Upperbar = () => {
           )}
         </div>
       </nav>
+      <UserMessages
+        messages={messages}
+        open={showMessages}
+        onClose={() => setShowMessages(false)}
+      />
     </section>
   )
 };
