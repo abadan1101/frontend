@@ -17,7 +17,7 @@ import darkLogo from '../../img/logo13.png';
 
 
 //BARRA SUPERIOR DE NAVEGAÇÃO--------------------------------------------------
-const Upperbar = () => {
+const Upperbar = ({ searchTerm, onSearch }) => {
 
   //variáveis e constantes
   const [logoSrc, setLogoSrc] = useState(logo);
@@ -97,8 +97,14 @@ const Upperbar = () => {
           </div>
           <form action='#'>
               <div className={styles.formGroup}>
-                  <input id="barrPesc_pesquisa" type='text' placeholder='Buscar...' />
-                  <IoIosSearch className={styles.icon}/>
+                <input
+                  id="barrPesc_pesquisa"
+                  type="text"
+                  placeholder="Buscar..."
+                  value={searchTerm}
+                  onChange={e => onSearch(e.target.value)}
+                />
+                <IoIosSearch className={styles.icon}/>
               </div>
           </form>
           <p className={styles.navlink} onClick={() => setShowMessages(true)}>

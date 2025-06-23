@@ -126,8 +126,8 @@
 /* Tema Escuro */
 @media (prefers-color-scheme: dark) {
   .content nav {
-    background: linear-gradient(120deg, #23243a 0%, #1a1b2e 100%);
-    box-shadow: 5px 5px 5px #11101a;
+    background: #23243a;
+    box-shadow: none;
   }
   .content nav .navlink .icon,
   .content nav .profile .icon,

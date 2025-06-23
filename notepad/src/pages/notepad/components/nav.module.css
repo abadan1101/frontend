@@ -126,9 +126,9 @@
 /* CONFIGURAÇÕES DE RESPONSIVIDADE */
 @media (max-width: 600px) {
     .nav {
-        transform: scale(0.8);
+        transform: scale(0.9);
         transform-origin: bottom left;
-        width: 125%;
+        width: 112%;
     }
     .radioGroup {
       gap: 1rem;

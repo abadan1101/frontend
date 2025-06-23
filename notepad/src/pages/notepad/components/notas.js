@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FiTrash, FiAlertCircle, FiMove } from "react-icons/fi"; // Adicione FiMove
+import { FiTrash, FiAlertCircle } from "react-icons/fi"; // Adicione FiMove
+import { TbHandMove } from "react-icons/tb";
 
 
 import styles from './notas.module.css';
 
-function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
+function Notes({ data, onTrash, onSaveEdit, onTogglePriority, canDrag }) {
     const [notesValue, setNotesValue] = useState(data.notes);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -77,9 +78,9 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority, filter }) {
                     {isEditing && (
                         <p className={styles.infoSave}>toque fora para salvar</p>
                     )}
-                    {filter === "all" && (
+                    {canDrag && (
                         <i className={styles.dragIcon}>
-                            <FiMove title="Arrastar nota" />
+                            <TbHandMove title="Arrastar nota" />
                         </i>
                     )}
                 </div>

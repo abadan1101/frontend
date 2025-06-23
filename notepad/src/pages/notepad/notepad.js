@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { SlNote } from "react-icons/sl";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +22,7 @@ import AlertModal from '../../components/alertModal/alertModal.js';
 
 
 const BlocoNotas = () => {
-  
+  const { searchTerm } = useOutletContext();
   // CONSTANTES E VARIÁVEIS--------------------------------------------------
   // Estado para armazenar o tema
   const [theme, setTheme] = useState("light");
@@ -48,6 +48,8 @@ const BlocoNotas = () => {
   const [dragOverIndex, setDragOverIndex] = useState(null);
   // Estado para filtro
   const [filter, setFilter] = useState(() => localStorage.getItem("notepadFilter") || "all");
+  // estado para impedir mover notas em caso de filto ativo
+  const canDrag = filter === "all" && !searchTerm;
   // estado para controlar a abertura do modal de confirmação
   const [confirmModal, setConfirmModal] = useState({
     isOpen: false,
@@ -406,9 +408,17 @@ const BlocoNotas = () => {
   }
 
   const filteredNotes = allNotes.filter(note => {
-    if (filter === "all") return true;
-    if (filter === "priority") return note.priority === true;
-    if (filter === "completed") return note.priority === false;
+    // Filtro por prioridade
+    if (filter === "priority" && !note.priority) return false;
+    if (filter === "completed" && note.priority) return false;
+
+    // Filtro por busca
+    if (searchTerm) {
+      const termo = searchTerm.toLowerCase();
+      const titulo = note.title?.toLowerCase() || '';
+      const conteudo = note.notes?.toLowerCase() || '';
+      return titulo.includes(termo) || conteudo.includes(termo);
+    }
     return true;
   });
   // FIM DAS FUNÇÕES DE FILTRO----------------------------------------------
@@ -446,14 +456,13 @@ const BlocoNotas = () => {
           </p>
         ) : (
           <ul>
-            {filteredNotes
-              .map((data, index) => (
+            {filteredNotes.map((data, index) => (
               <li
                 key={data._id}
-                draggable={filter === "all"}
-                  className={
-                    `${draggedIndex === index ? styles.dragging : ""} ${dragOverIndex === index ? styles.dropTarget : ""}`
-                  }
+                draggable={canDrag}
+                className={
+                  `${draggedIndex === index ? styles.dragging : ""} ${dragOverIndex === index ? styles.dropTarget : ""}`
+                }
                 onMouseDown={e => {
                   if (
                     e.target.tagName === 'TEXTAREA' ||
@@ -461,11 +470,11 @@ const BlocoNotas = () => {
                   ) {
                     e.currentTarget.draggable = false;
                   } else {
-                    e.currentTarget.draggable = filter === "all";
+                    e.currentTarget.draggable = canDrag;
                   }
                 }}
                 onMouseUp={e => {
-                  e.currentTarget.draggable = filter === "all";
+                  e.currentTarget.draggable = canDrag;
                 }}
                 onDragStart={e => {
                   if (
@@ -475,28 +484,28 @@ const BlocoNotas = () => {
                     e.preventDefault();
                     return;
                   }
-                  if (filter === "all") {
+                  if (canDrag) {
                     handleDragStart(index);
                   }
                 }}
                 onDragEnd={() => setDraggedIndex(null)}
-                onDragOver={filter === "all" ? (e) => {
+                onDragOver={canDrag ? (e) => {
                   handleDragOver(e);
                   setDragOverIndex(index);
                 } : undefined}
                 onDragLeave={() => setDragOverIndex(null)}
-                onDrop={filter === "all" ? () => {
+                onDrop={canDrag ? () => {
                   handleDrop(index);
                   setDragOverIndex(null);
                 } : undefined}
-                style={{ cursor: filter === "all" ? 'grab' : 'default' }}
+                style={{ cursor: canDrag ? 'grab' : 'default' }}
               >
                 <Notes
                   data={data}
                   onSaveEdit={handleSaveEdit}
                   onTrash={handleTrash}
                   onTogglePriority={handleTogglePriority}
-                  filter={filter}
+                  canDrag={canDrag}
                 />
               </li>
             ))}
