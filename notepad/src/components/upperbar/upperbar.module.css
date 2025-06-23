@@ -11,7 +11,7 @@
 /* NAVBAR */
 .content nav {
     background: #fff;
-	height: 64px;
+	height: 55px;
 	padding: 0 20px 0 0;
 	display: flex;
 	align-items: center;
@@ -25,7 +25,7 @@
 	display: flex;
 	margin-left: 10px;
 	margin-top: 0;
-	width: 40px;
+	width: 35px;
 	cursor: pointer;
 }
 
@@ -43,7 +43,7 @@
 	border-radius: 5px;
 	border: solid 1px #ddd;
 	outline: none;
-	padding: 10px 36px 10px 16px;
+	padding: 8px 20px 8px 12px;
 	transition: all .3s ease;
 }
 .content nav .formGroup input:focus {
@@ -57,6 +57,7 @@
 	color: #8D8D8D;
 }
 .content nav .navlink {
+	top: 3px;
 	position: relative;
 }
 .content nav .navlink .icon {
@@ -91,7 +92,7 @@
 	position: relative;
 }
 .content nav .profile .icon {
-	font-size: 40px;
+	font-size: 35px;
 	cursor: pointer;
 	color: #2575fc;
 }

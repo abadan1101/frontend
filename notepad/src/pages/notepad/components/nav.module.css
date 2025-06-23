@@ -153,11 +153,11 @@
     .customRadio {
         border-color: #555;
         box-shadow: 0 1px 4px rgba(255, 255, 255, 0.08);
-        background: #000;
+        background: transparent;
     }
     .radioInput:checked + .customRadio {
         border-color: #2575fc;
-        background: #333;
+        background: transparent;
     }
     .trashLabel{
         color: #ddd; 
