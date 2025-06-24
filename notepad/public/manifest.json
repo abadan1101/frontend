@@ -1,25 +1,53 @@
 {
   "short_name": "tS notes",
   "name": "toSky notes",
+  "description": "Aplicativo moderno de notas rápidas e organização pessoal.",
   "icons": [
     {
-      "src": "logo3.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icons/logo1.png",
+      "sizes": "16x16 24x24 32x32 48x48 64x64",
+      "type": "image/png"
     },
     {
-      "src": "logo3.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "icons/logo2-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
     },
     {
-      "src": "logo2.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "icons/logo2-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo2-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo2-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo3-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo3-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo3-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
+  "scope": ".",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }

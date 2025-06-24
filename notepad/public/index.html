@@ -2,43 +2,32 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
-    <link id="favicon" rel="icon" href="%PUBLIC_URL%/logo4.png" />
-    <link id="appleicon" rel="apple-touch-icon" href="%PUBLIC_URL%/logo4.png" />
-    <script>
-      function setFaviconByTheme() {
-        const favicon = document.getElementById('favicon');
-        const appleicon = document.getElementById('appleicon');
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const icon = isDark ? '%PUBLIC_URL%/logo5.png' : '%PUBLIC_URL%/logo4.png';
-        if (favicon) favicon.href = icon;
-        if (appleicon) appleicon.href = icon;
-      }
-      setFaviconByTheme();
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFaviconByTheme);
-    </script>
-    <meta name="theme-color" content="#ffffff" />
-    <script>
-      function setThemeColorByTheme() {
-        const themeMeta = document.querySelector('meta[name="theme-color"]');
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (themeMeta) {
-          themeMeta.setAttribute('content', isDark ? '#23243a' : '#ffffff');
-        }
-      }
-      setThemeColorByTheme();
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColorByTheme);
-    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Web site notepad for toSky Notes"
-    />
-
+    <meta name="description" content="Aplicativo de notas online toSky Notes. Organize, edite e acesse suas anotações de qualquer lugar." />
+    <meta name="keywords" content="notas, anotações, toSky Notes, bloco de notas, online, produtividade" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="toSky Notes" />
+    <meta property="og:description" content="Aplicativo de notas online para produtividade." />
+    <meta property="og:image" content="%PUBLIC_URL%/icons/logo1.png" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="toSky Notes" />
+    <meta name="twitter:description" content="Aplicativo de notas online para produtividade." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/icons/logo1.png" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icons/logo1-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/logo1-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="%PUBLIC_URL%/icons/logo1-48.png">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/logo1.png">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>toSky Notes</title>
+    <script defer src="%PUBLIC_URL%/theme.js"></script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Você precisa habilitar o JavaScript para rodar este app.</noscript>
     <div id="root"></div>
   </body>
 </html>
