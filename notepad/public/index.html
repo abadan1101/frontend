@@ -18,22 +18,29 @@
     <meta name="twitter:description" content="Aplicativo de notas online para produtividade." />
     <meta name="twitter:image" content="%PUBLIC_URL%/icons/logo1.png" />
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icons/logo5-16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/logo5-32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="%PUBLIC_URL%/icons/logo5-48.png" id="favicon">
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/logo1.png">
-    <!-- script para definir icones modo dark ou ligth -->
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icons/logo1-16.png" id="favicon16">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/logo1-32.png" id="favicon32">
+    <link rel="icon" type="image/png" sizes="48x48" href="%PUBLIC_URL%/icons/logo1-48.png" id="favicon48">
+    <link rel="apple-touch-icon" type="image/png" href="%PUBLIC_URL%/icons/logo1.png" id="appleicon">
+    <!-- script para definir icones modo dark ou light -->
     <script>
-      function setFaviconByTheme() { 
-        const favicon = document.getElementById('favicon'); 
-        const appleicon = document.getElementById('appleicon'); 
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches; 
-        const icon = isDark ?  '%PUBLIC_URL%/icons/logo5-48.png' : '%PUBLIC_URL%/icons/logo1-48.png'; 
-        if (favicon) favicon.href = icon; 
-        if (appleicon) appleicon.href = icon; 
-      } 
-      setFaviconByTheme(); 
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFaviconByTheme); 
+      function setFaviconByTheme() {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const icon16 = isDark ? '%PUBLIC_URL%/icons/logo1_dark-16.png' : '%PUBLIC_URL%/icons/logo1-16.png';
+        const icon32 = isDark ? '%PUBLIC_URL%/icons/logo1_dark-32.png' : '%PUBLIC_URL%/icons/logo1-32.png';
+        const icon48 = isDark ? '%PUBLIC_URL%/icons/logo1_dark-48.png' : '%PUBLIC_URL%/icons/logo1-48.png';
+        const appleicon = isDark ? '%PUBLIC_URL%/icons/logo1_dark.png' : '%PUBLIC_URL%/icons/logo1.png';
+        const favicon16 = document.getElementById('favicon16');
+        const favicon32 = document.getElementById('favicon32');
+        const favicon48 = document.getElementById('favicon48');
+        const apple = document.getElementById('appleicon');
+        if (favicon16) favicon16.href = icon16;
+        if (favicon32) favicon32.href = icon32;
+        if (favicon48) favicon48.href = icon48;
+        if (apple) apple.href = appleicon;
+      }
+      setFaviconByTheme();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFaviconByTheme);
     </script>
     <!-- configurações pwa -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
