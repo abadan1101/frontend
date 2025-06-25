@@ -2,21 +2,30 @@ import './App.css';
 import { Outlet, useLocation } from "react-router-dom";
 import Upperbar from './components/upperbar/upperbar.js';
 import { useState, useEffect } from "react";
-import { setThemeColorByTheme } from './theme.js';
+import { setThemeColorByTheme, applyThemeClass } from './theme.js';
 
 function App() {
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
-  const isLoginPage = location.pathname === "/" || 
-    location.pathname === "/register" ||
-    location.pathname === "/settings";
+  const isLoginPage = location.pathname === "/" || location.pathname === "/register" || location.pathname === "/settings";
 
+  //CONFIGURAÇÕES DE TEMA
   useEffect(() => {
-    setThemeColorByTheme();
+    function updateTheme() {
+      setThemeColorByTheme();
+      applyThemeClass();
+    }
+    updateTheme();
+
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = () => setThemeColorByTheme();
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
+    mediaQuery.addEventListener('change', updateTheme);
+
+    window.addEventListener('storage', updateTheme);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateTheme);
+      window.removeEventListener('storage', updateTheme);
+    };
   }, []);
 
   return (

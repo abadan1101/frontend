@@ -31,6 +31,7 @@ li {
 :root {
 	--themeColor01: #6a11cb;
 	--themeColor02: #2575fc;
+    --themeColor03: #f9fafc;
 }
 
 .App{
