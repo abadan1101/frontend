@@ -18,10 +18,24 @@
     <meta name="twitter:description" content="Aplicativo de notas online para produtividade." />
     <meta name="twitter:image" content="%PUBLIC_URL%/icons/logo1.png" />
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icons/logo1-16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/logo1-32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="%PUBLIC_URL%/icons/logo1-48.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/icons/logo5-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/icons/logo5-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="%PUBLIC_URL%/icons/logo5-48.png" id="favicon">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/logo1.png">
+    <!-- script para definir icones modo dark ou ligth -->
+    <script>
+      function setFaviconByTheme() { 
+        const favicon = document.getElementById('favicon'); 
+        const appleicon = document.getElementById('appleicon'); 
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches; 
+        const icon = isDark ?  '%PUBLIC_URL%/icons/logo5-48.png' : '%PUBLIC_URL%/icons/logo1-48.png'; 
+        if (favicon) favicon.href = icon; 
+        if (appleicon) appleicon.href = icon; 
+      } 
+      setFaviconByTheme(); 
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFaviconByTheme); 
+    </script>
+    <!-- configurações pwa -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>toSky Notes</title>
   </head>
