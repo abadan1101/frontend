@@ -28,12 +28,4 @@ export function applyThemeClass() {
   // Remove classes antigas e adiciona a nova ao body
   document.body.classList.remove('theme-light', 'theme-dark');
   document.body.classList.add(themeClass);
-
-  // Atualiza variáveis CSS globais
-  const root = document.documentElement;
-  if (themeClass === 'theme-dark') {
-    root.style.setProperty('--themeColor03', '#23243a');
-  } else {
-    root.style.setProperty('--themeColor03', '#f4f6fb');
-  }
 }

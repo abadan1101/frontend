@@ -6,7 +6,8 @@ import { setThemeColorByTheme, applyThemeClass } from '../../theme.js'; // ajust
 export default function UserSettings() {
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("Conta");
-  const [theme, setTheme] = useState("sistema");
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'sistema');
+
 
   function handleSubmit(event) {
     event.preventDefault();

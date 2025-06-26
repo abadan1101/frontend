@@ -17,7 +17,6 @@
     background: #fff;
     padding: 32px 28px;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(30, 41, 59, 0.18), 0 1.5px 6px rgba(0,0,0,0.08);
     text-align: left;
     max-width: 600px;
     width: 92%;
@@ -65,24 +64,19 @@
 }
 
 /* Tema Escuro */
-@media (prefers-color-scheme: dark) {
-    .overlay {
-        background: rgba(30, 41, 59, 0.50); /* Azul escuro translúcido */
-    }
-
-    .modal {
-        background: #1e293b; /* Azul escuro */
-        color: #f8fafc; /* Branco suave */
-        border: solid 1px #334155; /* Azul mais escuro */
-        box-shadow: 0 8px 32px rgba(30, 41, 59, 0.18), 0 1.5px 6px rgba(0,0,0,0.08);
-    }
-
-    .confirm {
-        background: #3b82f6; /* Azul claro */
-        color: #fff;
-    }
-
-    .confirm:hover, .confirm:focus {
-        background: #2563eb; /* Azul mais escuro */
-    }
+:global(.theme-dark) .modal {
+    background: #1e293b;
+    color: #f8fafc;
+    border: solid 1px #334155;
+}
+:global(.theme-dark) .overlay {
+    background: rgba(30, 41, 59, 0.50);
+}
+:global(.theme-dark) .confirm {
+    background: #3b82f6;
+    color: #fff;
+}
+:global(.theme-dark) .confirm:hover,
+:global(.theme-dark) .confirm:focus {
+    background: #2563eb;
 }
