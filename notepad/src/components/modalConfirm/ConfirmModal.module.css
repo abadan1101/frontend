@@ -79,9 +79,9 @@
     border-color: #0549be;
 }
 
-/* Tema Escuro */
+/* Tema Escuro baseado em classe no body */
 :global(.theme-dark) .overlay {
-    background: rgba(30, 41, 59, 0.50); /* Azul escuro translúcido */
+    background: rgba(0, 0, 0, 0.8); /* Azul escuro translúcido */
 }
 
 :global(.theme-dark) .modal {

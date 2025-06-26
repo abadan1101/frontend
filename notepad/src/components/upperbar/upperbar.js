@@ -51,7 +51,17 @@ const Upperbar = ({ searchTerm, onSearch }) => {
         const response = {
           data: [
             { id: 1, content: 'Aproveite e utilize tambem nosso app para controlar a manutenção do seu carro. use o link https://teste.com' },
-            { id: 2, content: 'Mensagem 2' }
+            { id: 2, content: 'Mensagem 2' },
+            { id: 3, content: 'Mensagem 2' },
+            { id: 4, content: 'Mensagem 2' },
+            { id: 5, content: 'Mensagem 2' },
+            { id: 6, content: 'Mensagem 2' },
+            { id: 7, content: 'Mensagem 2' },
+            { id: 8, content: 'Mensagem 2' },
+            { id: 9, content: 'Mensagem 2' },
+            { id: 10, content: 'Mensagem 2' },
+            { id: 11, content: 'Mensagem 2' },
+            { id: 12, content: 'Mensagem 2' },
           ]
         };
         if (response.data && response.data.length > 0) {
