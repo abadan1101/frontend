@@ -61,7 +61,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
             { id: 9, content: 'Mensagem 2' },
             { id: 10, content: 'Mensagem 2' },
             { id: 11, content: 'Mensagem 2' },
-            { id: 12, content: 'Mensagem 2' },
+            { id: 12, content: 'Mensagem final' },
           ]
         };
         if (response.data && response.data.length > 0) {

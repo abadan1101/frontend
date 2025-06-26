@@ -1,6 +1,20 @@
+import { useEffect } from "react";
 import styles from './userMessages.module.css';
 
 const UserMessages = ({ messages, open, onClose }) => {
+  // Impede o scroll do body quando o modal está aberto
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Limpa ao desmontar
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   if (!open) return null;
 
   return (
