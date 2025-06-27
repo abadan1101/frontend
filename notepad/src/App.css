@@ -29,8 +29,8 @@ li {
 }
 
 :root {
-	--themeColor01: #6a11cb;
-	--themeColor02: #2575fc;
+    --themeColor01: #2575fc; /*em uso */
+	--themeColor02: #6a11cb;
 }
 
 .App{

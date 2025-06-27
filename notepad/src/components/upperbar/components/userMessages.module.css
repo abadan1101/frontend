@@ -39,41 +39,38 @@
   }
 }
 
-.iconMessages {
+.hederMessages {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
   letter-spacing: 0.5px;
-  text-align: left;
-  background: #f3f6fa;
-  padding: 18px 24px 12px 24px;
-  border-bottom: 1px solid #e3e8ee;
+  background: var(--themeColor01);
+  padding: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.closeBtn {
-  position: absolute;
-  top: 16px; right: 18px;
-  background: #f3f6fa;
-  border: none;
-  font-size: 1.7rem;
-  color: #888;
+.arrowClose{
+  display: none;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 200;
   cursor: pointer;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
-  z-index: 1;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
-.closeBtn:hover {
-  background: #e3edfa;
-  color: #2575fc;
+
+.hederMessages h2{
+  color: #fff;
+  font-weight: 200;
+  margin-left: 40px;
+}
+
+.xClose {
+  position: absolute;
+  top: 10px; right: 18px;
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  transition: background 0.2s, color 0.2s;
 }
 
 .listMessages {
@@ -89,7 +86,7 @@
 }
 
 .userMsg {
-  background: #f3f6fa;
+  background: #e8e8fa;
   border-radius: 12px 12px 12px 4px;
   padding: 1rem 1.2rem;
   font-size: 1rem;
@@ -103,7 +100,7 @@
 }
 
 .userMsg:hover {
-  background: #e3edfa;
+  background: #d1d1fa;
 }
 
 .empyUserMsg {
@@ -131,6 +128,15 @@
     padding: 0;
     right: 0;
   }
+
+  .arrowClose{
+    display: flex;
+  }
+
+  .xClose {
+    display: none;
+  }
+
   .listMessages {
     list-style: none;
     padding: 10px 5px 40px 0;
@@ -152,9 +158,9 @@
   color: #eee;
   box-shadow: 0 8px 32px rgba(0,0,0,0.45);
 }
-:global(.theme-dark) .iconMessages {
-  background: #232b36;
-  border-bottom: 1px solid #232b36;
+:global(.theme-dark) .hederMessages {
+  background: #23243a;
+  border-bottom: 1px solid #23243a;
 }
 :global(.theme-dark) .listMessages {
   background: #23272f;

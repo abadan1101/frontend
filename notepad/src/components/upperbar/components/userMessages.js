@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styles from './userMessages.module.css';
+import { GoArrowLeft, GoX } from "react-icons/go";
 
 const UserMessages = ({ messages, open, onClose }) => {
   // Impede o scroll do body quando o modal está aberto
@@ -20,8 +21,11 @@ const UserMessages = ({ messages, open, onClose }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <h2 className={styles.iconMessages}>📩 Mensagens</h2>
-        <button className={styles.closeBtn} onClick={onClose} title="Fechar">×</button>
+        <div className={styles.hederMessages}>
+          <GoArrowLeft className={styles.arrowClose} onClick={onClose} title="Fechar"/>
+          <GoX className={styles.xClose} onClick={onClose} title="Fechar"/>
+          <h2>Mensagens</h2>
+        </div>
         {messages && messages.length > 0 ? (
           <ul className={styles.listMessages}>
             {messages.map(msg => (
