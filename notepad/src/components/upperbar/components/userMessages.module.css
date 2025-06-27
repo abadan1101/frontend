@@ -155,12 +155,10 @@
 /* Tema Escuro baseado em classe no body */
 :global(.theme-dark) .modal {
   background: #23272f;
-  color: #eee;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
 }
 :global(.theme-dark) .hederMessages {
-  background: #23243a;
-  border-bottom: 1px solid #23243a;
+  background: var(--themeColor02);
+  border-bottom: 1px solid var(--themeColor03);
 }
 :global(.theme-dark) .listMessages {
   background: #23272f;
