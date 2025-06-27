@@ -29,10 +29,12 @@ li {
 }
 
 :root {
+    /* tema claro */
     --themeColor01: #2575fc; /*em uso */
-    --themeColor02: #23243a; /*em uso */
-    --themeColor03: #3e4066; /*em uso */
 	/* --themeColor02: #6a11cb; */
+
+    /* tema escuro */
+    --themeColor02: #23243a; /*em uso */
 }
 
 .App{

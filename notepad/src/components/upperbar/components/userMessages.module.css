@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(44, 62, 80, 0.18);
+  background: rgba(0, 0, 0, 0.18);
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
@@ -12,7 +12,6 @@
 
 .modal {
   background: #fff;
-  color: #23243a;
   border-radius: 10px;
   min-width: 320px;
   max-width: 95vw;
@@ -75,14 +74,13 @@
 
 .listMessages {
   list-style: none;
-  padding: 0 0 0 0;
+  padding: 10px 5px 40px 0;
   margin: 0;
   overflow-y: auto;
   max-height: 38vh;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  background: #fff;
 }
 
 .userMsg {
@@ -110,6 +108,9 @@
   font-size: 1.05rem;
 }
 
+
+
+/* RESPONSIVIDADE */
 @media (max-width: 600px) {
   .overlay {
     padding: 0;
@@ -128,40 +129,29 @@
     padding: 0;
     right: 0;
   }
-
   .arrowClose{
     display: flex;
   }
-
   .xClose {
     display: none;
   }
-
   .listMessages {
-    list-style: none;
-    padding: 10px 5px 40px 0;
-    margin: 0;
-    overflow-y: auto;
     max-height: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    background: #fff;
   }
 }
 
 
 
 /* Tema Escuro baseado em classe no body */
+:global(.theme-dark) .overlay {
+  background: rgba(255, 255, 255, 0.18);
+}
 :global(.theme-dark) .modal {
   background: #23272f;
 }
 :global(.theme-dark) .hederMessages {
   background: var(--themeColor02);
-  border-bottom: 1px solid var(--themeColor03);
-}
-:global(.theme-dark) .listMessages {
-  background: #23272f;
+  border-bottom: 1px solid #3e4066;
 }
 :global(.theme-dark) .userMsg {
   background: #525e6e;
@@ -169,13 +159,6 @@
 }
 :global(.theme-dark) .userMsg:hover {
   background: #4a5f7c;
-}
-:global(.theme-dark) .closeBtn {
-  background: #232b36;
-  color: #aaa;
-}
-:global(.theme-dark) .closeBtn:hover {
-  color: #3b82f6;
 }
 :global(.theme-dark) .empyUserMsg {
   color: #afffaa;
