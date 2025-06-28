@@ -46,37 +46,48 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   useEffect(() => {
     async function verificarMensagens() {
       try {
-        //const response = await api.get('/messages');
-        //simulação de resposta
-        const response = {
-          data: [
-            { id: 1, content: 'Aproveite e utilize tambem nosso app para controlar a manutenção do seu carro. use o link https://teste.com' },
-            { id: 2, content: 'Mensagem 2' },
-            { id: 3, content: 'Mensagem 2' },
-            { id: 4, content: 'Mensagem 2' },
-            { id: 5, content: 'Mensagem 2' },
-            { id: 6, content: 'Mensagem 2' },
-            { id: 7, content: 'Mensagem 2' },
-            { id: 8, content: 'Mensagem 2' },
-            { id: 9, content: 'Mensagem 2' },
-            { id: 10, content: 'Mensagem 2' },
-            { id: 11, content: 'Mensagem 2' },
-            { id: 12, content: 'Mensagem final' },
-          ]
-        };
+        const response = await api.get('/messages/read'); // Chama o backend
         if (response.data && response.data.length > 0) {
           setMsgUser(true);
-          setQtdMsg(response.data.length);
+          // Conta apenas as mensagens não lidas
+          const naoLidas = response.data.filter(msg => !msg.read).length;
+          setQtdMsg(naoLidas);
+          if(naoLidas < 1){setMsgUser(false);}
           setMessages(response.data);
         } else {
           setMsgUser(false);
+          setMessages([]);
+          setQtdMsg(0);
         }
       } catch (error) {
         console.error('Erro ao verificar mensagens:', error);
+        setMsgUser(false);
+        setMessages([]);
+        setQtdMsg(0);
       }
     }
     verificarMensagens();
   }, []);
+
+  //marcar como lida
+  const marcarComoLida = async (msg) => {
+    if(msg.read === true){return}
+    const id = msg._id
+    try {
+      await api.post(`/messages/update/${id}`);
+      setMessages(msgs => {
+        const atualizadas = msgs.map(msg =>
+          msg._id === id ? { ...msg, read: true } : msg
+        );
+        // Atualiza o contador de não lidas após atualizar o estado
+        setQtdMsg(atualizadas.filter(msg => !msg.read).length);
+        if(qtdMsg === 0){setMsgUser(false);}
+        return atualizadas;
+      });
+    } catch (error) {
+      console.error('Erro ao marcar mensagem como lida:', error);
+    }
+  };
 
   // Fecha o menu ao clicar fora
   useEffect(() => {
@@ -142,6 +153,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
         messages={messages}
         open={showMessages}
         onClose={() => setShowMessages(false)}
+        marcarComoLida={marcarComoLida}
       />
     </section>
   )
