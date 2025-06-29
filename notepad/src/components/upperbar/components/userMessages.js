@@ -35,24 +35,6 @@ const UserMessages = ({ messages, open, onClose, marcarComoLida }) => {
 
   if (!open) return null;
 
-  function formatarData(dataISO){
-    const data = new Date(dataISO);
-
-    const formatador = new Intl.DateTimeFormat('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'America/Sao_Paulo',
-      hour12: false
-    });
-
-    const dataFormatada = formatador.format(data).replace(',', ' às');
-
-    return dataFormatada;
-  }
-
   return (
     <div className={styles.overlay}>
       <div className={styles.modal} role="dialog" aria-modal="true" aria-label="Mensagens">
@@ -75,7 +57,7 @@ const UserMessages = ({ messages, open, onClose, marcarComoLida }) => {
                 </div>
                   <div className={styles.msgInfoRight}>
                     <span className={styles.msgDate}>
-                      {msg.date ? formatarData(msg.date) : ''}
+                      {msg.date ? msg.date : ''}
                     </span>
                     {!msg.read ? (
                       <GoCheck
