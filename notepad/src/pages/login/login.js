@@ -32,8 +32,6 @@ export default function Login() {
         setAutenticado(true);
       } catch {
         setAutenticado(false);
-      } finally {
-        setLoading(false);
       }
     }
     checkAuth();
@@ -50,7 +48,9 @@ export default function Login() {
   // redireciona após autenticação
   useEffect(() => {
     if (autenticado) {
-      navigate('/notepad');
+      setTimeout(()=>navigate('/notepad'),1000)
+    }else{
+      setTimeout(()=>setLoading(false),1000)
     }
   }, [autenticado, navigate]);
 
@@ -98,68 +98,70 @@ export default function Login() {
     );
   }
 
-  return (
-    <div className={styles.container}>
-        <div className={styles.brand}>
-            <div className={styles.logoCircle}>
-                <span className={styles.logoText}><img src={logo} alt="Logo" /></span>
-            </div>
-            <span className={styles.brandName}>toSky notes</span>
-        </div>
-        <div className={styles.loginBox}>
-            <h2 className={styles.title}>Entrar</h2>
-            <form onSubmit={handleSubmit} className={styles.form}>
-              {errorMessage && (
-                <div className={`${styles.error} ${errorMessage.includes("Credenciais") ? styles.auth : styles.server}`}>
-                  <p>{errorMessage}</p>
-                </div>
-              )}
-              <input
-                  type="email"
-                  placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className={styles.input}
-              />
-              <input
-                  type="password"
-                  placeholder="Senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                  className={styles.input}
-              />
-              <div className={styles.checkboxContainer}>
-                  <input
-                      type="checkbox"
-                      id="continuarConectado"
-                      checked={continuarConectado}
-                      onChange={() => setContinuarConectado(!continuarConectado)}
-                  />
-                  <label htmlFor="continuarConectado">Continuar conectado</label>
+  if(!autenticado){
+    return (
+      <div className={styles.container}>
+          <div className={styles.brand}>
+              <div className={styles.logoCircle}>
+                  <span className={styles.logoText}><img src={logo} alt="Logo" /></span>
               </div>
-              <button type="submit" className={styles.button} disabled={isSubmitting}>
-                {isSubmitting ? "Aguarde" : "Login"}
-                {isSubmitting && (
-                  <span className={styles.ellipsis}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </span>
+              <span className={styles.brandName}>toSky notes</span>
+          </div>
+          <div className={styles.loginBox}>
+              <h2 className={styles.title}>Entrar</h2>
+              <form onSubmit={handleSubmit} className={styles.form}>
+                {errorMessage && (
+                  <div className={`${styles.error} ${errorMessage.includes("Credenciais") ? styles.auth : styles.server}`}>
+                    <p>{errorMessage}</p>
+                  </div>
                 )}
-              </button>
-            </form>
-            <Link className={styles.link}>
-                Esqueceu a senha?
-            </Link>
-            <div className={styles.cadastroContainer}>
-                <span>Não tem uma conta?</span>
-                <Link to='/register' className={styles.link}>
-                    Cadastre-se
-                </Link>
-            </div>
-        </div>
-    </div>
-  );
+                <input
+                    type="email"
+                    placeholder="E-mail"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className={styles.input}
+                />
+                <input
+                    type="password"
+                    placeholder="Senha"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                    required
+                    className={styles.input}
+                />
+                <div className={styles.checkboxContainer}>
+                    <input
+                        type="checkbox"
+                        id="continuarConectado"
+                        checked={continuarConectado}
+                        onChange={() => setContinuarConectado(!continuarConectado)}
+                    />
+                    <label htmlFor="continuarConectado">Continuar conectado</label>
+                </div>
+                <button type="submit" className={styles.button} disabled={isSubmitting}>
+                  {isSubmitting ? "Aguarde" : "Login"}
+                  {isSubmitting && (
+                    <span className={styles.ellipsis}>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                  )}
+                </button>
+              </form>
+              <Link className={styles.link}>
+                  Esqueceu a senha?
+              </Link>
+              <div className={styles.cadastroContainer}>
+                  <span>Não tem uma conta?</span>
+                  <Link to='/register' className={styles.link}>
+                      Cadastre-se
+                  </Link>
+              </div>
+          </div>
+      </div>
+    );
+  } 
 }

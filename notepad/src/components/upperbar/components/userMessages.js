@@ -57,7 +57,7 @@ const UserMessages = ({ messages, open, onClose, marcarComoLida }) => {
                 </div>
                   <div className={styles.msgInfoRight}>
                     <span className={styles.msgDate}>
-                      {msg.date ? msg.date : ''}
+                      {msg.dateString ? msg.dateString : ''}
                     </span>
                     {!msg.read ? (
                       <GoCheck
