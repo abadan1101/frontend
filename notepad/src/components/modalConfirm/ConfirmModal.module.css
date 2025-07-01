@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(30, 41, 59, 0.65); /* Azul escuro translúcido */
+    background: #1e293ba6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,6 @@
     background: #fff;
     padding: 32px 28px;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(30, 41, 59, 0.18), 0 1.5px 6px rgba(0,0,0,0.08);
     text-align: left;
     max-width: 600px;
     width: 92%;
@@ -57,14 +56,13 @@
 }
 
 .confirm {
-    background: #2575fc;
+    background: var(--ligthThemeColor01);
     color: #fff;
-    border: 1px solid #2575fc;
+    border: none;
 }
 
 .confirm:hover, .confirm:focus {
-    background: #0549be;
-    border-color: #0549be;
+    background: var(--ligthThemeColor02);
 }
 
 .cancel {
@@ -74,42 +72,23 @@
 }
 
 .cancel:hover, .cancel:focus {
-    background: #f3f2f1;
-    color: #0549be;
-    border-color: #0549be;
+    color: var(--ligthThemeColor01) !important;
+    border-color: var(--ligthThemeColor01);
 }
 
 
 
 /* Tema Escuro baseado em classe no body */
 :global(.theme-dark) .overlay {
-    background: rgba(0, 0, 0, 0.8); /* Azul escuro translúcido */
+    background: #000000cc;
 }
 
 :global(.theme-dark) .modal {
-    background: #1e293b; /* Azul escuro */
-    color: #f8fafc; /* Branco suave */
-    border: solid 1px #334155; /* Azul mais escuro */
-    box-shadow: 0 8px 32px rgba(30, 41, 59, 0.18), 0 1.5px 6px rgba(0,0,0,0.08);
-}
-
-:global(.theme-dark) .confirm {
-    background: #3b82f6; /* Azul claro */
-    color: #fff;
-}
-
-:global(.theme-dark) .confirm:hover, .confirm:focus {
-    background: #2563eb; /* Azul mais escuro */
+    background: var(--darkThemeColor01);
+    color: #f8fafc;
+    border: solid 1px var(--darkThemeColor02);
 }
 
 :global(.theme-dark) .cancel {
-    background: transparent;
-    color: #d1d5db; /* Cinza claro */
-    border: 1px solid #4b5563; /* Cinza escuro */
-}
-
-:global(.theme-dark) .cancel:hover, .cancel:focus {
-    background: #374151; /* Cinza mais escuro */
-    color: #fff;
-    border-color: #2563eb; /* Azul mais escuro */
+    color: #f8fafc;
 }

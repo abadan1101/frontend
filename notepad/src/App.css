@@ -30,11 +30,17 @@ li {
 
 :root {
     /* tema claro */
-    --themeColor01: #2575fc; /*em uso */
-	/* --themeColor02: #6a11cb; */
+    --ligthThemeColor01: #2575fc; /* azul para botões */
+    --ligthThemeColor02: #6a11cb; /* roxo para hover em botões */
+    --ligthThemeColor03: #e8e8fa; /* roxo claro para componentes */
+    --ligthThemeColor04: #d1d1fa; /* roxo claro 2 para hover em componentes */
 
     /* tema escuro */
-    --themeColor02: #23243a; /*em uso */
+    --darkThemeColor01: #1e293b; /* azul escuro para background em cabeçalhos */
+    --darkThemeColor02: #334155; /* azul escuro para bordas cabeçalhos */
+    --darkThemeColor03: #282829; /* cinza escuro para componentes */
+    --darkThemeColor04: #575758; /* cinza médio para hover em componentes */
+    --darkThemeColor05: #23243a; /*em uso */
 }
 
 .App{

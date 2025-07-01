@@ -8,22 +8,24 @@
 	max-height: 65px;
 	z-index: 101;
 }
-/* NAVBAR */
+
 .content nav {
     background: #fff;
 	height: 55px;
 	padding: 0 20px 0 0;
 	display: flex;
 	align-items: center;
-	grid-gap: 28px;
+	grid-gap: 20px;
 	position: sticky;
 	top: 0;
 	left: 0;
 	box-shadow: 5px 5px 5px #ddd;
 }
+
 .logo img {
 	display: flex;
 	margin-left: 10px;
+	margin-right: 5px;
 	margin-top: 0;
 	width: 45px;
 	cursor: pointer;
@@ -34,9 +36,11 @@
 	width: 100%;
 	margin-right: auto;
 }
+
 .content nav .formGroup {
 	position: relative;
 }
+
 .content nav .formGroup input {
 	width: 100%;
 	background: #fff;
@@ -46,9 +50,11 @@
 	padding: 8px 20px 8px 12px;
 	transition: all .3s ease;
 }
+
 .content nav .formGroup input:focus {
 	box-shadow: 0 0 0 1px #1775F1, 0 0 0 4px #D0E4FF;
 }
+
 .content nav .formGroup .icon {
 	position: absolute;
 	top: 50%;
@@ -56,20 +62,23 @@
 	right: 16px;
 	color: #8D8D8D;
 }
+
 .content nav .navlink {
 	top: 3px;
 	position: relative;
 }
+
 .content nav .navlink .icon {
 	font-size: 25px;
 	color: #2575fc;
 	cursor: pointer;
 	transition: all .3s ease;
 }
+
 .content nav .navlink .badge {
 	position: absolute;
-	top: -12px;
-	right: -12px;
+	top: -10px;
+	right: -10px;
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
@@ -83,15 +92,18 @@
 	font-weight: 700;
 	cursor: pointer;
 }
+
 .content nav .divider {
 	width: 1px;
 	background: #555;
 	height: 12px;
 	display: block;
 }
+
 .content nav .profile {
 	position: relative;
 }
+
 .content nav .profile .icon {
 	font-size: 35px;
 	cursor: pointer;
@@ -123,23 +135,28 @@
   background: #f3f3f3;
 }
 
+
+
 /* Tema Escuro */
 @media (prefers-color-scheme: dark) {
-  .content nav {
-    background: #23243a;
-    box-shadow: none;
-  }
-  .content nav .navlink .icon,
-  .content nav .profile .icon,
-  .logoText {
-    color: #e0e0e0;
-  }
-  .dropdownMenu {
-    background: #23243a;
-    color: #e0e0e0;
-    border: 1px solid #444;
-  }
-  .dropdownMenu li:hover {
-	color: #000;
-}
+	.content nav {
+		background: #23243a;
+		box-shadow: none;
+	}
+	.content nav .navlink .icon,
+	.content nav .profile .icon,
+	.logoText {
+		color: #e0e0e0;
+	}
+	.content nav .divider {
+		background: #ccc;
+	}
+	.dropdownMenu {
+		background: #23243a;
+		color: #e0e0e0;
+		border: 1px solid #444;
+	}
+	.dropdownMenu li:hover {
+		color: #000;
+	}
 }

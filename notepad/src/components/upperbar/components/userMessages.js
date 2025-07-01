@@ -60,7 +60,7 @@ const UserMessages = ({ messages, open, onClose, marcarComoLida }) => {
               >
                 <div>
                   <span>{msg.content}</span>
-                  <Link to={msg.link}>{msg.nameLink}</Link>
+                  <Link className={styles.linkMsg} to={msg.link}>{msg.nameLink}</Link>
                 </div>
                   <div className={styles.msgInfoRight}>
                     <span className={styles.msgDate}>

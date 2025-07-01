@@ -41,7 +41,7 @@
 .headerMessages {
   margin: 0;
   letter-spacing: 0.5px;
-  background: var(--themeColor01);
+  background: var(--ligthThemeColor01);
   padding: 8px;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .userMsg {
-  background: #e8e8fa;
+  background: var(--ligthThemeColor03);
   border-radius: 12px 12px 12px 4px;
   padding: 1rem 1.2rem;
   font-size: 1rem;
@@ -99,7 +99,7 @@
 }
 
 .userMsg:hover {
-  background: #d1d1fa;
+  background: var(--ligthThemeColor04);
 }
 
 .emptyUserMsg {
@@ -130,6 +130,16 @@
 
 .userMsg > div + div {
   margin-top: 6px;
+}
+
+.linkMsg {
+  color: #23243a; /* Cor azul do tema */
+  text-decoration: none; /* Remove o sublinhado padrão */
+  transition: color 0.2s;
+}
+
+.linkMsg:hover {
+  text-decoration: underline !important; /* Adiciona sublinhado ao passar o mouse */
 }
 
 .msgInfoRight {
@@ -184,19 +194,26 @@
 :global(.theme-dark) .overlay {
   background: rgba(255, 255, 255, 0.18);
 }
+
 :global(.theme-dark) .modal {
-  background: #23272f;
+  background: #000;
 }
+
 :global(.theme-dark) .headerMessages {
-  background: var(--themeColor02);
-  border-bottom: 1px solid #3e4066;
+  background: var(--darkThemeColor01);
+  border-bottom: 1px solid var(--darkThemeColor02);
 }
 :global(.theme-dark) .userMsg {
-  background: #525e6e;
-  color: #ddd;
+  background: var(--darkThemeColor03);
+  color: #ccc;
 }
 :global(.theme-dark) .userMsg:hover {
-  background: #4a5f7c;
+  background: var(--darkThemeColor04);
+}
+:global(.theme-dark) .linkMsg {
+  color: #ccc;
+  text-decoration: none; /* Remove o sublinhado padrão */
+  transition: color 0.2s;
 }
 :global(.theme-dark) .emptyUserMsg {
   color: #afffaa;

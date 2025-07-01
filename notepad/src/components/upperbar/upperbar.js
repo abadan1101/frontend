@@ -9,9 +9,9 @@ import api from '../../services/api.js';
 
 //IMPORTAÇÃO ICONES
 import { IoIosSearch } from "react-icons/io";
-import { BiSolidMessageSquareDots } from "react-icons/bi";
+import { BiMessageSquareDots  } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
-import logo from '../../img/logo16.png';
+import logo from '../../img/logo18.png';
 import darkLogo from '../../img/logo13.png';
 
 
@@ -23,7 +23,6 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   const [logoSrc, setLogoSrc] = useState(logo);
   const [menuAberto, setMenuAberto] = useState(false);
   const menuRef = useRef(null);
-  const [msgUser, setMsgUser] = useState('');
   const [qtdMsg, setQtdMsg] = useState(0);
   const [showMessages, setShowMessages] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -47,21 +46,17 @@ const Upperbar = ({ searchTerm, onSearch }) => {
     async function verificarMensagens() {
       try {
         const response = await api.get('/messages/read'); // Chama o backend
-        if (response.data && response.data.length > 0) {
-          setMsgUser(true);
+        if (response.data?.length > 0) {
           // Conta apenas as mensagens não lidas
           const naoLidas = response.data.filter(msg => !msg.read).length;
           setQtdMsg(naoLidas);
-          if(naoLidas < 1){setMsgUser(false);}
           setMessages(response.data);
         } else {
-          setMsgUser(false);
           setMessages([]);
           setQtdMsg(0);
         }
       } catch (error) {
         console.error('Erro ao verificar mensagens:', error);
-        setMsgUser(false);
         setMessages([]);
         setQtdMsg(0);
       }
@@ -80,8 +75,8 @@ const Upperbar = ({ searchTerm, onSearch }) => {
           msg._id === id ? { ...msg, read: true } : msg
         );
         // Atualiza o contador de não lidas após atualizar o estado
-        setQtdMsg(atualizadas.filter(msg => !msg.read).length);
-        if(qtdMsg === 0){setMsgUser(false);}
+        const naoLidas = atualizadas.filter(msg => !msg.read).length;
+        setQtdMsg(naoLidas);
         return atualizadas;
       });
     } catch (error) {
@@ -129,8 +124,8 @@ const Upperbar = ({ searchTerm, onSearch }) => {
               </div>
           </form>
           <p className={styles.navlink} onClick={() => setShowMessages(true)}>
-            <BiSolidMessageSquareDots className={styles.icon}/>
-            {msgUser && <span className={styles.badge}>{qtdMsg}</span>}
+            <BiMessageSquareDots  className={styles.icon}/>
+            {qtdMsg > 0 && <span className={styles.badge}>{qtdMsg}</span>}
           </p>
           <span className={styles.divider}></span>
         <div className={styles.profile} ref={menuRef}>
