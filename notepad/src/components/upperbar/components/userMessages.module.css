@@ -113,13 +113,21 @@
   font-weight: bold;
 }
 
-.markReadIcon {
+.noReadIcon {
+  margin-Left: 16px;
+  font-size: 22px;
+  color: #888;
   transition: color 0.2s;
 }
 
-.markReadIcon:hover {
-  color: #388e3c;
+.ReadIcon {
+  margin-left: 16px;
+  font-size: 22px;
+  color: #4caf50;
+  opacity: 0.7;
+  transition: color 0.2s;
 }
+
 .userMsg > div + div {
   margin-top: 6px;
 }

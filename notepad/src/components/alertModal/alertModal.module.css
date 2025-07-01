@@ -63,6 +63,8 @@
     border-color: #0549be;
 }
 
+
+
 /* Tema Escuro baseado em classe no body */
 :global(.theme-dark) .modal {
     background: #1e293b;

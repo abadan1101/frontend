@@ -25,7 +25,7 @@
 	display: flex;
 	margin-left: 10px;
 	margin-top: 0;
-	width: 35px;
+	width: 45px;
 	cursor: pointer;
 }
 
@@ -61,7 +61,7 @@
 	position: relative;
 }
 .content nav .navlink .icon {
-	font-size: 18px;
+	font-size: 25px;
 	color: #2575fc;
 	cursor: pointer;
 	transition: all .3s ease;

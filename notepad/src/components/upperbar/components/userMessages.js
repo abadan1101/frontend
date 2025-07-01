@@ -1,38 +1,45 @@
+//IMPORTAÇÃO DAS BIBLIOTECAS---------------------------------------------------
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+
+
+//IMPORTAÇÃO DOS COMPONENTES---------------------------------------------------
 import styles from './userMessages.module.css';
 import { GoArrowLeft, GoX, GoCheck } from "react-icons/go";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+
+
 
 const UserMessages = ({ messages, open, onClose, marcarComoLida }) => {
-  // Estado local para controlar mensagens lidas
-  const [localMessages, setLocalMessages] = useState([]);
+  // Estado local para controlar mensagens, sincronizado com as props.
+  const [localMessages, setLocalMessages] = useState(messages);
 
-  //hook para mostrae todas as mensagens, mesmo as recentes
+  // Sincroniza o estado local quando as mensagens externas mudam.
   useEffect(() => {
     setLocalMessages(messages);
   }, [messages]);
 
-  // Impede o scroll do body quando o modal está aberto e fecha com ESC
+  // Gerencia efeitos colaterais do modal (scroll lock, fechar com ESC).
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      const handleEsc = (e) => {
-        if (e.key === "Escape") onClose();
-      };
-      window.addEventListener("keydown", handleEsc);
-      return () => {
-        document.body.style.overflow = "";
-        window.removeEventListener("keydown", handleEsc);
-      };
-    } else {
+    if (!open) {
       document.body.style.overflow = "";
+      return;
     }
+    document.body.style.overflow = "hidden";
+    const handleEsc = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleEsc);
+
+    // Função de limpeza
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
     };
   }, [open, onClose]);
 
+  //modal fechado ao iniciar
   if (!open) return null;
 
   return (
@@ -61,15 +68,13 @@ const UserMessages = ({ messages, open, onClose, marcarComoLida }) => {
                     </span>
                     {!msg.read ? (
                       <GoCheck
-                        className={styles.markReadIcon}
+                        className={styles.noReadIcon}
                         title="Marcar como lida"
-                        style={{ cursor: 'pointer', marginLeft: 16, fontSize: 22, color: '#888' }}
                       />
                     ) : (
                       <IoCheckmarkDoneOutline
-                        className={styles.markReadIcon}
+                        className={styles.ReadIcon}
                         title="Mensagem lida"
-                        style={{ marginLeft: 16, fontSize: 22, color: '#4caf50', opacity: 0.7, cursor: 'default' }}
                       />
                     )}
                   </div>
