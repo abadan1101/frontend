@@ -43,7 +43,7 @@
 }
 
 .confirm{
-    background: var(--ligthThemeColor01);
+    background: var(--ligthThemeColor02);
     border: none;
     color: #fff;
     min-width: 100px;
@@ -58,18 +58,26 @@
 }
 
 .confirm:hover, .confirm:focus {
-    background: var(--ligthThemeColor02);
+    background: var(--ligthThemeColor03);
 }
 
 
 
 /* Tema Escuro baseado em classe no body */
 :global(.theme-dark) .modal {
-    background: var(--darkThemeColor01);
+    background: var(--darkThemeColor00);
     color: #f8fafc;
-    border: solid 1px var(--darkThemeColor02);
+    border: solid 1px var(--darkThemeColor01);
 }
 
 :global(.theme-dark) .overlay {
     background: #000000cc;
+}
+
+:global(.theme-dark) .confirm{
+    background: var(--darkThemeColor02);
+}
+
+:global(.theme-dark) .confirm:hover, .confirm:focus {
+    background: var(--darkThemeColor03);
 }

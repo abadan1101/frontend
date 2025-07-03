@@ -37,16 +37,22 @@ li {
 
 :root {
     /* tema claro */
-    --ligthThemeColor01: #2575fc; /* azul para botões */
-    --ligthThemeColor02: #6a11cb; /* roxo para hover em botões */
-    --ligthThemeColor03: #e8e8fa; /* roxo claro para componentes */
-    --ligthThemeColor04: #d1d1fa; /* roxo claro 2 para hover em componentes */
+    --ligthThemeColor00: #ffffff; /* branco para background em cabeçalhos */
+    --ligthThemeColor01: #dddddd; /* branco para para bordas cabeçalhos */
+    --ligthThemeColor02: #2575fc; /* azul para botões e cabeçalhos secundários e efeitos cx pesq*/
+    --ligthThemeColor03: #6a11cb; /* roxo para hover em botões */
+    --ligthThemeColor04: #e8e8fa; /* roxo claro para componentes */
+    --ligthThemeColor05: #d1d1fa; /* roxo claro 2 para hover em componentes */
+    --ligthThemeColor06: #D0E4FF; /* azul claro para efeitos cx pesq*/
 
     /* tema escuro */
-    --darkThemeColor01: #1e293b; /* azul escuro para background em cabeçalhos */
-    --darkThemeColor02: #334155; /* azul escuro para bordas cabeçalhos */
-    --darkThemeColor03: #282829; /* cinza escuro para componentes */
-    --darkThemeColor04: #3a3a3a; /* cinza médio para hover em componentes */
+    --darkThemeColor00: #23243a; /* azul escuro para background em cabeçalhos */
+    --darkThemeColor01: #334155; /* azul escuro para bordas cabeçalhos */
+    --darkThemeColor02: #2575fc; /* azul para botões */
+    --darkThemeColor03: #6a11cb; /* roxo para hover em botões */
+    --darkThemeColor04: #282829; /* cinza escuro para componentes */
+    --darkThemeColor05: #3a3a3a; /* cinza médio para hover em componentes */
+    --darkThemeColor06: #D0E4FF; /* azul claro para efeitos cx pesq*/
 }
 
 
@@ -55,6 +61,5 @@ li {
 @media (prefers-color-scheme: dark) {
     body {
         background: #000;
-        border-top: solid 3px #23243a; /*corrigir borda superior pwa*/
     }
 }

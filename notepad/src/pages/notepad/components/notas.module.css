@@ -127,14 +127,14 @@
         border-radius: 8px;
     }
     .notepadInfos strong {
-        color: var(--themeColor02);
+        color: var(--ligthThemeColor01);
     }
     .notepadInfos div div {
         color: #c4c4c4;
     }
     .notepadInfos textarea {
         background: #1a1a1a;
-        color: #ccc;
+        color: #888;
     }
     .notepadInfosFooter p {
         color: #c4c4c4;

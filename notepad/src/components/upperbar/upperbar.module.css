@@ -2,6 +2,7 @@
 	position: fixed;
 	width: 100%;
 	top: 0px;
+	margin-top: 0px;
 	left: 0px;
 	transition: all .3s ease;
 	height: 100%;
@@ -10,7 +11,7 @@
 }
 
 .content nav {
-    background: #fff;
+    background: var(--ligthThemeColor00);
 	height: 55px;
 	padding: 0 20px 0 0;
 	display: flex;
@@ -48,13 +49,12 @@
 	outline: none;
 	padding: 8px 20px 8px 12px;
 	transition: all .3s ease;
-	  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+	transition: box-shadow 0.5s ease, border-color 0.5s ease;
 }
 
 .content nav .formGroup input:focus {
-	box-shadow: 0 0 0 1px #1775F1, 0 0 0 4px #D0E4FF;
+	box-shadow: 0 0 0 1px var(--ligthThemeColor02), 0 0 0 4px var(--ligthThemeColor06);
 }
-
 
 .content nav .formGroup .icon {
 	position: absolute;
@@ -71,7 +71,7 @@
 
 .content nav .navlink .icon {
 	font-size: 25px;
-	color: #2575fc;
+	color: var(--ligthThemeColor02);
 	cursor: pointer;
 	transition: all .3s ease;
 }
@@ -96,7 +96,7 @@
 
 .content nav .divider {
 	width: 1px;
-	background: #555;
+	background: #AAA;
 	height: 12px;
 	display: block;
 }
@@ -106,9 +106,9 @@
 }
 
 .content nav .profile .icon {
-	font-size: 35px;
+	font-size: 33px;
 	cursor: pointer;
-	color: #2575fc;
+	color: var(--ligthThemeColor02);
 }
 
 .dropdownMenu {
@@ -138,26 +138,29 @@
 
 
 
-/* Tema Escuro */
-@media (prefers-color-scheme: dark) {
-	.content nav {
-		background: #23243a;
-		box-shadow: none;
-	}
-	.content nav .navlink .icon,
-	.content nav .profile .icon,
-	.logoText {
-		color: #e0e0e0;
-	}
-	.content nav .divider {
-		background: #ccc;
-	}
-	.dropdownMenu {
-		background: #23243a;
-		color: #e0e0e0;
-		border: 1px solid #444;
-	}
-	.dropdownMenu li:hover {
-		color: #000;
-	}
+/* Tema Escuro baseado em classe no body */
+:global(.theme-dark) .content nav {
+	background: var(--darkThemeColor00);
+	box-shadow: none;
 }
+
+:global(.theme-dark) .content nav .navlink .icon,
+:global(.theme-dark) .content nav .profile .icon,
+:global(.theme-dark) .logoText {
+	color: #e0e0e0;
+}
+
+:global(.theme-dark) .content nav .divider {
+	background: #ccc;
+}
+
+:global(.theme-dark) .dropdownMenu {
+	background: #23243a;
+	color: #e0e0e0;
+	border: 1px solid #444;
+}
+
+:global(.theme-dark) .dropdownMenu li:hover {
+	color: #000;
+}
+

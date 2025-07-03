@@ -13,7 +13,11 @@ export function setThemeColorByTheme() {
   }
 
   if (themeMeta) {
-    themeMeta.setAttribute('content', isDark ? '#23243a' : '#ffffff');
+    const root = document.documentElement;
+    const darkThemeColor = getComputedStyle(root).getPropertyValue('--darkThemeColor00').trim();
+    const lightThemeColor = getComputedStyle(root).getPropertyValue('--ligthThemeColor00').trim();
+
+    themeMeta.setAttribute('content', isDark ? darkThemeColor : lightThemeColor);
   }
 }
 

@@ -41,7 +41,7 @@
 .headerMessages {
   margin: 0;
   letter-spacing: 0.5px;
-  background: var(--ligthThemeColor01);
+  background: var(--ligthThemeColor02);
   padding: 8px;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .userMsg {
-  background: var(--ligthThemeColor03);
+  background: var(--ligthThemeColor04);
   border-radius: 12px 12px 12px 4px;
   padding: 1rem 1.2rem;
   font-size: 1rem;
@@ -99,7 +99,7 @@
 }
 
 .userMsg:hover {
-  background: var(--ligthThemeColor04);
+  background: var(--ligthThemeColor05);
 }
 
 .emptyUserMsg {
@@ -200,15 +200,15 @@
 }
 
 :global(.theme-dark) .headerMessages {
-  background: var(--darkThemeColor01);
-  border-bottom: 1px solid var(--darkThemeColor02);
+  background: var(--darkThemeColor00);
+  border-bottom: 1px solid var(--darkThemeColor01);
 }
 :global(.theme-dark) .userMsg {
-  background: var(--darkThemeColor03);
+  background: var(--darkThemeColor04);
   color: #ccc;
 }
 :global(.theme-dark) .userMsg:hover {
-  background: var(--darkThemeColor04);
+  background: var(--darkThemeColor05);
 }
 :global(.theme-dark) .emptyUserMsg {
   color: #afffaa;

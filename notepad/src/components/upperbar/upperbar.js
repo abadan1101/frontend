@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './upperbar.module.css';
 import UserMessages from './components/userMessages.js';
+import UserSettings from './components/userSettings.js';
 import api from '../../services/api.js';
 
 
@@ -29,6 +30,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   const menuRef = useRef(null);
   const [qtdMsg, setQtdMsg] = useState(0);
   const [showMessages, setShowMessages] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
 
@@ -111,10 +113,13 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   return (
     <section className={styles.content}>
       <nav>
+
+        {/* logo */}
         <div className={styles.logo}>
           <img src={logoSrc} alt="Logo" />
         </div>
 
+        {/* barra de pesquisa */}
         <form action="#">
           <div className={styles.formGroup}>
             <input
@@ -128,13 +133,24 @@ const Upperbar = ({ searchTerm, onSearch }) => {
           </div>
         </form>
 
+        {/* botão de mensagens */}
         <p className={styles.navlink} onClick={() => setShowMessages(true)}>
           <BiMessageSquareDots className={styles.icon} title='mensagens'/>
           {qtdMsg > 0 && <span className={styles.badge}>{qtdMsg}</span>}
         </p>
 
+        {/* modal de mensagens */}
+        <UserMessages
+          messages={messages}
+          open={showMessages}
+          onClose={() => setShowMessages(false)}
+          marcarComoLida={marcarComoLida}
+        />
+
+        {/* separador */}
         <span className={styles.divider}></span>
 
+        {/* menu de configurações */}
         <div className={styles.profile} ref={menuRef}>
           <LiaUserSolid
             className={styles.icon}
@@ -146,19 +162,22 @@ const Upperbar = ({ searchTerm, onSearch }) => {
           />
           {menuAberto && (
             <ul className={styles.dropdownMenu}>
-              <li onClick={() => navigate("/settings")}>Configurações</li>
+              <li onClick={() => setShowSettings(true)}>Configurações</li>
               <li onClick={sair}>Sair</li>
             </ul>
           )}
         </div>
+
+        {/* configurações de usuário */}
+        {showSettings && (
+          <UserSettings
+            onClose={() => setShowSettings(false)}
+          />)
+        }
+
       </nav>
 
-      <UserMessages
-        messages={messages}
-        open={showMessages}
-        onClose={() => setShowMessages(false)}
-        marcarComoLida={marcarComoLida}
-      />
+
     </section>
   );
 };

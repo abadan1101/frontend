@@ -1,0 +1,257 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 32px 16px;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+  color: #444;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.sidebar li:hover,
+.sidebar .active {
+  background: #e6f0fa;
+  color: #0078d4;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+  background: var(--themeColor03)
+}
+.backButton {
+  margin-top: 16px;
+  width: 100%;
+  padding: 10px 0;
+  background: #e6f0fa;
+  color: #0078d4;
+  border: 1px solid #0078d4;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.backButton:hover {
+  background: #0078d4;
+  color: #fff;
+}
+
+.content h3 {
+  margin-bottom: 24px;
+  color: #222;
+}
+
+
+
+
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 400px;
+  margin: 0 0;
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+  padding: 24px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.form input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 15px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  background: #fafbfc;
+  transition: border .2s;
+}
+
+.form input:focus {
+  outline: none;
+  border: 1.5px solid var(--primary, #1976d2);
+  background: #fff;
+}
+
+.form button {
+  background: var(--primary, #1976d2);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+  margin-top: 8px;
+}
+
+.form button:hover {
+  background: #125ea9;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 15px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  background: #fafbfc;
+  transition: border .2s;
+}
+
+.input:focus {
+  outline: none;
+  border: 1.5px solid var(--primary, #1976d2);
+  background: #fff;
+}
+
+.saveButton {
+  background: var(--primary, #1976d2);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+  margin-top: 8px;
+}
+
+.saveButton:hover {
+  background: #125ea9;
+}
+
+
+
+
+
+
+.preferencesForm {
+  max-width: 400px;
+  margin: 0 0;
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.themeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.themeLabel {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.themeOptions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.themeOption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  background: transparent;
+  transition: all .2s;
+  font-size: 15px;
+  user-select: none;
+}
+
+.themeOption input[type="radio"] {
+  accent-color: #1976d2;
+}
+
+.selected {
+  background: var(--primary-light, #e3f2fd);
+  border: 1.5px solid var(--primary, #1976d2);
+}
+
+.themeHint {
+  font-size: 13px;
+  color: #757575;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+  width: 180px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 32px 16px;
+  }
+
+  .form,
+  .preferencesForm {
+    padding: 16px;
+    max-width: 100%;
+  }
+  .themeOptions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
