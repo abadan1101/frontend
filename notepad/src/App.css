@@ -16,7 +16,6 @@ html, body, #root {
 
 body {
     background: #fff;
-    border-top: solid 2px #fff; /*corrigir borda superior pwa*/
     -webkit-font-smoothing: antialiased;
 }
 
@@ -56,6 +55,6 @@ li {
 @media (prefers-color-scheme: dark) {
     body {
         background: #000;
-        border-top: solid 2px #23243a; /*corrigir borda superior pwa*/
+        border-top: solid 3px #23243a; /*corrigir borda superior pwa*/
     }
 }
