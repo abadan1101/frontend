@@ -35,13 +35,23 @@ function Notes({ data, onTrash, onSaveEdit, onTogglePriority, canDrag }) {
 
     //funções em teste----------------------------------------------
     function handleKeyUp(e) {
-        e.preventDefault();
         if (e.key === 'Enter') {
+            e.preventDefault();
             const txa = e.target;
             const locCursor = txa.selectionStart;
-            var val = txa.value;
-            txa.value = val.slice(0, locCursor) + "○  " + val.slice(locCursor);
-            txa.selectionEnd = locCursor + 3;
+            const textBeforeCursor = notesValue.slice(0, locCursor).trim();
+
+            // Só insere marcador se a frase anterior terminar com ":" ou ";"
+            if (textBeforeCursor.endsWith(":") || textBeforeCursor.endsWith(";")) {
+                const newValue =
+                    notesValue.slice(0, locCursor) + "   ●  " + notesValue.slice(locCursor);
+                    setNotesValue(newValue);
+
+                // Reposiciona o cursor após o marcador
+                setTimeout(() => {
+                    txa.selectionStart = txa.selectionEnd = locCursor + 6;
+                }, 0);
+            }
         }
     }
     //funções em teste----------------------------------------------

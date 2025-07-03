@@ -133,7 +133,7 @@
 }
 
 .linkMsg {
-  color: #23243a; /* Cor azul do tema */
+  color: #6970fc !important; /* Cor azul do tema */
   text-decoration: none; /* Remove o sublinhado padrão */
   transition: color 0.2s;
 }
@@ -209,11 +209,6 @@
 }
 :global(.theme-dark) .userMsg:hover {
   background: var(--darkThemeColor04);
-}
-:global(.theme-dark) .linkMsg {
-  color: #ccc;
-  text-decoration: none; /* Remove o sublinhado padrão */
-  transition: color 0.2s;
 }
 :global(.theme-dark) .emptyUserMsg {
   color: #afffaa;

@@ -39,7 +39,7 @@ li {
     --darkThemeColor01: #1e293b; /* azul escuro para background em cabeçalhos */
     --darkThemeColor02: #334155; /* azul escuro para bordas cabeçalhos */
     --darkThemeColor03: #282829; /* cinza escuro para componentes */
-    --darkThemeColor04: #575758; /* cinza médio para hover em componentes */
+    --darkThemeColor04: #3a3a3a; /* cinza médio para hover em componentes */
     --darkThemeColor05: #23243a; /*em uso */
 }
 

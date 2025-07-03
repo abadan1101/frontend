@@ -1,4 +1,4 @@
-//IMPORTAÇÃO DOS COMPONENTES---------------------------------------------------
+// IMPORTAÇÃO DOS COMPONENTES ---------------------------------------------------
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './upperbar.module.css';
@@ -7,19 +7,23 @@ import api from '../../services/api.js';
 
 
 
-//IMPORTAÇÃO ICONES
+// IMPORTAÇÃO ICONES
 import { IoIosSearch } from "react-icons/io";
-import { BiMessageSquareDots  } from "react-icons/bi";
+import { BiMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
 import logo from '../../img/logo18.png';
 import darkLogo from '../../img/logo13.png';
 
 
 
-//BARRA SUPERIOR DE NAVEGAÇÃO--------------------------------------------------
-const Upperbar = ({ searchTerm, onSearch }) => {
+// FUNÇÕES UTILITÁRIAS ----------------------------------------------------------
+const isDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+const contarNaoLidas = (mensagens) => mensagens.filter(msg => !msg.read).length;
 
-  //variáveis e constantes
+
+
+// COMPONENTE -------------------------------------------------------------------
+const Upperbar = ({ searchTerm, onSearch }) => {
   const [logoSrc, setLogoSrc] = useState(logo);
   const [menuAberto, setMenuAberto] = useState(false);
   const menuRef = useRef(null);
@@ -28,55 +32,54 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
 
-  //hook para definir logo claro ou dark
+  // Atualiza logo conforme tema
   useEffect(() => {
     function updateLogo() {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setLogoSrc(isDark ? darkLogo : logo);
+      setLogoSrc(isDarkMode() ? darkLogo : logo);
     }
     updateLogo();
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateLogo);
-    return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateLogo);
-    };
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', updateLogo);
+    return () => mediaQuery.removeEventListener('change', updateLogo);
   }, []);
 
-  // Verifica se o usuário tem mensagens
-  useEffect(() => {
-    async function verificarMensagens() {
-      try {
-        const response = await api.get('/messages/read'); // Chama o backend
-        if (response.data?.length > 0) {
-          // Conta apenas as mensagens não lidas
-          const naoLidas = response.data.filter(msg => !msg.read).length;
-          setQtdMsg(naoLidas);
-          setMessages(response.data);
-        } else {
-          setMessages([]);
-          setQtdMsg(0);
-        }
-      } catch (error) {
-        console.error('Erro ao verificar mensagens:', error);
+  // Verifica mensagens do usuário
+  const verificarMensagens = async () => {
+    try {
+      const response = await api.get('/messages/read');
+      if (Array.isArray(response.data)) {
+        const naoLidas = contarNaoLidas(response.data);
+        setMessages(response.data);
+        setQtdMsg(naoLidas);
+      } else {
         setMessages([]);
         setQtdMsg(0);
       }
+    } catch (error) {
+      console.error('Erro ao verificar mensagens:', error);
+      setMessages([]);
+      setQtdMsg(0);
     }
+  };
+
+  // Chamada inicial e atualização periódica
+  useEffect(() => {
     verificarMensagens();
+    const interval = setInterval(verificarMensagens, 60000); // a cada 60s
+    return () => clearInterval(interval);
   }, []);
 
-  //marcar como lida
+  // Marcar mensagem como lida
   const marcarComoLida = async (msg) => {
-    if(msg.read === true){return}
-    const id = msg._id
+    if (msg.read) return;
+    const id = msg._id;
     try {
       await api.post(`/messages/update/${id}`);
-      setMessages(msgs => {
-        const atualizadas = msgs.map(msg =>
-          msg._id === id ? { ...msg, read: true } : msg
+      setMessages(prevMsgs => {
+        const atualizadas = prevMsgs.map(m =>
+          m._id === id ? { ...m, read: true } : m
         );
-        // Atualiza o contador de não lidas após atualizar o estado
-        const naoLidas = atualizadas.filter(msg => !msg.read).length;
-        setQtdMsg(naoLidas);
+        setQtdMsg(contarNaoLidas(atualizadas));
         return atualizadas;
       });
     } catch (error) {
@@ -84,7 +87,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
     }
   };
 
-  // Fecha o menu ao clicar fora
+  // Fecha menu ao clicar fora
   useEffect(() => {
     function handleClickFora(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -95,39 +98,43 @@ const Upperbar = ({ searchTerm, onSearch }) => {
     return () => document.removeEventListener('mousedown', handleClickFora);
   }, []);
 
-  // função logout
-  async function sair() {
+  // Logout
+  const sair = async () => {
     try {
       await api.post('/auth/logout');
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
     }
     navigate('/');
-  }
+  };
 
   return (
     <section className={styles.content}>
       <nav>
-          <div className={styles.logo} onClick={() => navigate('/register')}>
-            <img src={logoSrc} alt="Logo" />
+        <div className={styles.logo}>
+          <img src={logoSrc} alt="Logo" />
+        </div>
+
+        <form action="#">
+          <div className={styles.formGroup}>
+            <input
+              id="barrPesc_pesquisa"
+              type="text"
+              placeholder="Buscar..."
+              value={searchTerm}
+              onChange={e => onSearch(e.target.value)}
+            />
+            <IoIosSearch className={styles.icon} />
           </div>
-          <form action='#'>
-              <div className={styles.formGroup}>
-                <input
-                  id="barrPesc_pesquisa"
-                  type="text"
-                  placeholder="Buscar..."
-                  value={searchTerm}
-                  onChange={e => onSearch(e.target.value)}
-                />
-                <IoIosSearch className={styles.icon}/>
-              </div>
-          </form>
-          <p className={styles.navlink} onClick={() => setShowMessages(true)}>
-            <BiMessageSquareDots  className={styles.icon}/>
-            {qtdMsg > 0 && <span className={styles.badge}>{qtdMsg}</span>}
-          </p>
-          <span className={styles.divider}></span>
+        </form>
+
+        <p className={styles.navlink} onClick={() => setShowMessages(true)}>
+          <BiMessageSquareDots className={styles.icon} title='mensagens'/>
+          {qtdMsg > 0 && <span className={styles.badge}>{qtdMsg}</span>}
+        </p>
+
+        <span className={styles.divider}></span>
+
         <div className={styles.profile} ref={menuRef}>
           <LiaUserSolid
             className={styles.icon}
@@ -135,6 +142,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
             style={{ cursor: 'pointer' }}
             aria-haspopup="true"
             aria-expanded={menuAberto}
+            title='configurações'
           />
           {menuAberto && (
             <ul className={styles.dropdownMenu}>
@@ -144,6 +152,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
           )}
         </div>
       </nav>
+
       <UserMessages
         messages={messages}
         open={showMessages}
@@ -151,7 +160,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
         marcarComoLida={marcarComoLida}
       />
     </section>
-  )
+  );
 };
 
 export default Upperbar;

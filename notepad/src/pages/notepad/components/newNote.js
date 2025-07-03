@@ -13,25 +13,24 @@ const NewNote = ({ onConfirm, onCancel }) => {
     onCancel();
   };
 
-    //funções em teste----------------------------------------------
+  //funções em teste----------------------------------------------
   function handleKeyUp(e) {
-    e.preventDefault();
-    if(e.key === 'Enter'){
+    if (e.key === 'Enter') {
+      e.preventDefault();
       const txa = document.getElementById('txarea');
       const locCursor = txa.selectionStart;
-      var val = txa.value;
-      txa.value = val.slice(0, locCursor) + "○  " + val.slice(locCursor);
-      txa.selectionEnd = locCursor + 3;
-    }
-  
-  }
-  function handleFocus(e) {
-    setTimeout(()=>{
-      e.preventDefault();
-      if(document.getElementById('txarea').value === ''){
-        document.getElementById('txarea').value ='○  ';
+      const textBeforeCursor = txa.value.slice(0, locCursor).trim();
+
+      // Só insere marcador se a frase anterior terminar com ":" ou ";"
+      if (textBeforeCursor.endsWith(":") || textBeforeCursor.endsWith(";")) {
+        txa.value = txa.value.slice(0, locCursor) + "   ●  " + txa.value.slice(locCursor);
+
+          // Reposiciona o cursor após o marcador
+          setTimeout(() => {
+              txa.selectionStart = txa.selectionEnd = locCursor + 6;
+          }, 0);
       }
-    }, 200);
+    }
   }
   //funções em teste----------------------------------------------
 
@@ -53,7 +52,6 @@ const NewNote = ({ onConfirm, onCancel }) => {
           id="txarea"
           className={styles.textarea}
           onKeyUp={handleKeyUp}//em teste
-          onFocus={handleFocus}//em teste
           placeholder="Digite sua anotação..."
           value={notes}
           onChange={e => setNotes(e.target.value)}
