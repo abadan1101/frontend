@@ -14,19 +14,16 @@ function App() {
   //CONFIGURAÇÕES DE TEMA
   useEffect(() => {
     function updateTheme() {
-      setThemeColorByTheme();
-      applyThemeClass();
+      setThemeColorByTheme(); // função é também chamada no modulo userSettings para Atualizar imediatamente a cor do tema na pagina
+      applyThemeClass(); // função é também chamada no modulo userSettings para Atualizar imediatamente a cor do tema na pagina
     }
     updateTheme();
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     mediaQuery.addEventListener('change', updateTheme);
 
-    window.addEventListener('storage', updateTheme);
-
     return () => {
       mediaQuery.removeEventListener('change', updateTheme);
-      window.removeEventListener('storage', updateTheme);
     };
   }, []);
 

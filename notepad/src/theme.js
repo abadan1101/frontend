@@ -1,3 +1,9 @@
+// IMPORTANTE!!!!!!!!!!!!!!!!
+// as rotinas de mudança dos icones pequenos nativos do navegador para claro ou escuro
+// estão localizados diteto no index.HTML da pasta public.
+
+
+
 // Helper para obter a classe de tema atual com base na preferência do usuário ou do sistema
 function getThemeClass() {
   const userTheme = localStorage.getItem('theme') || 'sistema';
@@ -12,6 +18,8 @@ function getThemeClass() {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light';
 }
 
+
+
 // Função para configurar a cor do tema da barra de tarefas do navegador
 export function setThemeColorByTheme() {
   const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -25,6 +33,8 @@ export function setThemeColorByTheme() {
 
   themeMeta.setAttribute('content', isDark ? darkThemeColor : lightThemeColor);
 }
+
+
 
 // Função para aplicar a classe do tema no body e diversos
 export function applyThemeClass() {

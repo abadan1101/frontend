@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import styles from "./userSettings.module.css";
-import { useNavigate } from 'react-router-dom';
 import { setThemeColorByTheme, applyThemeClass } from '../../../theme.js'; // ajuste o caminho se necessário
 
 export default function UserSettings({ onClose }) {
-  const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("Conta");
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'sistema');
 
