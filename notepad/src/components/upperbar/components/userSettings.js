@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./userSettings.module.css";
-import { setThemeColorByTheme, applyThemeClass } from '../../../theme.js'; // ajuste o caminho se necessário
+import { setThemeColorByTheme, applyThemeClass, changeLogo } from '../../../theme.js'; // ajuste o caminho se necessário
 
 export default function UserSettings({ onClose }) {
   const [activeMenu, setActiveMenu] = useState("Conta");
@@ -17,6 +17,7 @@ export default function UserSettings({ onClose }) {
     localStorage.setItem('theme', event.target.value);
     setThemeColorByTheme(); // Atualiza imediatamente a cor do tema no navegador
     applyThemeClass(); // Atualiza imediatamente a cor do tema na pagina
+    document.getElementById('logo').src = changeLogo(); // Atualiza imediatamente a imagem do logo
   }
 
 
