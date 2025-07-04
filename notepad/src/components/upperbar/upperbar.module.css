@@ -47,7 +47,7 @@
 	border-radius: 5px;
 	border: solid 1px #ddd;
 	outline: none;
-	padding: 8px 20px 8px 12px;
+	padding: 6px 20px 6px 12px;
 	transition: all .3s ease;
 	transition: box-shadow 0.5s ease, border-color 0.5s ease;
 }
@@ -141,6 +141,16 @@
 /* Tema Escuro baseado em classe no body */
 :global(.theme-dark) .content nav {
 	background: var(--darkThemeColor00);
+	box-shadow: none;
+}
+
+:global(.theme-dark) .content nav .formGroup input {
+	background: #1f202b;
+	border: solid 1px #44465a;
+	color: #ccc;
+}
+
+:global(.theme-dark) .content nav .formGroup input:focus {
 	box-shadow: none;
 }
 
