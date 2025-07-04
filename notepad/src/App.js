@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { setThemeColorByTheme, applyThemeClass } from './theme.js';
 
 
+
 function App() {
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      {!isLoginPage && <Upperbar searchTerm={searchTerm} onSearch={setSearchTerm} />}
+      {!isLoginPage && <Upperbar searchTerm={searchTerm} onSearch={setSearchTerm}/>}
       <Outlet context={{ searchTerm }} />
     </div>
   );

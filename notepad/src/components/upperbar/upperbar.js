@@ -5,6 +5,8 @@ import styles from './upperbar.module.css';
 import UserMessages from './components/userMessages.js';
 import UserSettings from './components/userSettings.js';
 import api from '../../services/api.js';
+import lightLogo from '../../img/logo18.png';
+import darkLogo from '../../img/logo13.png';
 
 
 
@@ -21,7 +23,8 @@ const contarNaoLidas = (mensagens) => mensagens.filter(msg => !msg.read).length;
 
 
 // COMPONENTE -------------------------------------------------------------------
-const Upperbar = ({ searchTerm, onSearch }) => {
+const Upperbar = ({ searchTerm, onSearch}) => {
+  const [logo, setLogo] = useState(lightLogo);
   const [menuAberto, setMenuAberto] = useState(false);
   const menuRef = useRef(null);
   const [qtdMsg, setQtdMsg] = useState(0);
@@ -29,6 +32,26 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
+
+  // alteração do logo de acordo com o tema
+  useEffect(() => {
+    const handleThemeChange = () => {
+        const userTheme = localStorage.getItem('theme') || 'sistema';
+
+        if (userTheme === 'claro') {
+          setLogo(lightLogo);
+        }else{
+          if (userTheme === 'escuro') {
+            setLogo(darkLogo);
+          }else{
+           window.matchMedia('(prefers-color-scheme: dark)').matches ? setLogo(darkLogo) : setLogo(lightLogo);
+          }
+        }
+    }
+
+    handleThemeChange();
+  }, []);
+
 
   // Verifica mensagens do usuário
   const verificarMensagens = async () => {
@@ -101,7 +124,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
 
         {/* logo */}
         <div className={styles.logo}>
-          <img src="" alt="Logo" id="logo" />
+          <img src={logo} alt="Logo" id='logo'/>
         </div>
 
         {/* barra de pesquisa */}

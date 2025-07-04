@@ -33,17 +33,4 @@ export function applyThemeClass() {
   // Remove classes antigas e adiciona a nova ao body
   document.body.classList.remove('theme-light', 'theme-dark');
   document.body.classList.add(themeClass);
-
-  // altera logo principal (barra superior)
-  const lightLogo = require('../src/img/logo18.png');
-  const darkLogo = require('../src/img/logo13.png');
-  const logo = document.getElementById('logo');
-  if (!logo) {
-    return; // Se o logo não existir na página, não faz nada. Isso evita erros.
-  }
-  if (themeClass === 'theme-light'){
-    logo.src = lightLogo;
-  } else {
-    logo.src = darkLogo;
-  }
 }
