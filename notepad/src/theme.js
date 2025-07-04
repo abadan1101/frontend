@@ -1,35 +1,49 @@
+// Helper para obter a classe de tema atual com base na preferência do usuário ou do sistema
+function getThemeClass() {
+  const userTheme = localStorage.getItem('theme') || 'sistema';
+
+  if (userTheme === 'claro') {
+    return 'theme-light';
+  }
+  if (userTheme === 'escuro') {
+    return 'theme-dark';
+  }
+  // para o caso 'sistema'
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light';
+}
+
 // Função para configurar a cor do tema da barra de tarefas do navegador
 export function setThemeColorByTheme() {
   const themeMeta = document.querySelector('meta[name="theme-color"]');
-  const userTheme = localStorage.getItem('theme') || 'sistema';
-  let isDark;
+  if (!themeMeta) return;
 
-  if (userTheme === 'claro') {
-    isDark = false;
-  } else if (userTheme === 'escuro') {
-    isDark = true;
-  } else {
-    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
+  const isDark = getThemeClass() === 'theme-dark';
 
-  if (themeMeta) {
-    const root = document.documentElement;
-    const darkThemeColor = getComputedStyle(root).getPropertyValue('--darkThemeColor00').trim();
-    const lightThemeColor = getComputedStyle(root).getPropertyValue('--ligthThemeColor00').trim();
+  const root = document.documentElement;
+  const darkThemeColor = getComputedStyle(root).getPropertyValue('--darkThemeColor00').trim();
+  const lightThemeColor = getComputedStyle(root).getPropertyValue('--ligthThemeColor00').trim();
 
-    themeMeta.setAttribute('content', isDark ? darkThemeColor : lightThemeColor);
-  }
+  themeMeta.setAttribute('content', isDark ? darkThemeColor : lightThemeColor);
 }
 
-// Função para aplicar a classe do tema no body
+// Função para aplicar a classe do tema no body e diversos
 export function applyThemeClass() {
-  const userTheme = localStorage.getItem('theme') || 'sistema';
-  let themeClass = '';
-  if (userTheme === 'claro') themeClass = 'theme-light';
-  else if (userTheme === 'escuro') themeClass = 'theme-dark';
-  else themeClass = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light';
+  const themeClass = getThemeClass();
 
   // Remove classes antigas e adiciona a nova ao body
   document.body.classList.remove('theme-light', 'theme-dark');
   document.body.classList.add(themeClass);
+
+  // altera logo principal (barra superior)
+  const lightLogo = require('../src/img/logo18.png');
+  const darkLogo = require('../src/img/logo13.png');
+  const logo = document.getElementById('logo');
+  if (!logo) {
+    return; // Se o logo não existir na página, não faz nada. Isso evita erros.
+  }
+  if (themeClass === 'theme-light'){
+    logo.src = lightLogo;
+  } else {
+    logo.src = darkLogo;
+  }
 }

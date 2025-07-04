@@ -12,20 +12,16 @@ import api from '../../services/api.js';
 import { IoIosSearch } from "react-icons/io";
 import { BiMessageSquareDots } from "react-icons/bi";
 import { LiaUserSolid } from "react-icons/lia";
-import logo from '../../img/logo18.png';
-import darkLogo from '../../img/logo13.png';
 
 
 
 // FUNÇÕES UTILITÁRIAS ----------------------------------------------------------
-const isDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 const contarNaoLidas = (mensagens) => mensagens.filter(msg => !msg.read).length;
 
 
 
 // COMPONENTE -------------------------------------------------------------------
 const Upperbar = ({ searchTerm, onSearch }) => {
-  const [logoSrc, setLogoSrc] = useState(logo);
   const [menuAberto, setMenuAberto] = useState(false);
   const menuRef = useRef(null);
   const [qtdMsg, setQtdMsg] = useState(0);
@@ -33,17 +29,6 @@ const Upperbar = ({ searchTerm, onSearch }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
-
-  // Atualiza logo conforme tema
-  useEffect(() => {
-    function updateLogo() {
-      setLogoSrc(isDarkMode() ? darkLogo : logo);
-    }
-    updateLogo();
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', updateLogo);
-    return () => mediaQuery.removeEventListener('change', updateLogo);
-  }, []);
 
   // Verifica mensagens do usuário
   const verificarMensagens = async () => {
@@ -116,7 +101,7 @@ const Upperbar = ({ searchTerm, onSearch }) => {
 
         {/* logo */}
         <div className={styles.logo}>
-          <img src={logoSrc} alt="Logo" />
+          <img src="" alt="Logo" id="logo" />
         </div>
 
         {/* barra de pesquisa */}

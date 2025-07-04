@@ -4,6 +4,7 @@ import Upperbar from './components/upperbar/upperbar.js';
 import { useState, useEffect } from "react";
 import { setThemeColorByTheme, applyThemeClass } from './theme.js';
 
+
 function App() {
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
