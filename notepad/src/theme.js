@@ -20,24 +20,6 @@ function getThemeClass() {
 
 
 
-// função para alterar o logo principal (barra superior de pesquisa)
-export function changeLogo() {
-  const lightLogo = require('../src/img/logo13.png');
-  const darkLogo = require('../src/img/logo18.png');
-
-  const logo = document.getElementById('logo');
-  if (logo) {
-    const themeClass = getThemeClass();
-    if (themeClass === 'theme-dark') {
-      return lightLogo;
-    } else {
-      return darkLogo;
-    }
-  }
-}
-
-
-
 // Função para configurar a cor do tema da barra de tarefas do navegador
 export function setThemeColorByTheme() {
   const themeMeta = document.querySelector('meta[name="theme-color"]');
