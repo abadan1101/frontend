@@ -1,8 +1,8 @@
-import './App.css';
+import './theme.css';
+import { setThemeColorByTheme, applyThemeClass } from './theme.js';
 import { Outlet, useLocation } from "react-router-dom";
 import Upperbar from './components/upperbar/upperbar.js';
 import { useState, useEffect } from "react";
-import { setThemeColorByTheme, applyThemeClass } from './theme.js';
 
 
 

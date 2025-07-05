@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./userSettings.module.css";
+import { GoArrowLeft } from "react-icons/go";
 import { setThemeColorByTheme, applyThemeClass } from '../../../theme.js'; // ajuste o caminho se necessário
 
 export default function UserSettings({ onClose }) {
   const [activeMenu, setActiveMenu] = useState("Conta");
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'sistema');
+
+  // Gerencia efeitos colaterais do modal (scroll lock, fechar com ESC).
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const handleEsc = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleEsc);
+
+    // Função de limpeza
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [onClose]);
 
 
   function handleSubmit(event) {
@@ -23,7 +39,10 @@ export default function UserSettings({ onClose }) {
   return (
     <div className={styles.container}>
       <aside className={styles.sidebar}>
-        <h2>Configurações</h2>
+        <div className={styles.headerSettings}>
+          <GoArrowLeft className={styles.xClose} onClick={onClose} title="Fechar"/>
+          <h2>Configurações</h2>
+        </div>
         <ul>
           <li
             className={activeMenu === "Conta" ? styles.active : ""}
