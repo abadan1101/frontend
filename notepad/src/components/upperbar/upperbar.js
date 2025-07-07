@@ -5,7 +5,7 @@ import styles from './upperbar.module.css';
 import UserMessages from './components/userMessages.js';
 import UserSettings from './components/userSettings.js';
 import api from '../../services/api.js';
-import lightLogo from '../../img/logo18.png';
+import { ReactComponent as Logo } from '../../img/logo.svg';
 
 
 
@@ -102,7 +102,7 @@ const Upperbar = ({ searchTerm, onSearch}) => {
 
         {/* logo */}
         <div className={styles.logo}>
-          <img src={lightLogo} alt="Logo" id='logo'/>
+          <Logo className={styles.logoSvg} />
         </div>
 
         {/* barra de pesquisa */}
@@ -149,6 +149,7 @@ const Upperbar = ({ searchTerm, onSearch}) => {
           {menuAberto && (
             <ul className={styles.dropdownMenu}>
               <li onClick={() => setShowSettings(true)}>Configurações</li>
+              <li>Instruções</li>
               <li onClick={sair}>Sair</li>
             </ul>
           )}

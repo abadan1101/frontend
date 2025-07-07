@@ -23,12 +23,13 @@
 	box-shadow: 5px 5px 5px #ddd;
 }
 
-.logo img {
+.logoSvg {
 	display: flex;
 	margin-left: 10px;
 	margin-right: 5px;
 	margin-top: 0;
 	width: 45px;
+	color: var(--ligthThemeColor02);
 }
 
 .content nav form {
@@ -142,6 +143,10 @@
 :global(.theme-dark) .content nav {
 	background: var(--darkThemeColor00);
 	box-shadow: none;
+}
+
+:global(.theme-dark) .logoSvg {
+	color: #fff;
 }
 
 :global(.theme-dark) .content nav .formGroup input {
