@@ -228,40 +228,7 @@
   margin-bottom: 4px;
 }
 
-.themeOptions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
 
-.themeOption {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1.5px solid #e0e0e0;
-  background: transparent;
-  transition: all .2s;
-  font-size: 15px;
-  user-select: none;
-}
-
-.themeOption input[type="radio"] {
-  accent-color: #1976d2;
-}
-
-.selected {
-  background: var(--primary-light, #e3f2fd);
-  border: 1.5px solid var(--primary, #1976d2);
-}
-
-.themeHint {
-  font-size: 13px;
-  color: #757575;
-  margin-top: 8px;
-}
 
 /* Responsividade */
 @media (max-width: 600px) {

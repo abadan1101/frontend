@@ -2,8 +2,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './upperbar.module.css';
-import UserMessages from './components/userMessages.js';
-import UserSettings from './components/userSettings.js';
+import UserMessages from './components/userMessages/userMessages.js';
+import UserSettings from './components/userSettings/userSettings.js';
 import { ReactComponent as Logo } from '../../img/logo.svg';
 import api from '../../services/api.js';
 
