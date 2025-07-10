@@ -59,7 +59,7 @@ export default function UserSettings({ onClose }) {
             className={activeMenu === "Preferências" ? styles.active : ""}
             onClick={() => setActiveMenu("Preferências")}
           >
-            Preferências
+            Tema
           </li>
         </ul>
         <button

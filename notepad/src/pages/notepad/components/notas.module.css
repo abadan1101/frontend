@@ -4,8 +4,7 @@
 }
 
 .notepadInfos {
-    background: #fff;
-    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+    background: var(--ligthThemeColor03);
     padding: 20px 20px 10px 20px;
     height: 290px;
     max-height: 290px;
@@ -15,7 +14,7 @@
 .notepadInfos strong{
     display: block;
     color: #333;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .notepadInfos div div {
@@ -36,11 +35,31 @@
     margin-bottom: 5px;
     width: 100%;
     height: 190px;
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     border: 0;
-    background: #fff;
+    background: transparent;
     resize: none;
+    /* Para Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #ccc var(--ligthThemeColor03);
+}
+
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+.notepadInfos textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notepadInfos textarea::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.notepadInfos textarea::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+.notepadInfos textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
 }
 
 .notepadInfosFooter{
@@ -76,7 +95,7 @@
 
 .dragIcon {
     font-size: 1.3em;
-    color: #ddd;
+    color: #ccc;
 }
 
 @keyframes fadeIn {
@@ -91,7 +110,7 @@
         max-height: 250px;
     }
     .notepadInfos strong {
-        font-size: 14px;
+        font-size: 16px;
     }
     .notepadInfos div div {
         font-size: 14px;
@@ -104,7 +123,7 @@
         margin-top: 7px;
         margin-bottom: 0px;
         height: 195px;
-        font-size: 12px;
+        font-size: 14px;
     }
     .notepadInfos span {
         font-size: 15px;
@@ -127,7 +146,7 @@
         border-radius: 8px;
     }
     .notepadInfos strong {
-        color: var(--ligthThemeColor01);
+        color: #c4c4c4;
     }
     .notepadInfos div div {
         color: #c4c4c4;
@@ -135,6 +154,9 @@
     .notepadInfos textarea {
         background: #1a1a1a;
         color: #888;
+        /* Para Firefox */
+        scrollbar-color: #444 #181818;
+        scrollbar-width: thin;
     }
     .notepadInfosFooter p {
         color: #c4c4c4;
@@ -149,6 +171,7 @@
     .dragIcon:hover {
         color: #555;
     }
+    /* Para navegadores WebKit (Chrome, Safari, Edge) */
     .notepadInfos textarea::-webkit-scrollbar {
         width: 8px;
         background: #181818;
@@ -159,11 +182,5 @@
     }
     .notepadInfos textarea::-webkit-scrollbar-thumb:hover {
         background: #666;
-    }
-
-    /* Firefox */
-    .notepadInfos textarea {
-        scrollbar-color: #444 #181818;
-        scrollbar-width: thin;
     }
 }

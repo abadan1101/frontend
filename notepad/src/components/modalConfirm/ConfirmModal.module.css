@@ -56,13 +56,13 @@
 }
 
 .confirm {
-    background: var(--ligthThemeColor02);
+    background: var(--ligthThemeColor01);
     color: #fff;
     border: none;
 }
 
 .confirm:hover, .confirm:focus {
-    background: var(--ligthThemeColor03);
+    background: var(--ligthThemeColor02);
 }
 
 .cancel {
@@ -72,8 +72,8 @@
 }
 
 .cancel:hover, .cancel:focus {
-    color: var(--ligthThemeColor02) !important;
-    border-color: var(--ligthThemeColor02);
+    color: var(--ligthThemeColor01) !important;
+    border-color: var(--ligthThemeColor01);
 }
 
 
@@ -89,21 +89,6 @@
     border: solid 1px var(--darkThemeColor01);
 }
 
-:global(.theme-dark) .confirm {
-    background: var(--darkThemeColor02);
-    color: #fff;
-    border: none;
-}
-
-:global(.theme-dark) .confirm:hover, .confirm:focus {
-    background: var(--darkThemeColor03);
-}
-
 :global(.theme-dark) .cancel {
     color: #f8fafc;
-}
-
-:global(.theme-dark) .cancel:hover, .cancel:focus {
-    color: var(--darkThemeColor02) !important;
-    border-color: var(--darkThemeColor02);
 }

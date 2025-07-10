@@ -43,7 +43,7 @@
 }
 
 .confirm{
-    background: var(--ligthThemeColor02);
+    background: var(--ligthThemeColor01);
     border: none;
     color: #fff;
     min-width: 100px;
@@ -58,7 +58,7 @@
 }
 
 .confirm:hover, .confirm:focus {
-    background: var(--ligthThemeColor03);
+    background: var(--ligthThemeColor02);
 }
 
 
@@ -72,12 +72,4 @@
 
 :global(.theme-dark) .overlay {
     background: #000000cc;
-}
-
-:global(.theme-dark) .confirm{
-    background: var(--darkThemeColor02);
-}
-
-:global(.theme-dark) .confirm:hover, .confirm:focus {
-    background: var(--darkThemeColor03);
 }

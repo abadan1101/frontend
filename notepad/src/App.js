@@ -1,5 +1,5 @@
 import './theme.css';
-import { setThemeColorByTheme, applyThemeClass } from './theme.js';
+import { setThemeColorByTheme, applyThemeClass, applyColorTheme } from './theme.js';
 import { Outlet, useLocation } from "react-router-dom";
 import Upperbar from './components/upperbar/upperbar.js';
 import { useState, useEffect } from "react";
@@ -16,6 +16,7 @@ function App() {
     function updateTheme() {
       setThemeColorByTheme(); // função é também chamada no modulo userSettings para Atualizar imediatamente a cor do tema na pagina
       applyThemeClass(); // função é também chamada no modulo userSettings para Atualizar imediatamente a cor do body
+      applyColorTheme(); // função é também chamada no modulo userSettings para Atualizar imediatamente a cor do tema
     }
     updateTheme();
 

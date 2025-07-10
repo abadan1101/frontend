@@ -1,72 +1,133 @@
 .preferencesForm {
-  max-width: 400px;
-  margin: 0 0;
-  margin-bottom: 50px;
-  background: var(--card-bg, #fff);
-  border-radius: 12px;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    margin-bottom: 20px;
 }
 
 .themeGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .themeLabel {
-  font-weight: 500;
-  margin-bottom: 4px;
+    font-weight: 500;
 }
 
 .themeOptions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    background-color: var(--ligthThemeColor03);
+    padding: 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+:global(body.theme-dark) .themeOptions {
+    background-color: var(--darkThemeColor02);
+    color: #aaa;
 }
 
 .themeOption {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1.5px solid #e0e0e0;
-  background: transparent;
-  transition: all .2s;
-  font-size: 15px;
-  user-select: none;
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-.themeOption input[type="radio"] {
-  accent-color: #1976d2;
+.themeOption input {
+    display: none;
 }
 
-.selected {
-  background: var(--primary-light, #e3f2fd);
-  border: 1.5px solid var(--primary, #1976d2);
+.themeOption.selected {
+    background-color: var(--ligthThemeColor01);
+    color: white;
 }
 
 .themeHint {
-  font-size: 13px;
-  color: #757575;
-  margin-top: 8px;
+    font-size: 0.8rem;
+    color: #666;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-  .form,
-  .preferencesForm {
-    padding: 16px;
-    max-width: 100%;
-  }
+:global(body.theme-dark) .themeHint {
+    color: #aaa;
+}
 
-  .themeOptions {
+/* --- Estilos para o painel de exemplo de tema --- */
+.exemploTema {
+    max-width: 400px;
+    height: 120px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
     flex-direction: column;
-    gap: 8px;
-  }
+    transition: background-color 0.3s, border-color 0.3s;
+    border: 1px solid #dddddd;
+    background-color: #fff;
 }
+
+:global(body.theme-dark) .exemploTema {
+    border: 1px solid var(--darkThemeColor01);
+    background-color: var(--darkThemeColor02);
+}
+
+.exemploHeader {
+    height: 25px;
+    background-color: #fff;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 6px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+:global(body.theme-dark) .exemploHeader {
+    background-color: var(--darkThemeColor00);
+    border-bottom: 1px solid var(--darkThemeColor01);
+}
+
+.exemploPonto {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--ligthThemeColor01);
+    transition: background-color 0.3s;
+}
+
+:global(body.theme-dark) .exemploPonto {
+    background-color: #fff;
+}
+
+.exemploCorpo {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exemploLinha {
+    width: 70%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--ligthThemeColor04);
+    transition: background-color 0.3s;
+}
+
+:global(body.theme-dark) .exemploLinha {
+    background-color: var(--darkThemeColor03);
+}
+
+.exemploBotao {
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: var(--ligthThemeColor01);
+    margin-top: 5px;
+    transition: background-color 0.3s;
+}
+
+

@@ -11,7 +11,7 @@
 }
 
 .content nav {
-    background: var(--ligthThemeColor00);
+    background: #fff;
 	height: 55px;
 	padding: 0 20px 0 0;
 	display: flex;
@@ -29,7 +29,7 @@
 	margin-right: 5px;
 	margin-top: 0;
 	width: 45px;
-	color: var(--ligthThemeColor02);
+	color: var(--ligthThemeColor01);
 }
 
 .content nav form {
@@ -54,7 +54,7 @@
 }
 
 .content nav .formGroup input:focus {
-	box-shadow: 0 0 0 1px var(--ligthThemeColor02), 0 0 0 4px var(--ligthThemeColor06);
+	box-shadow: 0 0 0 1px var(--ligthThemeColor01), 0 0 0 4px var(--ligthThemeColor05);
 }
 
 .content nav .formGroup .icon {
@@ -72,7 +72,7 @@
 
 .content nav .navlink .icon {
 	font-size: 25px;
-	color: var(--ligthThemeColor02);
+	color: var(--ligthThemeColor01);
 	cursor: pointer;
 	transition: all .3s ease;
 }
@@ -109,7 +109,7 @@
 .content nav .profile .icon {
 	font-size: 33px;
 	cursor: pointer;
-	color: var(--ligthThemeColor02);
+	color: var(--ligthThemeColor01);
 }
 
 .dropdownMenu {

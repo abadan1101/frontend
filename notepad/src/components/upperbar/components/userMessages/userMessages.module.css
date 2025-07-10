@@ -41,7 +41,7 @@
 .headerMessages {
   margin: 0;
   letter-spacing: 0.5px;
-  background: var(--ligthThemeColor02);
+  background: var(--ligthThemeColor01);
   padding: 8px;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .userMsg {
-  background: var(--ligthThemeColor04);
+  background: var(--ligthThemeColor03);
   border-radius: 12px 12px 12px 4px;
   padding: 1rem 1.2rem;
   font-size: 1rem;
@@ -99,7 +99,7 @@
 }
 
 .userMsg:hover {
-  background: var(--ligthThemeColor05);
+  background: var(--ligthThemeColor04);
 }
 
 .emptyUserMsg {
@@ -133,7 +133,7 @@
 }
 
 .linkMsg {
-  color: #6970fc !important; /* Cor azul do tema */
+  color: #6970fc !important;
   text-decoration: none; /* Remove o sublinhado padrão */
   transition: color 0.2s;
 }
@@ -204,11 +204,11 @@
   border-bottom: 1px solid var(--darkThemeColor01);
 }
 :global(.theme-dark) .userMsg {
-  background: var(--darkThemeColor04);
+  background: var(--darkThemeColor02);
   color: #ccc;
 }
 :global(.theme-dark) .userMsg:hover {
-  background: var(--darkThemeColor05);
+  background: var(--darkThemeColor03);
 }
 :global(.theme-dark) .emptyUserMsg {
   color: #afffaa;

@@ -3,23 +3,43 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');*/
 
 :root {
+    /* CORES DOS TEMAS */
+    /* azul */
+    --ThemeBlue01: #2575fc;
+    --ThemeBlue02: #6a11cb;
+    --ThemeBlue03: #e6ecf7;
+    --ThemeBlue04: #c8d9f8;
+    --ThemeBlue05: #D0E4FF;
+
+    /* verde */
+    --ThemeGreen01: #218608;
+    --ThemeGreen02: #176304;
+    --ThemeGreen03: #e1e6e1;
+    --ThemeGreen04: #c8e6c8;
+    --ThemeGreen05: #d8ffd0;
+
+    /* rosa */
+    --ThemePink01: #d80deb;
+    --ThemePink02: #e64a8b;
+    --ThemePink03: #fae8fa;
+    --ThemePink04: #f6d1fa;
+    --ThemePink05: #fcdffc;
+
+
+
+    /* TIPO DE TEMA */
     /* tema claro */
-    --ligthThemeColor00: #ffffff; /* branco para background em cabeçalhos */
-    --ligthThemeColor01: #dddddd; /* branco para para bordas cabeçalhos */
-    --ligthThemeColor02: #2575fc; /* azul para botões e cabeçalhos secundários e efeitos cx pesq*/
-    --ligthThemeColor03: #6a11cb; /* roxo para hover em botões */
-    --ligthThemeColor04: #e8e8fa; /* roxo claro para componentes */
-    --ligthThemeColor05: #d1d1fa; /* roxo claro 2 para hover em componentes */
-    --ligthThemeColor06: #D0E4FF; /* azul claro para efeitos cx pesq*/
+    --ligthThemeColor01: #2575fc; /* azul para botões e cabeçalhos secundários e efeitos cx pesq*/
+    --ligthThemeColor02: #6a11cb; /* roxo para hover em botões */
+    --ligthThemeColor03: #e6ecf7; /* roxo claro para componentes */
+    --ligthThemeColor04: #c8d9f8; /* roxo claro 2 para hover em componentes */
+    --ligthThemeColor05: #D0E4FF; /* azul claro para efeitos cx pesq*/
 
     /* tema escuro */
     --darkThemeColor00: #23243a; /* azul escuro para background em cabeçalhos */
     --darkThemeColor01: #334155; /* azul escuro para bordas cabeçalhos */
-    --darkThemeColor02: #2575fc; /* azul para botões */
-    --darkThemeColor03: #6a11cb; /* roxo para hover em botões */
-    --darkThemeColor04: #282829; /* cinza escuro para componentes */
-    --darkThemeColor05: #3a3a3a; /* cinza médio para hover em componentes */
-    --darkThemeColor06: #D0E4FF; /* azul claro para efeitos cx pesq*/
+    --darkThemeColor02: #282829; /* cinza escuro para componentes */
+    --darkThemeColor03: #3a3a3a; /* cinza médio para hover em componentes */
 }
 
 * {

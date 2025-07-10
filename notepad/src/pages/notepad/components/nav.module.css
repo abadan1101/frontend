@@ -25,7 +25,7 @@
     right: 10px;
     bottom: 80px;
     color: #fff;
-    background: linear-gradient(135deg, #FFD600 60%, #FFB300 100%);
+    background: linear-gradient(135deg, var(--ligthThemeColor01) 60%, var(--ligthThemeColor02) 100%);
     font-size: 60px;
     cursor: pointer;
     border-radius: 50%;
@@ -38,7 +38,7 @@
 .addNotes:hover{
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     transform: scale(1.08);
-    background: linear-gradient(135deg, #FFEA00 60%, #FFC107 100%);
+    background: linear-gradient(135deg, var(--ligthThemeColor01) 60%, var(--ligthThemeColor02) 100%);
     color: #fff;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .radioInput:checked + .customRadio {
-  border: 3px solid #2575fc;
+  border: 3px solid var(--ligthThemeColor01);
   background: #fff;
 }
 
@@ -156,7 +156,6 @@
         background: transparent;
     }
     .radioInput:checked + .customRadio {
-        border-color: #2575fc;
         background: transparent;
     }
     .trashLabel{
