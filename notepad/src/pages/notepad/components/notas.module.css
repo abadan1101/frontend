@@ -110,7 +110,7 @@
         max-height: 250px;
     }
     .notepadInfos strong {
-        font-size: 16px;
+        font-size: 12px;
     }
     .notepadInfos div div {
         font-size: 14px;
@@ -123,7 +123,7 @@
         margin-top: 7px;
         margin-bottom: 0px;
         height: 195px;
-        font-size: 14px;
+        font-size: 10px;
     }
     .notepadInfos span {
         font-size: 15px;
